@@ -1,0 +1,45 @@
+Store: a place you will go to buy things
+(or Merchant, Shop, Vendor, Market)
+  has
+    Inventory: list of items that have been bought here in the past
+    Trip: current list of items to buy
+    (Name?): historical quantities, mapping Merch to last-used quantity 
+        this cannot go in Merch because Merchandise is shared between Stores
+  does
+    move items from Inventory to Trip,
+      creating a purchase,
+       providing quantity for suggestion
+    add new items to Inventory
+        
+Inventory: container for Merchandise that have been added to a Store
+  has
+    list of Merch
+  does
+    search for a Merch by name
+    provide all its Merchandise sorted by any of name, date, usage
+
+Trip: container for Purchases; represents the actual shopping list
+  has
+    list of Purchases
+      can distinguish Purchases by whether they are crossed off
+  does
+    provide all its Purchases sorted by any of name, date, usage, manual
+      optionally subdivided by crossed off (each division sorted)
+
+Merch: an item to shop for (archival)
+(or Merchandise, Article, Commodity, Ware, Product)
+  has
+    name
+    date of last purchased
+    number of times purchased
+    unit of purchase?
+    tag? of some kind?
+    
+Purchase: an item on a shopping trip
+  has
+    merch: the item
+    note (optional)
+    quantity (this is saved by the store) (optional)
+    crossed off (Boolean)
+
+
