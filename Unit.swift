@@ -1,4 +1,4 @@
-enum Unit
+public enum Unit
 {
     case Ton, Pound, Ounce
     case Kilogram, Gram
@@ -10,7 +10,7 @@ enum Unit
     case Loaf, Bunch, Head
     case Each
     
-    func pluralName() -> String 
+    public func pluralName() -> String 
     {
         switch self {
             case Each:

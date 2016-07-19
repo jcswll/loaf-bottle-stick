@@ -1,0 +1,3 @@
+- Fuzzy search for Store.suggestedMerchInfo(forTerm:) @enhancement @status(planned) @date-added(2016-07-14)
+- If user tries to add a purchase for an item already on the Trip, what should we do? @design @status(review) @date-added(2016-07-14)
+- Ability to remove items from Inventory. @status(planned) @date-added(2016-07-15)
