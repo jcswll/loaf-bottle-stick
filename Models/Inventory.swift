@@ -1,19 +1,31 @@
 /**
- * An `Inventory` manages `Merch` for a `Market`. It reprenents all the items
+ * An `Inventory` manages `Merch` for a `Market`. It represents all the items
  * that have been purchased at that store in the past.
  */
-struct Inventory
+struct Inventory : MarketList
 {
+    typealias Item = Merch
     /** All `Merch` */
-    /** Mapping of `Merch` to each one's last purchase quantity */
-    
+    var items: Set<Merch>
+
     /** Creation from provided data */
+    init(data: InventoryData)
+    {
+        self.items = data.merchandise
+    }
     
     /** Default (empty) creation */
+    init()
+    {
+        self.items = []
+    }
+    
+    /** Add a `Merch` to `items` by name */
+    mutating func createMerch(named name: String, inUnit unit: Unit? = nil)
+                 -> Merch
+    {
+        let merch = Merch(name: name, unit: unit)
+        self.items.insert(merch)
+        return merch
+    }
 }
-
-/** Adding a `Merch`, by name */
-
-/** Creating a purchase from an existing `Merch` */
-
-/** Individual `Merch` mutation: name, unit */
