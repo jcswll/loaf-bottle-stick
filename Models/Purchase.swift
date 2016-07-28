@@ -28,6 +28,12 @@ struct Purchase : MarketItem
         self.quantity = quantity
         self.isCheckedOff = false
     }
+    
+    /** Test whether this `Purchase` represents the given `Merch`. */
+    func isOf(merch: Merch) -> Bool 
+    {
+        return self.merch == merch
+    }
 }
 
 /** Mutation: checking off, editing note or quantity */
@@ -54,6 +60,11 @@ extension Purchase
         return Purchase(copy: self, note: self.note, quantity: quantity)
     }
     
+    func changingMerch(to merch: Merch) -> Purchase 
+    {
+        return Purchase(copy: self, merch: merch)
+    }
+    
     private init(copy original: Purchase, 
                  note newNote: String?,
                  quantity newQuantity: UInt?)
@@ -70,6 +81,14 @@ extension Purchase
         self.note = original.note
         self.quantity = original.quantity
         self.isCheckedOff = checked
+    }
+    
+    private init(copy original: Purchase, merch: Merch)
+    {
+        self.merch = merch
+        self.note = original.note
+        self.quantity = original.quantity
+        self.isCheckedOff = original.isCheckedOff
     }
 }
 

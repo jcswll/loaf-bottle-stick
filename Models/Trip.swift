@@ -30,4 +30,35 @@ struct Trip : MarketList
         self.items.insert(purchase)
         return purchase
     }
+    
+    /** 
+     * In response to changes in the "old" `Merch`'s fields, find the
+     * `Purchase` with the old `Merch` and substitute the "new" `Merch`.
+     *
+     * It is an error to try to update a nonexistent `Purchase`.
+     */
+    mutating func updatePurchase(ofMerch old: Merch, to new: Merch) 
+                 throws -> Purchase 
+    { 
+        guard let original = self.purchase(ofMerch: old) else {
+            throw MarketListError.ItemNotFound(old)
+        }
+        
+        let updated = original.changingMerch(to: new)
+        try! self.delete(original)    // !: Already tested for existence
+        self.items.insert(updated)
+        return updated
+    }
+    
+    /** Find the `Purchase` that uses `merch`. */
+    func purchase(ofMerch merch: Merch) -> Purchase?
+    {
+        return self.items.firstElement { purchase in purchase.isOf(merch) }
+    }
+    
+    /** Test whether any current `Purchase` uses the given `Merch`. */
+    func merchIsUsed(merch: Merch) -> Bool
+    {
+        return self.purchase(ofMerch: merch) != nil
+    }
 }

@@ -28,4 +28,12 @@ struct Inventory : MarketList
         self.items.insert(merch)
         return merch
     }
+    
+    /** Query for items whose names match a string. */
+    func merch(forTerm prefix: String) -> [Merch]
+    {
+        return self.items.filter { $0.name.hasPrefix(prefix) }
+    }
 }
+
+
