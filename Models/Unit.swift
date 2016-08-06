@@ -20,6 +20,7 @@ public enum Unit : String
     // Catch-all
     case Each
     
+    /** Properly-pluralized name of the unit. */
     public func pluralName() -> String 
     {
         switch self {

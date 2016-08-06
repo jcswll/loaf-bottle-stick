@@ -1,6 +1,5 @@
 /**
- * A `Purchase` represents an entry on a shopping list, consisting of a `Merch`,
- * the state of being checked off or not, and, optionally, quantity and note.
+ * A `Purchase` represents an entry on a shopping list.
  */
 struct Purchase : MarketItem
 {
@@ -8,7 +7,7 @@ struct Purchase : MarketItem
      * The represented `Merch`; this provides access to name and unit, and 
      * facilitates sort.
      */
-    private let merch: Merch
+    let merch: Merch
     /** Purchase's name, from its merch. */
     var name: String { return self.merch.name }
     /** Purchase's unit, from its merch. */
@@ -20,54 +19,62 @@ struct Purchase : MarketItem
     /** The state of the item w/r/t the user's "shopping basket": */
     let isCheckedOff: Bool
     
-    /** Creation from a `Merch` and optional quantity */
-    init(ofMerch merch: Merch, inQuantity quantity: UInt?)
+    /** Creation from provided data. */
+    init(data: PurchaseData)
     {
-        self.merch = merch
-        self.note = nil
-        self.quantity = quantity
-        self.isCheckedOff = false
+        self.merch = data.merch
+        self.note = data.note
+        self.quantity = data.quantity
+        self.isCheckedOff = data.isCheckedOff
     }
     
-    /** Test whether this `Purchase` represents the given `Merch`. */
-    func isOf(merch: Merch) -> Bool 
+    var searchKey: Merch { return self.merch }
+    
+    //MARK: - Sortability
+    /* Purchases simply sort by their contained Merch. */
+    typealias SortKey = Merch.SortKey
+    
+    static func comparator(forKey key: SortKey) -> (Purchase, Purchase) -> Bool
     {
-        return self.merch == merch
+        return { (lhs: Purchase, rhs: Purchase) -> Bool in
+            let comparator = Merch.comparator(forKey: key)
+            return comparator(lhs.merch, rhs.merch)
+        }
     }
-}
-
-/** Mutation: checking off, editing note or quantity */
-extension Purchase
-{
+    
+    var hashValue: Int { return self.merch.hashValue }
+    
+    /** Mutation: checking off, editing note or quantity */
     mutating func checkingOff() -> Purchase
     {
         return Purchase(copy: self, checkingOff: true)
     }
-    
+
     mutating func unchecking() -> Purchase
     {
         return Purchase(copy: self, checkingOff: false)
     }
-    
+
     func changingNote(to note: String?) -> Purchase
     {
         return Purchase(copy: self, note: note, quantity: self.quantity)
     }
-    
+
     func changingQuantity(to quantity: UInt?) -> Purchase
     {
-        let quantity = (quantity == Optional(0)) ? nil : quantity
+        // Convert 0 quantity into nil
+        let quantity = (quantity == 0) ? nil : quantity
         return Purchase(copy: self, note: self.note, quantity: quantity)
     }
-    
+
     func changingMerch(to merch: Merch) -> Purchase 
     {
         return Purchase(copy: self, merch: merch)
     }
-    
+
     private init(copy original: Purchase, 
-                 note newNote: String?,
-                 quantity newQuantity: UInt?)
+                  note newNote: String?,
+          quantity newQuantity: UInt?)
     {
         self.merch = original.merch
         self.note = newNote
@@ -82,7 +89,7 @@ extension Purchase
         self.quantity = original.quantity
         self.isCheckedOff = checked
     }
-    
+
     private init(copy original: Purchase, merch: Merch)
     {
         self.merch = merch
@@ -92,33 +99,14 @@ extension Purchase
     }
 }
 
-/** Equatability */
+/* Equatability */
 func ==(lhs: Purchase, rhs: Purchase) -> Bool
 {
     return lhs.merch == rhs.merch
 }
-/** Comparability/sorting */
+
+/* Comparability/sorting */
 func <(lhs: Purchase, rhs: Purchase) -> Bool
 {
     return lhs.merch < rhs.merch
-}
-
-/** Purchases simply sort by their contained Merch. */
-extension Purchase
-{
-    typealias SortKey = Merch.SortKey
-    
-    static func comparator(forKey key: SortKey) -> (Purchase, Purchase) -> Bool
-    {
-        return { (lhs: Purchase, rhs: Purchase) -> Bool in
-            let comparator = Merch.comparator(forKey: key)
-            return comparator(lhs.merch, rhs.merch)
-        }
-    }
-}
-
-/** Hashability */
-extension Purchase : Hashable
-{
-    var hashValue: Int { return self.merch.hashValue }
 }

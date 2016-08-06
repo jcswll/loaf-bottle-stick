@@ -1,15 +1,36 @@
 /**
- * `MarketData` represets an archive of some kind of an `Market`; it exposes 
- * the information that a `Market` needs to construct itself.
+ * A `MarketData` represents a `Market` for archiving. It contains
+ * `MarketListData` for the `Market`'s `MarketList`s.
  */
 struct MarketData
 {
-    /** The name of the market. */
+    /** The `Market`'s name */
     let name: String
-    /** The UUID of the market. */
+    /** The `Market`'s unique identifier. */
     let ident: Market.UniqueID
-    /** The data to construct the market's inventory. */
-    let inventoryData: InventoryData
-    /** The data to construct the market's trip. */
-    let tripData: TripData
+    /** Data for the `Market`'s inventory */
+    let inventory: MarketListData<MerchData>
+    /** Data for the `Market`'s trip */
+    let trip: MarketListData<PurchaseData>
+
+    /** Create from given field values */
+    init(name: String, 
+         ident: Market.UniqueID, 
+         inventory: MarketListData<MerchData>, 
+         trip: MarketListData<PurchaseData>) 
+    {
+        self.name = name
+        self.ident = ident
+        self.inventory = inventory
+        self.trip = trip
+    }
+    
+    /** Create by packing up an existing `Market`. */
+    init(market: Market)
+    {
+        self.name = market.name
+        self.ident = market.ident
+        self.inventory = MarketListData(list: market.inventory)
+        self.trip = MarketListData(list: market.trip)
+    }
 }

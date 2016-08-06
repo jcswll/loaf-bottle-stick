@@ -1,7 +1,7 @@
 import Foundation
 /**
- * A `Market` is a container for a list of `Merch`: the `Inventory`,
- * and a list of `Purchases`: a `Trip`.
+ * A `Market` is a container for a list of `Merch` (the "inventory"),
+ * and a list of `Purchases` (a "trip").
  * It represents a place the user goes to buy things.  
  */
 struct Market
@@ -11,31 +11,27 @@ struct Market
     /** Name of place, as entered by and displayed to the user. */
     var name: String
     /** Unique identifier to facilitate data retrieval. */
-    private let ident: UniqueID
+    let ident: UniqueID
     /** The market's list of `Merch` that have been purchased in the past. */
-    private(set) var inventory: Inventory
+    private(set) var inventory: MarketList<Merch>
     /** The current shopping list: the `Purchase`s that need to be made. */
-    private(set) var trip: Trip
+    private(set) var trip: MarketList<Purchase>
 
     /** Creation with a name: `inventory` and `trip` are new and empty. */
     init(name: String)
     {
         self.name = name
         self.ident = NSUUID().UUIDString
-        self.inventory = Inventory()
-        self.trip = Trip()
+        self.inventory = MarketList()
+        self.trip = MarketList()
     }
     
-    /** Creation from injected data. */
-    init(provider: MarketData)
+    /** Creation from provided data. */
+    init(data: MarketData)
     {
-        self.name = provider.name
-        self.ident = provider.ident
-        self.inventory = Inventory(data: provider.inventoryData)
-        self.trip = Trip(data: provider.tripData)
+        self.name = data.name
+        self.ident = data.ident
+        self.inventory = MarketList(data: data.inventory)
+        self.trip = MarketList(data: data.trip)
     }
 }
-
-/** Mutation (name) */
-
-/** Archiving */
