@@ -26,12 +26,24 @@ struct Market
         self.trip = MarketList()
     }
     
+    /** Creation from given field values */
+    init(name: String, 
+         ident: Market.UniqueID, 
+         inventory: MarketList<Merch>, 
+         trip: MarketList<Purchase>) 
+    {
+        self.name = name
+        self.ident = ident
+        self.inventory = inventory
+        self.trip = trip
+    }
+    
     /** Creation from provided data. */
     init(data: MarketData)
     {
         self.name = data.name
         self.ident = data.ident
-        self.inventory = MarketList(data: data.inventory)
-        self.trip = MarketList(data: data.trip)
+        self.inventory = data.inventory
+        self.trip = data.trip
     }
 }

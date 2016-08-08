@@ -11,6 +11,12 @@ class PurchaseData : MarketItemData
     let quantity: UInt?
     /** The `Purchase`'s state of being checked off the list */
     let isCheckedOff: Bool
+    
+    var item: Purchase { return Purchase(merch: self.merch,
+                                          note: self.note,
+                                      quantity: self.quantity,
+                                    checkedOff: self.isCheckedOff)
+    }
 
 
     /** Create by composing from given field values */
@@ -43,7 +49,7 @@ class PurchaseData : MarketItemData
         let quantity: UInt = UInt(coder.decodeIntegerForKey("quantity"))
         let checkedOff = coder.decodeBoolForKey("checkedOff")
         
-        self.init(merch: Merch(data: merchData),
+        self.init(merch: merchData.item,
                    note: (note != "") ? note : nil, 
                quantity: (quantity != 0) ? quantity : nil,
              checkedOff: checkedOff)

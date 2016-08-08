@@ -13,16 +13,9 @@ struct MarketList<Item: MarketItem>
         self.items = []
     }
     
-    /** Creation from provided data. */
-    init<ItemData: MarketItemData where ItemData.Item == Item>
-        (data: MarketListData<ItemData>)
+    init(items: Set<Item>)
     {
-        self.items = Set(data.itemData.map { 
-            // The constraints on this constructor paired with the constraints
-            // on the `MarketListData` constructor make this cast safe, but
-            // it's probably beyond the solver to figure that out.
-            Item(data: ($0 as! Item.Data)) 
-        })
+        self.items = items
     }
     
     /**
@@ -54,19 +47,19 @@ struct MarketList<Item: MarketItem>
      * Use the passed data to create a new item, add it to the list, and then 
      * return it.
      */
-    mutating func createItem<ItemData: MarketItemData where 
-                             ItemData.Item == Item>
-                            (from data: ItemData) 
-                 -> Item
-    {
-        guard let data = (data as? Item.Data) else {
-            fatalError("Attempt to create value of type \(Item.self) from " +
-                       "value of wrong type \(ItemData.self)")
-        }
-        let item = Item(data: data)
-        self.items.insert(item)
-        return item
-    }
+    // mutating func createItem<ItemData: MarketItemData where
+//                              ItemData.Item == Item>
+//                             (from data: ItemData)
+//                  -> Item
+//     {
+//         guard let data = (data as? Item.Data) else {
+//             fatalError("Attempt to create value of type \(Item.self) from " +
+//                        "value of wrong type \(ItemData.self)")
+//         }
+//         let item = Item(data: data)
+//         self.items.insert(item)
+//         return item
+//     }
     
     /** Find the item matching the given key in the collection. */
     func item(forKey key: Item.SearchKey) -> Item?
@@ -74,3 +67,10 @@ struct MarketList<Item: MarketItem>
         return self.items.firstElement { $0.hasKey(key) }
     }
 }
+
+func ==<Item>(lhs: MarketList<Item>, rhs: MarketList<Item>) -> Bool
+{
+    return lhs.items == rhs.items
+}
+
+extension MarketList : Equatable {}

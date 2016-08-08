@@ -12,6 +12,12 @@ class MerchData : MarketItemData
     /** The `Merch`'s internal last usage date */
     let lastUsed: NSDate
     
+    var item: Merch { return Merch(name: self.name,
+                                   unit: self.unit,
+                                numUses: self.numUses,
+                               lastUsed: self.lastUsed)
+    }
+    
     /** Create by composing from given field values */
     init(name: String, unit: Unit, numUses: UInt, lastUsed: NSDate)
     {

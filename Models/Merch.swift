@@ -17,16 +17,22 @@ struct Merch : MarketItem
     /** Internal tracking of the last date this `Merch` was used. */
     let lastUsed: NSDate
     
-    
     init(name: String, unit: Unit, numUses: UInt, lastUsed: NSDate)
     {
-        self.name = name
+        self.name = name   
         self.unit = unit
         self.numUses = numUses
         self.lastUsed = lastUsed
     }
     
-    /** Creation from provided data. */
+    init(name: String, unit: Unit?)
+    {
+        self.name = name
+        self.unit = unit ?? .Each
+        self.numUses = 0
+        self.lastUsed = NSDate.distantPast()
+    }
+    
     init(data: MerchData)
     {
         self.name = data.name
@@ -36,7 +42,6 @@ struct Merch : MarketItem
     }
     
     var searchKey: String { return self.name }
-    
     
     //MARK: - Sortability
     enum SortKey

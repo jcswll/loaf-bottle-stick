@@ -9,7 +9,10 @@ import Foundation
 protocol MarketItemData : class, NSCoding
 {
     /** The item type that this data represents. */
-    associatedtype Item   // : MarketItem, but circular conformance is an error
+    associatedtype Item // : MarketItem, but circular conformance is an error
     /** Create from an instance of the represented item; for archiving. */
     init(item: Item)
+    
+    /** Build an instance of the represented item from data. */
+    var item: Item { get }
 }

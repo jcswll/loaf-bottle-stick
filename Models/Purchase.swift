@@ -19,7 +19,15 @@ struct Purchase : MarketItem
     /** The state of the item w/r/t the user's "shopping basket": */
     let isCheckedOff: Bool
     
-    /** Create by composing from given field values */
+    /** Creation for a given `Merch`, with optional quantity. */
+    init(merch: Merch, quantity: UInt?)
+    {
+        self.merch = merch
+        self.quantity = quantity
+        self.note = nil
+        self.isCheckedOff = false
+    }
+    
     init(merch: Merch, note: String?, quantity: UInt?, checkedOff: Bool)
     {
         self.merch = merch
@@ -28,12 +36,11 @@ struct Purchase : MarketItem
         self.isCheckedOff = checkedOff
     }
     
-    /** Creation from provided data. */
     init(data: PurchaseData)
     {
         self.merch = data.merch
-        self.note = data.note
         self.quantity = data.quantity
+        self.note = data.note
         self.isCheckedOff = data.isCheckedOff
     }
     

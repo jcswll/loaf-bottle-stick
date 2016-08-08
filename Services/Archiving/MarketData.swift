@@ -10,16 +10,22 @@ class MarketData
     let name: String
     /** The `Market`'s unique identifier. */
     let ident: Market.UniqueID
-    /** Data for the `Market`'s inventory */
-    let inventory: MarketListData<MerchData>
-    /** Data for the `Market`'s trip */
-    let trip: MarketListData<PurchaseData>
+    /** The `Market`'s inventory */
+    let inventory: MarketList<Merch>
+    /** The `Market`'s trip */
+    let trip: MarketList<Purchase>
+    
+    var market: Market { return Market(name: self.name,
+                                      ident: self.ident,
+                                  inventory: self.inventory,
+                                       trip: self.trip)
+    }
 
     /** Create from given field values */
     init(name: String, 
          ident: Market.UniqueID, 
-         inventory: MarketListData<MerchData>, 
-         trip: MarketListData<PurchaseData>) 
+         inventory: MarketList<Merch>, 
+         trip: MarketList<Purchase>) 
     {
         self.name = name
         self.ident = ident
@@ -32,12 +38,39 @@ class MarketData
     {
         self.name = market.name
         self.ident = market.ident
-        self.inventory = MarketListData(list: market.inventory)
-        self.trip = MarketListData(list: market.trip)
+        self.inventory = market.inventory
+        self.trip = market.trip
     }
     
-    @objc func encode(with coder: NSCoder)
+    @objc convenience init?(coder: NSCoder)
     {
-        return
+        let decodedInventory = coder.decodeObjectForKey("inventory")
+        let decodedTrip = coder.decodeObjectForKey("trip")
+        
+        guard let name = (coder.decodeObjectForKey("name") as? String),
+              let ident = (coder.decodeObjectForKey("ident") as? String),
+              let inventoryData = 
+                      decodedInventory as? MarketListData<Merch, MerchData>,
+              let tripData = 
+                      decodedTrip as? MarketListData<Purchase, PurchaseData>
+        else {
+
+            return nil
+        }
+
+        self.init(name: name,
+                 ident: ident,
+             inventory: inventoryData.marketList,
+                  trip: tripData.marketList)
+    }
+    
+    @objc func encodeWithCoder(coder: NSCoder)
+    {
+        coder.encodeObject(self.name, forKey: "name")
+        coder.encodeObject(self.ident, forKey: "ident")
+        let inventoryData = MarketListData<Merch, MerchData>(self.inventory)
+        coder.encodeObject(inventoryData, forKey: "inventory")
+        let tripData = MarketListData<Purchase, PurchaseData>(self.trip)
+        coder.encodeObject(tripData, forKey: "trip")
     }
 }
