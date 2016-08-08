@@ -17,7 +17,14 @@ struct Merch : MarketItem
     /** Internal tracking of the last date this `Merch` was used. */
     let lastUsed: NSDate
     
-    /** Creation with name and unit? */
+    
+    init(name: String, unit: Unit, numUses: UInt, lastUsed: NSDate)
+    {
+        self.name = name
+        self.unit = unit
+        self.numUses = numUses
+        self.lastUsed = lastUsed
+    }
     
     /** Creation from provided data. */
     init(data: MerchData)

@@ -1,8 +1,10 @@
+import Foundation
+
 /**
  * A `MarketData` represents a `Market` for archiving. It contains
  * `MarketListData` for the `Market`'s `MarketList`s.
  */
-struct MarketData
+class MarketData
 {
     /** The `Market`'s name */
     let name: String
@@ -26,11 +28,16 @@ struct MarketData
     }
     
     /** Create by packing up an existing `Market`. */
-    init(market: Market)
+    init(_ market: Market)
     {
         self.name = market.name
         self.ident = market.ident
         self.inventory = MarketListData(list: market.inventory)
         self.trip = MarketListData(list: market.trip)
+    }
+    
+    @objc func encode(with coder: NSCoder)
+    {
+        return
     }
 }

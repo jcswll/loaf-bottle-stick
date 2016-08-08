@@ -1,10 +1,12 @@
+import Foundation
+
 /** 
  * An object representing a `MarketItem`, for archiving and retrieval.
  *
  * Each adopter should expose all the fields its represented type needs
  * to initialize itself in the `MarketItem` method `init(data:)`. 
  */
-protocol MarketItemData 
+protocol MarketItemData : class, NSCoding
 {
     /** The item type that this data represents. */
     associatedtype Item   // : MarketItem, but circular conformance is an error

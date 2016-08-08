@@ -9,35 +9,63 @@
 /* Begin PBXBuildFile section */
 		031FF6E11D56BB1700351869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031FF6DE1D56BB1700351869 /* Assets.xcassets */; };
 		031FF6E21D56BB1700351869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF6DF1D56BB1700351869 /* LaunchScreen.storyboard */; };
-		031FF7011D56BB3900351869 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E61D56BB3900351869 /* Market.swift */; };
-		031FF7021D56BB3900351869 /* MarketList+SearchKeyMerch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */; };
-		031FF7031D56BB3900351869 /* MarketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E81D56BB3900351869 /* MarketList.swift */; };
-		031FF7041D56BB3900351869 /* MarketListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E91D56BB3900351869 /* MarketListError.swift */; };
-		031FF7051D56BB3900351869 /* Merch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EA1D56BB3900351869 /* Merch.swift */; };
-		031FF7061D56BB3900351869 /* MerchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EB1D56BB3900351869 /* MerchInfo.swift */; };
-		031FF7071D56BB3900351869 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EC1D56BB3900351869 /* Purchase.swift */; };
-		031FF7081D56BB3900351869 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6ED1D56BB3900351869 /* Unit.swift */; };
-		031FF70F1D56BB3900351869 /* MarketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F61D56BB3900351869 /* MarketItem.swift */; };
-		031FF7101D56BB3900351869 /* NSDate+lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F71D56BB3900351869 /* NSDate+lt.swift */; };
-		031FF7111D56BB3900351869 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */; };
-		031FF7121D56BB3900351869 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F91D56BB3900351869 /* Sortable.swift */; };
-		031FF7131D56BB3900351869 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FC1D56BB3900351869 /* MarketData.swift */; };
-		031FF7141D56BB3900351869 /* MarketItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FD1D56BB3900351869 /* MarketItemData.swift */; };
-		031FF7151D56BB3900351869 /* MarketListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FE1D56BB3900351869 /* MarketListData.swift */; };
-		031FF7161D56BB3900351869 /* MerchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FF1D56BB3900351869 /* MerchData.swift */; };
-		031FF7171D56BB3900351869 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7001D56BB3900351869 /* PurchaseData.swift */; };
-		031FF71D1D56BC6000351869 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF71C1D56BC6000351869 /* main.swift */; };
+		031FF71D1D56BC6000351869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF71C1D56BC6000351869 /* AppDelegate.swift */; };
+		031FF76A1D56E8DB00351869 /* LoafBottleStickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */; };
+		031FF7731D56E97900351869 /* LoafBottleStickKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 031FF7721D56E97900351869 /* LoafBottleStickKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		031FF77A1D56E97900351869 /* LoafBottleStickKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031FF7701D56E97900351869 /* LoafBottleStickKit.framework */; };
+		031FF7861D56E97900351869 /* LoafBottleStickKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 031FF7701D56E97900351869 /* LoafBottleStickKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		031FF78E1D56E9AD00351869 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E61D56BB3900351869 /* Market.swift */; };
+		031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */; };
+		031FF7901D56E9AD00351869 /* MarketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E81D56BB3900351869 /* MarketList.swift */; };
+		031FF7911D56E9AD00351869 /* MarketListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E91D56BB3900351869 /* MarketListError.swift */; };
+		031FF7921D56E9AD00351869 /* Merch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EA1D56BB3900351869 /* Merch.swift */; };
+		031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EB1D56BB3900351869 /* MerchInfo.swift */; };
+		031FF7941D56E9AD00351869 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EC1D56BB3900351869 /* Purchase.swift */; };
+		031FF7951D56E9AD00351869 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6ED1D56BB3900351869 /* Unit.swift */; };
+		031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F61D56BB3900351869 /* MarketItem.swift */; };
+		031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F71D56BB3900351869 /* NSDate+lt.swift */; };
+		031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */; };
+		031FF7991D56E9AD00351869 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F91D56BB3900351869 /* Sortable.swift */; };
+		031FF79B1D56E9B800351869 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FC1D56BB3900351869 /* MarketData.swift */; };
+		031FF79C1D56E9B800351869 /* MarketItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FD1D56BB3900351869 /* MarketItemData.swift */; };
+		031FF79D1D56E9B800351869 /* MarketListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FE1D56BB3900351869 /* MarketListData.swift */; };
+		031FF79E1D56E9B800351869 /* MerchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FF1D56BB3900351869 /* MerchData.swift */; };
+		031FF79F1D56E9B800351869 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7001D56BB3900351869 /* PurchaseData.swift */; };
+		031FF7A21D57F85400351869 /* MerchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A11D57F85400351869 /* MerchDataTests.swift */; };
+		031FF7A41D581D5500351869 /* PurchaseDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A31D581D5500351869 /* PurchaseDataTests.swift */; };
+		031FF7A61D582A0900351869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF7A51D582A0900351869 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		031FF6A21D56B42500351869 /* PBXContainerItemProxy */ = {
+		031FF7571D56E71D00351869 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 031FF6851D56B42400351869 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 031FF68C1D56B42400351869;
 			remoteInfo = LoafBottleStick;
 		};
+		031FF77B1D56E97900351869 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 031FF6851D56B42400351869 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 031FF76F1D56E97900351869;
+			remoteInfo = LoafBottleStickKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		031FF78A1D56E97A00351869 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				031FF7861D56E97900351869 /* LoafBottleStickKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		031FF68D1D56B42500351869 /* LoafBottleStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoafBottleStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +97,15 @@
 		031FF6FF1D56BB3900351869 /* MerchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchData.swift; sourceTree = "<group>"; };
 		031FF7001D56BB3900351869 /* PurchaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseData.swift; sourceTree = "<group>"; };
 		031FF7191D56BB4700351869 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		031FF71C1D56BC6000351869 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = SOURCE_ROOT; };
+		031FF71C1D56BC6000351869 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoafBottleStickTests.swift; sourceTree = "<group>"; };
+		031FF7701D56E97900351869 /* LoafBottleStickKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoafBottleStickKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		031FF7721D56E97900351869 /* LoafBottleStickKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoafBottleStickKit.h; path = LoafBottleStickKit/LoafBottleStickKit.h; sourceTree = SOURCE_ROOT; };
+		031FF7741D56E97900351869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		031FF7791D56E97900351869 /* LoafBottleStickKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoafBottleStickKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		031FF7A11D57F85400351869 /* MerchDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchDataTests.swift; sourceTree = "<group>"; };
+		031FF7A31D581D5500351869 /* PurchaseDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDataTests.swift; sourceTree = "<group>"; };
+		031FF7A51D582A0900351869 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +123,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		031FF76C1D56E97900351869 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		031FF7761D56E97900351869 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031FF77A1D56E97900351869 /* LoafBottleStickKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,6 +148,7 @@
 				031FF6DD1D56BB1700351869 /* Resources */,
 				031FF6DC1D56BB0800351869 /* Supporting Files */,
 				031FF7181D56BB4700351869 /* Tests */,
+				031FF7711D56E97900351869 /* LoafBottleStickKit */,
 				031FF68E1D56B42500351869 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +158,8 @@
 			children = (
 				031FF68D1D56B42500351869 /* LoafBottleStick.app */,
 				031FF6A11D56B42500351869 /* LoafBottleStickTests.xctest */,
+				031FF7701D56E97900351869 /* LoafBottleStickKit.framework */,
+				031FF7791D56E97900351869 /* LoafBottleStickKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +187,7 @@
 		031FF6DD1D56BB1700351869 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				031FF7A51D582A0900351869 /* Main.storyboard */,
 				031FF6DE1D56BB1700351869 /* Assets.xcassets */,
 				031FF6DF1D56BB1700351869 /* LaunchScreen.storyboard */,
 			);
@@ -201,6 +256,8 @@
 		031FF7181D56BB4700351869 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */,
+				031FF72C1D56C8B800351869 /* Services */,
 				031FF7191D56BB4700351869 /* Info.plist */,
 			);
 			path = Tests;
@@ -209,12 +266,49 @@
 		031FF71B1D56BC4900351869 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				031FF71C1D56BC6000351869 /* main.swift */,
+				031FF71C1D56BC6000351869 /* AppDelegate.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		031FF72C1D56C8B800351869 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				031FF72D1D56C8B800351869 /* Archiving */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		031FF72D1D56C8B800351869 /* Archiving */ = {
+			isa = PBXGroup;
+			children = (
+				031FF7A31D581D5500351869 /* PurchaseDataTests.swift */,
+				031FF7A11D57F85400351869 /* MerchDataTests.swift */,
+			);
+			path = Archiving;
+			sourceTree = "<group>";
+		};
+		031FF7711D56E97900351869 /* LoafBottleStickKit */ = {
+			isa = PBXGroup;
+			children = (
+				031FF7721D56E97900351869 /* LoafBottleStickKit.h */,
+				031FF7741D56E97900351869 /* Info.plist */,
+			);
+			path = LoafBottleStickKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		031FF76D1D56E97900351869 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031FF7731D56E97900351869 /* LoafBottleStickKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		031FF68C1D56B42400351869 /* LoafBottleStick */ = {
@@ -224,6 +318,7 @@
 				031FF6891D56B42400351869 /* Sources */,
 				031FF68A1D56B42400351869 /* Frameworks */,
 				031FF68B1D56B42400351869 /* Resources */,
+				031FF78A1D56E97A00351869 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -245,11 +340,47 @@
 			buildRules = (
 			);
 			dependencies = (
-				031FF6A31D56B42500351869 /* PBXTargetDependency */,
+				031FF7581D56E71D00351869 /* PBXTargetDependency */,
 			);
 			name = LoafBottleStickTests;
 			productName = LoafBottleStickTests;
 			productReference = 031FF6A11D56B42500351869 /* LoafBottleStickTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		031FF76F1D56E97900351869 /* LoafBottleStickKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 031FF7871D56E97A00351869 /* Build configuration list for PBXNativeTarget "LoafBottleStickKit" */;
+			buildPhases = (
+				031FF76B1D56E97900351869 /* Sources */,
+				031FF76C1D56E97900351869 /* Frameworks */,
+				031FF76D1D56E97900351869 /* Headers */,
+				031FF76E1D56E97900351869 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoafBottleStickKit;
+			productName = LoafBottleStickKit;
+			productReference = 031FF7701D56E97900351869 /* LoafBottleStickKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		031FF7781D56E97900351869 /* LoafBottleStickKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 031FF78B1D56E97A00351869 /* Build configuration list for PBXNativeTarget "LoafBottleStickKitTests" */;
+			buildPhases = (
+				031FF7751D56E97900351869 /* Sources */,
+				031FF7761D56E97900351869 /* Frameworks */,
+				031FF7771D56E97900351869 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				031FF77C1D56E97900351869 /* PBXTargetDependency */,
+			);
+			name = LoafBottleStickKitTests;
+			productName = LoafBottleStickKitTests;
+			productReference = 031FF7791D56E97900351869 /* LoafBottleStickKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -266,6 +397,13 @@
 						CreatedOnToolsVersion = 7.3.1;
 					};
 					031FF6A01D56B42500351869 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 031FF68C1D56B42400351869;
+					};
+					031FF76F1D56E97900351869 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					031FF7781D56E97900351869 = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 031FF68C1D56B42400351869;
 					};
@@ -286,6 +424,8 @@
 			targets = (
 				031FF68C1D56B42400351869 /* LoafBottleStick */,
 				031FF6A01D56B42500351869 /* LoafBottleStickTests */,
+				031FF76F1D56E97900351869 /* LoafBottleStickKit */,
+				031FF7781D56E97900351869 /* LoafBottleStickKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -295,12 +435,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				031FF7A61D582A0900351869 /* Main.storyboard in Resources */,
 				031FF6E11D56BB1700351869 /* Assets.xcassets in Resources */,
 				031FF6E21D56BB1700351869 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		031FF69F1D56B42500351869 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		031FF76E1D56E97900351869 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		031FF7771D56E97900351869 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -314,24 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031FF7031D56BB3900351869 /* MarketList.swift in Sources */,
-				031FF7011D56BB3900351869 /* Market.swift in Sources */,
-				031FF71D1D56BC6000351869 /* main.swift in Sources */,
-				031FF7041D56BB3900351869 /* MarketListError.swift in Sources */,
-				031FF7101D56BB3900351869 /* NSDate+lt.swift in Sources */,
-				031FF7121D56BB3900351869 /* Sortable.swift in Sources */,
-				031FF7111D56BB3900351869 /* SequenceType+FirstElement.swift in Sources */,
-				031FF7141D56BB3900351869 /* MarketItemData.swift in Sources */,
-				031FF7151D56BB3900351869 /* MarketListData.swift in Sources */,
-				031FF7051D56BB3900351869 /* Merch.swift in Sources */,
-				031FF7021D56BB3900351869 /* MarketList+SearchKeyMerch.swift in Sources */,
-				031FF7081D56BB3900351869 /* Unit.swift in Sources */,
-				031FF70F1D56BB3900351869 /* MarketItem.swift in Sources */,
-				031FF7171D56BB3900351869 /* PurchaseData.swift in Sources */,
-				031FF7061D56BB3900351869 /* MerchInfo.swift in Sources */,
-				031FF7071D56BB3900351869 /* Purchase.swift in Sources */,
-				031FF7161D56BB3900351869 /* MerchData.swift in Sources */,
-				031FF7131D56BB3900351869 /* MarketData.swift in Sources */,
+				031FF71D1D56BC6000351869 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,16 +477,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				031FF76A1D56E8DB00351869 /* LoafBottleStickTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		031FF76B1D56E97900351869 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031FF79B1D56E9B800351869 /* MarketData.swift in Sources */,
+				031FF79C1D56E9B800351869 /* MarketItemData.swift in Sources */,
+				031FF79D1D56E9B800351869 /* MarketListData.swift in Sources */,
+				031FF79E1D56E9B800351869 /* MerchData.swift in Sources */,
+				031FF79F1D56E9B800351869 /* PurchaseData.swift in Sources */,
+				031FF78E1D56E9AD00351869 /* Market.swift in Sources */,
+				031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */,
+				031FF7901D56E9AD00351869 /* MarketList.swift in Sources */,
+				031FF7911D56E9AD00351869 /* MarketListError.swift in Sources */,
+				031FF7921D56E9AD00351869 /* Merch.swift in Sources */,
+				031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */,
+				031FF7941D56E9AD00351869 /* Purchase.swift in Sources */,
+				031FF7951D56E9AD00351869 /* Unit.swift in Sources */,
+				031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */,
+				031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */,
+				031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */,
+				031FF7991D56E9AD00351869 /* Sortable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		031FF7751D56E97900351869 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031FF7A41D581D5500351869 /* PurchaseDataTests.swift in Sources */,
+				031FF7A21D57F85400351869 /* MerchDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		031FF6A31D56B42500351869 /* PBXTargetDependency */ = {
+		031FF7581D56E71D00351869 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 031FF68C1D56B42400351869 /* LoafBottleStick */;
-			targetProxy = 031FF6A21D56B42500351869 /* PBXContainerItemProxy */;
+			targetProxy = 031FF7571D56E71D00351869 /* PBXContainerItemProxy */;
+		};
+		031FF77C1D56E97900351869 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 031FF76F1D56E97900351869 /* LoafBottleStickKit */;
+			targetProxy = 031FF77B1D56E97900351869 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -451,6 +628,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStick;
@@ -462,6 +640,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStick;
@@ -473,12 +652,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoafBottleStick.app/LoafBottleStick";
 				WARNING_CFLAGS = "";
 			};
@@ -488,6 +669,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_CFLAGS = "";
@@ -496,6 +678,68 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoafBottleStick.app/LoafBottleStick";
 				WARNING_CFLAGS = "";
+			};
+			name = Release;
+		};
+		031FF7881D56E97A00351869 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LoafBottleStickKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		031FF7891D56E97A00351869 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LoafBottleStickKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		031FF78C1D56E97A00351869 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
+		031FF78D1D56E97A00351869 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
 			};
 			name = Release;
 		};
@@ -528,6 +772,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		031FF7871D56E97A00351869 /* Build configuration list for PBXNativeTarget "LoafBottleStickKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031FF7881D56E97A00351869 /* Debug */,
+				031FF7891D56E97A00351869 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		031FF78B1D56E97A00351869 /* Build configuration list for PBXNativeTarget "LoafBottleStickKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031FF78C1D56E97A00351869 /* Debug */,
+				031FF78D1D56E97A00351869 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

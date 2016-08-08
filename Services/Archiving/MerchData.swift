@@ -1,7 +1,7 @@
 import Foundation
 
 /** The data representation of a `Merch`. */
-struct MerchData : MarketItemData
+class MerchData : MarketItemData
 {
     /** The name of the `Merch` */
     let name: String
@@ -22,11 +22,37 @@ struct MerchData : MarketItemData
     }
     
     /** Create by decomposing an existing `Merch`. */
-    init(item: Merch)
+    required init(item: Merch)
     {
         self.name = item.name
         self.unit = item.unit
         self.numUses = item.numUses
         self.lastUsed = item.lastUsed
+    }
+    
+    @objc convenience required init?(coder: NSCoder)
+    {
+        guard let name = (coder.decodeObjectForKey("name") as? String),
+              let unitName = (coder.decodeObjectForKey("unit") as? String),
+              let unit = Unit(rawValue: unitName),
+              let lastUsed = (coder.decodeObjectForKey("lastUsed") as? NSDate)
+        else {
+            
+            return nil
+        }
+        
+        let numUses = UInt(coder.decodeIntegerForKey("numUses"))
+        self.init(name: name, 
+                  unit: unit, 
+               numUses: numUses, 
+              lastUsed: lastUsed)
+    }
+    
+    @objc func encodeWithCoder(coder: NSCoder)
+    {
+        coder.encodeObject(self.name, forKey: "name")
+        coder.encodeObject(self.unit.rawValue, forKey: "unit")
+        coder.encodeInteger(Int(self.numUses), forKey: "numUses")
+        coder.encodeObject(self.lastUsed, forKey: "lastUsed")
     }
 }

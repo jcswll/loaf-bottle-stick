@@ -1,9 +1,11 @@
+import class Foundation.NSCoder
+
 /**
  * A `MarketListData` instance represents a `MarketList` for archiving and
  * retrieval. The contained items are `MarketItemData` instances of the
  * appropriate type.
  */
-struct MarketListData<ItemData: MarketItemData>
+class MarketListData<ItemData: MarketItemData> : NSCoder
 {
     let itemData: [ItemData]
     
