@@ -69,7 +69,10 @@ class PurchaseDataTests : XCTestCase
         }
 
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded)
+        XCTAssert(decoder.fullyDecoded, 
+                  "Actual and expected decoding keys do not match.\n" + 
+                  "Expected \(decoder.decodedKeys)\n" +
+                  "Have \(Array(decoder.info.keys))")
 
         // All data correct
         XCTAssertEqual(Merch(data: decoder.merch), data.merch)
@@ -93,16 +96,19 @@ class PurchaseDataTests : XCTestCase
         data.encodeWithCoder(encoder)
 
         // All expected keys, and *only* expected keys, encoded
-        XCTAssert(encoder.fullyEncoded)
+        XCTAssert(encoder.fullyEncoded,
+                  "Actual and expected encoding keys do not match.\n" +
+                  "Expected \(encoder.encodedKeys)\n" +
+                  "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
-        XCTAssertNotNil(encoder.merch)
+        stopOnFailure { XCTAssertNotNil(encoder.merch) }
         XCTAssertEqual(Merch(data: encoder.merch!), self.merch)
-        XCTAssertNotNil(encoder.note)
+        stopOnFailure { XCTAssertNotNil(encoder.note) }
         XCTAssertEqual(encoder.note!, note)
-        XCTAssertNotNil(encoder.quantity)
+        stopOnFailure { XCTAssertNotNil(encoder.quantity) }
         XCTAssertEqual(UInt(encoder.quantity!), quantity)
-        XCTAssertNotNil(encoder.isCheckedOff)
+        stopOnFailure { XCTAssertNotNil(encoder.isCheckedOff) }
         XCTAssertEqual(encoder.isCheckedOff!, isCheckedOff)
     }
 }
@@ -148,7 +154,7 @@ class MockPurchaseEncoder : NSCoder
     var fullyEncoded: Bool { 
         return self.encodedKeys.sort() == self.info.keys.sort() 
     }
-    var encodedKeys: [String] = []
+    var encodedKeys: [String] = ["merch", "note", "quantity", "checkedOff"]
     var info: [String : AnyObject] = [:]
 
     var merch: MerchData? { return self.info["merch"] as? MerchData }
@@ -158,19 +164,16 @@ class MockPurchaseEncoder : NSCoder
 
     override func encodeObject(object: AnyObject?, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = object
     }
 
     override func encodeInteger(integer: Int, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = integer
     }
     
     override func encodeBool(value: Bool, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = value
     }
 }

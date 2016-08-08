@@ -44,7 +44,10 @@ class MarketListDataTests : XCTestCase
         }
 
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded)
+        XCTAssert(decoder.fullyDecoded, 
+                  "Actual and expected decoding keys do not match.\n" + 
+                  "Expected \(decoder.decodedKeys)\n" +
+                  "Have \(Array(decoder.info.keys))")
         
         let decoderItems = Set<Merch>(decoder.items.map { Merch(data: $0) })
 
@@ -62,10 +65,13 @@ class MarketListDataTests : XCTestCase
         data.encodeWithCoder(encoder)
 
         // All expected keys, and *only* expected keys, encoded
-        XCTAssert(encoder.fullyEncoded)
+        XCTAssert(encoder.fullyEncoded,
+                  "Actual and expected encoding keys do not match.\n" +
+                  "Expected \(encoder.encodedKeys)\n" +
+                  "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
-        XCTAssertNotNil(encoder.items)
+        stopOnFailure { XCTAssertNotNil(encoder.items) }
         let encoderItems = Set<Merch>(encoder.items!.map { Merch(data: $0) })
         XCTAssertEqual(encoderItems, items)
     }
@@ -95,14 +101,13 @@ class MockMarketListEncoder : NSCoder
     var fullyEncoded: Bool { 
         return self.encodedKeys.sort() == self.info.keys.sort()
     }
-    var encodedKeys: [String] = []
+    var encodedKeys: [String] = ["items"]
     var info: [String : AnyObject] = [:]
 
     var items: [MerchData]? { return self.info["items"] as? [MerchData] }
 
     override func encodeObject(object: AnyObject?, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = object
     }
 }

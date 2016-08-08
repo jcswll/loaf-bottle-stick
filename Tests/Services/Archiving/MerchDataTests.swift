@@ -67,7 +67,10 @@ class MerchDataTests : XCTestCase
         }
         
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded)
+        XCTAssert(decoder.fullyDecoded, 
+                  "Actual and expected decoding keys do not match.\n" + 
+                  "Expected \(decoder.decodedKeys)\n" +
+                  "Have \(Array(decoder.info.keys))")
         
         // All data correct
         XCTAssertEqual(decoder.name, data.name)
@@ -92,20 +95,23 @@ class MerchDataTests : XCTestCase
         data.encodeWithCoder(encoder)
         
         // All expected keys, and *only* expected keys, encoded
-        XCTAssert(encoder.fullyEncoded)
+        XCTAssert(encoder.fullyEncoded,
+                  "Actual and expected encoding keys do not match.\n" +
+                  "Expected \(encoder.encodedKeys)\n" +
+                  "Have \(Array(encoder.info.keys))")
         
         // All data present and correct
-        XCTAssertNotNil(encoder.name)
+        stopOnFailure { XCTAssertNotNil(encoder.name) }
         XCTAssertEqual(encoder.name!, name)
-        XCTAssertNotNil(encoder.unit)
+        stopOnFailure { XCTAssertNotNil(encoder.unit) }
         guard let encodedUnit = Unit(rawValue: encoder.unit!) else {
             XCTFail("Merch's unit failed to encode")
             return
         }
         XCTAssertEqual(encodedUnit, unit)
-        XCTAssertNotNil(encoder.numUses)
+        stopOnFailure { XCTAssertNotNil(encoder.numUses) }
         XCTAssertEqual(UInt(encoder.numUses!), numUses)
-        XCTAssertNotNil(encoder.lastUsed)
+        stopOnFailure { XCTAssertNotNil(encoder.lastUsed) }
         XCTAssertEqual(encoder.lastUsed!, lastUsed)
     }
 }
@@ -144,7 +150,7 @@ class MockMerchEncoder : NSCoder
     var fullyEncoded: Bool { 
         return self.encodedKeys.sort() == self.info.keys.sort()
     }
-    var encodedKeys: [String] = []
+    var encodedKeys: [String] = ["name", "unit", "numUses", "lastUsed"]
     var info: [String : AnyObject] = [:]
     
     var name: String? { return self.info["name"] as? String }
@@ -154,13 +160,11 @@ class MockMerchEncoder : NSCoder
     
     override func encodeObject(object: AnyObject?, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = object
     }
     
     override func encodeInteger(integer: Int, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = integer
     }
 }

@@ -69,7 +69,10 @@ class MarketDataTests : XCTestCase
         }
 
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded)
+        XCTAssert(decoder.fullyDecoded, 
+                  "Actual and expected decoding keys do not match.\n" + 
+                  "Expected \(decoder.decodedKeys)\n" +
+                  "Have \(Array(decoder.info.keys))")
         
         let inventory = decoder.inventory.marketList
         let trip = decoder.trip.marketList
@@ -96,16 +99,19 @@ class MarketDataTests : XCTestCase
         data.encodeWithCoder(encoder)
 
         // All expected keys, and *only* expected keys, encoded
-        XCTAssert(encoder.fullyEncoded)
+        XCTAssert(encoder.fullyEncoded,
+                  "Actual and expected encoding keys do not match.\n" +
+                  "Expected \(encoder.encodedKeys)\n" +
+                  "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
-        XCTAssertNotNil(encoder.name)
+        stopOnFailure{ XCTAssertNotNil(encoder.name) }
         XCTAssertEqual(encoder.name!, name)
-        XCTAssertNotNil(encoder.ident)
+        stopOnFailure { XCTAssertNotNil(encoder.ident) }
         XCTAssertEqual(encoder.ident!, ident)
-        XCTAssertNotNil(encoder.inventory)
+        stopOnFailure { XCTAssertNotNil(encoder.inventory) }
         XCTAssertEqual(encoder.inventory!.marketList, inventory)
-        XCTAssertNotNil(encoder.trip)
+        stopOnFailure { XCTAssertNotNil(encoder.trip) }
         XCTAssertEqual(encoder.trip!.marketList, trip)
     }
 }
@@ -149,7 +155,7 @@ class MockMarketEncoder : NSCoder
     var fullyEncoded: Bool {
         return self.encodedKeys.sort() == self.info.keys.sort()
     }
-    var encodedKeys: [String] = []
+    var encodedKeys: [String] = ["name", "ident", "inventory", "trip"]
     var info: [String : AnyObject] = [:]
 
     var name: String? { return self.info["name"] as? String }
@@ -163,13 +169,11 @@ class MockMarketEncoder : NSCoder
 
     override func encodeObject(object: AnyObject?, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = object
     }
 
     override func encodeInteger(integer: Int, forKey key: String)
     {
-        self.encodedKeys.append(key)
         self.info[key] = integer
     }
 }
