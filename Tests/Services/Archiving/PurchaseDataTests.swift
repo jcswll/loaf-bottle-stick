@@ -75,7 +75,7 @@ class PurchaseDataTests : XCTestCase
                   "Have \(Array(decoder.info.keys))")
 
         // All data correct
-        XCTAssertEqual(Merch(data: decoder.merch), data.merch)
+        XCTAssertEqual(decoder.merch.item, data.merch)
         XCTAssertEqual(decoder.note, data.note)
         XCTAssertEqual(UInt(decoder.quantity), data.quantity)
         XCTAssertEqual(decoder.isCheckedOff, data.isCheckedOff)
@@ -103,7 +103,7 @@ class PurchaseDataTests : XCTestCase
 
         // All data present and correct
         stopOnFailure { XCTAssertNotNil(encoder.merch) }
-        XCTAssertEqual(Merch(data: encoder.merch!), self.merch)
+        XCTAssertEqual(encoder.merch!.item, self.merch)
         stopOnFailure { XCTAssertNotNil(encoder.note) }
         XCTAssertEqual(encoder.note!, note)
         stopOnFailure { XCTAssertNotNil(encoder.quantity) }

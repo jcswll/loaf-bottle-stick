@@ -1,4 +1,4 @@
-import Foundation
+import class Foundation.NSCoder
 
 /**
  * A `MarketData` represents a `Market` for archiving. It contains
@@ -44,15 +44,13 @@ class MarketData
     
     @objc convenience init?(coder: NSCoder)
     {
-        let decodedInventory = coder.decodeObjectForKey("inventory")
-        let decodedTrip = coder.decodeObjectForKey("trip")
+        let codedInventory = coder.decodeObjectForKey("inventory")
+        let codedTrip = coder.decodeObjectForKey("trip")
         
         guard let name = (coder.decodeObjectForKey("name") as? String),
               let ident = (coder.decodeObjectForKey("ident") as? String),
-              let inventoryData = 
-                      decodedInventory as? MarketListData<Merch, MerchData>,
-              let tripData = 
-                      decodedTrip as? MarketListData<Purchase, PurchaseData>
+              let inventoryData = codedInventory as? MarketListData<MerchData>,
+              let tripData = codedTrip as? MarketListData<PurchaseData>
         else {
 
             return nil
@@ -68,9 +66,9 @@ class MarketData
     {
         coder.encodeObject(self.name, forKey: "name")
         coder.encodeObject(self.ident, forKey: "ident")
-        let inventoryData = MarketListData<Merch, MerchData>(self.inventory)
+        let inventoryData = MarketListData<MerchData>(self.inventory)
         coder.encodeObject(inventoryData, forKey: "inventory")
-        let tripData = MarketListData<Purchase, PurchaseData>(self.trip)
+        let tripData = MarketListData<PurchaseData>(self.trip)
         coder.encodeObject(tripData, forKey: "trip")
     }
 }

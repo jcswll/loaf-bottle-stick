@@ -28,22 +28,6 @@ struct Purchase : MarketItem
         self.isCheckedOff = false
     }
     
-    init(merch: Merch, note: String?, quantity: UInt?, checkedOff: Bool)
-    {
-        self.merch = merch
-        self.note = note
-        self.quantity = quantity
-        self.isCheckedOff = checkedOff
-    }
-    
-    init(data: PurchaseData)
-    {
-        self.merch = data.merch
-        self.quantity = data.quantity
-        self.note = data.note
-        self.isCheckedOff = data.isCheckedOff
-    }
-    
     var searchKey: Merch { return self.merch }
     
     //MARK: - Sortability

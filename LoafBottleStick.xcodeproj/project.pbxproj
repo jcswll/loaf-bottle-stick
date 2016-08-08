@@ -14,7 +14,6 @@
 		031FF7731D56E97900351869 /* LoafBottleStickKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 031FF7721D56E97900351869 /* LoafBottleStickKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		031FF77A1D56E97900351869 /* LoafBottleStickKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031FF7701D56E97900351869 /* LoafBottleStickKit.framework */; };
 		031FF7861D56E97900351869 /* LoafBottleStickKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 031FF7701D56E97900351869 /* LoafBottleStickKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		031FF78E1D56E9AD00351869 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E61D56BB3900351869 /* Market.swift */; };
 		031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */; };
 		031FF7901D56E9AD00351869 /* MarketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E81D56BB3900351869 /* MarketList.swift */; };
 		031FF7911D56E9AD00351869 /* MarketListError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E91D56BB3900351869 /* MarketListError.swift */; };
@@ -26,18 +25,20 @@
 		031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F71D56BB3900351869 /* NSDate+lt.swift */; };
 		031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */; };
 		031FF7991D56E9AD00351869 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F91D56BB3900351869 /* Sortable.swift */; };
-		031FF79B1D56E9B800351869 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FC1D56BB3900351869 /* MarketData.swift */; };
 		031FF79C1D56E9B800351869 /* MarketItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FD1D56BB3900351869 /* MarketItemData.swift */; };
 		031FF79D1D56E9B800351869 /* MarketListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FE1D56BB3900351869 /* MarketListData.swift */; };
 		031FF79E1D56E9B800351869 /* MerchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FF1D56BB3900351869 /* MerchData.swift */; };
 		031FF79F1D56E9B800351869 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7001D56BB3900351869 /* PurchaseData.swift */; };
-		031FF7A21D57F85400351869 /* MerchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A11D57F85400351869 /* MerchDataTests.swift */; };
-		031FF7A41D581D5500351869 /* PurchaseDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A31D581D5500351869 /* PurchaseDataTests.swift */; };
 		031FF7A61D582A0900351869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF7A51D582A0900351869 /* Main.storyboard */; };
-		031FF7A81D582BDE00351869 /* MarketDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A71D582BDE00351869 /* MarketDataTests.swift */; };
-		031FF7AA1D58323A00351869 /* MarketListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A91D58323A00351869 /* MarketListTests.swift */; };
-		031FF7AC1D5832E400351869 /* Merch+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AB1D5832E400351869 /* Merch+Dummy.swift */; };
 		031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */; };
+		031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AB1D5832E400351869 /* Merch+Dummy.swift */; };
+		031FF7E91D592F9E00351869 /* MarketListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A91D58323A00351869 /* MarketListTests.swift */; };
+		031FF7EA1D592F9E00351869 /* PurchaseDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A31D581D5500351869 /* PurchaseDataTests.swift */; };
+		031FF7EB1D592F9E00351869 /* MerchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A11D57F85400351869 /* MerchDataTests.swift */; };
+		031FF7EE1D5930E700351869 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E61D56BB3900351869 /* Market.swift */; };
+		031FF7EF1D5930F200351869 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FC1D56BB3900351869 /* MarketData.swift */; };
+		031FF7F01D5930FC00351869 /* MarketDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A71D582BDE00351869 /* MarketDataTests.swift */; };
+		031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F11D59376A00351869 /* Purchase+Dummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		031FF7A91D58323A00351869 /* MarketListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListTests.swift; sourceTree = "<group>"; };
 		031FF7AB1D5832E400351869 /* Merch+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Merch+Dummy.swift"; sourceTree = "<group>"; };
 		031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+StopFailure.swift"; sourceTree = "<group>"; };
+		031FF7F11D59376A00351869 /* Purchase+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Purchase+Dummy.swift"; path = "Tests/Purchase+Dummy.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 		031FF72D1D56C8B800351869 /* Archiving */ = {
 			isa = PBXGroup;
 			children = (
+				031FF7F11D59376A00351869 /* Purchase+Dummy.swift */,
 				031FF7AB1D5832E400351869 /* Merch+Dummy.swift */,
 				031FF7A91D58323A00351869 /* MarketListTests.swift */,
 				031FF7A31D581D5500351869 /* PurchaseDataTests.swift */,
@@ -497,12 +500,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031FF79B1D56E9B800351869 /* MarketData.swift in Sources */,
+				031FF7EF1D5930F200351869 /* MarketData.swift in Sources */,
 				031FF79C1D56E9B800351869 /* MarketItemData.swift in Sources */,
 				031FF79D1D56E9B800351869 /* MarketListData.swift in Sources */,
 				031FF79E1D56E9B800351869 /* MerchData.swift in Sources */,
 				031FF79F1D56E9B800351869 /* PurchaseData.swift in Sources */,
-				031FF78E1D56E9AD00351869 /* Market.swift in Sources */,
 				031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */,
 				031FF7901D56E9AD00351869 /* MarketList.swift in Sources */,
 				031FF7911D56E9AD00351869 /* MarketListError.swift in Sources */,
@@ -510,6 +512,7 @@
 				031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */,
 				031FF7941D56E9AD00351869 /* Purchase.swift in Sources */,
 				031FF7951D56E9AD00351869 /* Unit.swift in Sources */,
+				031FF7EE1D5930E700351869 /* Market.swift in Sources */,
 				031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */,
 				031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */,
 				031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */,
@@ -521,12 +524,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031FF7A41D581D5500351869 /* PurchaseDataTests.swift in Sources */,
-				031FF7AC1D5832E400351869 /* Merch+Dummy.swift in Sources */,
-				031FF7A21D57F85400351869 /* MerchDataTests.swift in Sources */,
+				031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */,
+				031FF7EB1D592F9E00351869 /* MerchDataTests.swift in Sources */,
 				031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */,
-				031FF7A81D582BDE00351869 /* MarketDataTests.swift in Sources */,
-				031FF7AA1D58323A00351869 /* MarketListTests.swift in Sources */,
+				031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */,
+				031FF7EA1D592F9E00351869 /* PurchaseDataTests.swift in Sources */,
+				031FF7E91D592F9E00351869 /* MarketListTests.swift in Sources */,
+				031FF7F01D5930FC00351869 /* MarketDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

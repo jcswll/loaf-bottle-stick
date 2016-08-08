@@ -37,13 +37,4 @@ struct Market
         self.inventory = inventory
         self.trip = trip
     }
-    
-    /** Creation from provided data. */
-    init(data: MarketData)
-    {
-        self.name = data.name
-        self.ident = data.ident
-        self.inventory = data.inventory
-        self.trip = data.trip
-    }
 }

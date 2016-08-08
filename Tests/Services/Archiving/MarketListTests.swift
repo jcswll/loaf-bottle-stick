@@ -7,18 +7,18 @@ class MarketListDataTests : XCTestCase
     
     func testHoldsData()
     {
-        let items: Set<Merch> = [self.merch, self.merch]
+        let items: Set<Merch> = [self.merch]
 
-        let data = MarketListData(items: items)
+        let data = MarketListData<MerchData>(items: items)
 
          XCTAssertEqual(items, data.items)
     }
 
     func testCanConstructMarketList()
     {
-        let items: Set<Merch> = [self.merch, self.merch]
+        let items: Set<Merch> = [self.merch]
 
-        let data = MarketListData(items: items)
+        let data = MarketListData<MerchData>(items: items)
         let list = data.marketList
 
         XCTAssertEqual(Set(items), list.items)
@@ -26,10 +26,10 @@ class MarketListDataTests : XCTestCase
     
     func testCanDecomposeMarketList()
     {
-        let items: Set<Merch> = [self.merch, self.merch]
+        let items: Set<Merch> = [self.merch]
 
         let list = MarketList(items: items)
-        let data = MarketListData(list)
+        let data = MarketListData<MerchData>(list)
 
         XCTAssertEqual(items, data.items)
     }
@@ -38,7 +38,7 @@ class MarketListDataTests : XCTestCase
     {
         let decoder = MockMarketListDecoder()
 
-        guard let data = MarketListData<Merch, MerchData>(coder: decoder) else {
+        guard let data = MarketListData<MerchData>(coder: decoder) else {
             XCTFail("Could not construct MarketList from decoder.")
             return
         }
@@ -49,7 +49,7 @@ class MarketListDataTests : XCTestCase
                   "Expected \(decoder.decodedKeys)\n" +
                   "Have \(Array(decoder.info.keys))")
         
-        let decoderItems = Set<Merch>(decoder.items.map { Merch(data: $0) })
+        let decoderItems = Set<Merch>(decoder.items.map { $0.item  })
 
         // All data correct
         XCTAssertEqual(decoderItems, data.items)
@@ -58,9 +58,9 @@ class MarketListDataTests : XCTestCase
     func testEncodesFullyAndCorrectly()
     {
         let encoder = MockMarketListEncoder()
-        let items: Set<Merch> = [self.merch, self.merch]
+        let items: Set<Merch> = [self.merch]
 
-        let data = MarketListData(items: items)
+        let data = MarketListData<MerchData>(items: items)
 
         data.encodeWithCoder(encoder)
 
@@ -72,7 +72,7 @@ class MarketListDataTests : XCTestCase
 
         // All data present and correct
         stopOnFailure { XCTAssertNotNil(encoder.items) }
-        let encoderItems = Set<Merch>(encoder.items!.map { Merch(data: $0) })
+        let encoderItems = Set<Merch>(encoder.items!.map { $0.item })
         XCTAssertEqual(encoderItems, items)
     }
 }

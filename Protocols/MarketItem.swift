@@ -5,12 +5,7 @@
  * by the list. 
  */
 protocol MarketItem: Sortable, Hashable
-{
-    /** The type of data required to build this item. */
-    associatedtype Data: MarketItemData
-    /** Create an item by reading the appropriate fields of the passed data. */
-    init(data: Data)
-    
+{    
     /** The type used to find this item in its containing `MarketList`. */
     associatedtype SearchKey
     /** The actual value that the item can be found by. */

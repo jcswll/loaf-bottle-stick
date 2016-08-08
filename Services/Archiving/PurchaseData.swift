@@ -12,12 +12,12 @@ class PurchaseData : MarketItemData
     /** The `Purchase`'s state of being checked off the list */
     let isCheckedOff: Bool
     
+    /** The `Purchase` represented by this data. */
     var item: Purchase { return Purchase(merch: self.merch,
                                           note: self.note,
                                       quantity: self.quantity,
                                     checkedOff: self.isCheckedOff)
     }
-
 
     /** Create by composing from given field values */
     init(merch: Merch, note: String?, quantity: UInt?, checkedOff: Bool)
@@ -37,6 +37,7 @@ class PurchaseData : MarketItemData
         self.isCheckedOff = item.isCheckedOff
     }
     
+    /** Create from data provided by the given decoder. */
     @objc convenience required init?(coder: NSCoder)
     {
         guard let merchData = (coder.decodeObjectForKey("merch") as? MerchData),
@@ -55,11 +56,23 @@ class PurchaseData : MarketItemData
              checkedOff: checkedOff)
     }
     
+    /** Provide data to the encoder for archiving. */
     @objc func encodeWithCoder(coder: NSCoder)
     {
         coder.encodeObject(MerchData(item: self.merch), forKey: "merch")
         coder.encodeObject(self.note ?? "", forKey: "note")
         coder.encodeInteger(Int(self.quantity ?? 0), forKey: "quantity")
         coder.encodeBool(self.isCheckedOff, forKey: "checkedOff")
+    }
+}
+
+private extension Purchase
+{
+    init(merch: Merch, note: String?, quantity: UInt?, checkedOff: Bool)
+    {
+        self.merch = merch
+        self.note = note
+        self.quantity = quantity
+        self.isCheckedOff = checkedOff
     }
 }

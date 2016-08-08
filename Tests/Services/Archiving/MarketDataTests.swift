@@ -125,16 +125,16 @@ class MockMarketDecoder : NSCoder
     var info: [String : AnyObject] =
             ["name" : "Abbandando's Groceria",
              "ident" : "ABCD-1234",
-             "inventory" : MarketListData<Merch, MerchData>(MarketList()),
-             "trip" : MarketListData<Purchase, PurchaseData>(MarketList())]
+             "inventory" : MarketListData<MerchData>(MarketList()),
+             "trip" : MarketListData<PurchaseData>(MarketList())]
 
     var name: String { return self.info["name"] as! String }
     var ident: String { return self.info["ident"] as! String }
-    var inventory: MarketListData<Merch, MerchData> { 
-        return self.info["inventory"] as! MarketListData<Merch, MerchData>
+    var inventory: MarketListData<MerchData> { 
+        return self.info["inventory"] as! MarketListData<MerchData>
     }
-    var trip: MarketListData<Purchase, PurchaseData> { 
-        return self.info["trip"] as! MarketListData<Purchase, PurchaseData>
+    var trip: MarketListData<PurchaseData> { 
+        return self.info["trip"] as! MarketListData<PurchaseData>
     }
 
     override func decodeObjectForKey(key: String) -> AnyObject?
@@ -160,11 +160,11 @@ class MockMarketEncoder : NSCoder
 
     var name: String? { return self.info["name"] as? String }
     var ident: String? { return self.info["ident"] as? String }
-    var inventory: MarketListData<Merch, MerchData>? {
-        return self.info["inventory"] as? MarketListData<Merch, MerchData>
+    var inventory: MarketListData<MerchData>? {
+        return self.info["inventory"] as? MarketListData<MerchData>
     }
-    var trip: MarketListData<Purchase, PurchaseData>? {
-        return self.info["trip"] as? MarketListData<Purchase, PurchaseData>
+    var trip: MarketListData<PurchaseData>? {
+        return self.info["trip"] as? MarketListData<PurchaseData>
     }
 
     override func encodeObject(object: AnyObject?, forKey key: String)

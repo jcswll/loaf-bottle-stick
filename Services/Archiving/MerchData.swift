@@ -1,4 +1,5 @@
-import Foundation
+import class Foundation.NSDate
+import class Foundation.NSCoder
 
 /** The data representation of a `Merch`. */
 class MerchData : MarketItemData
@@ -12,6 +13,7 @@ class MerchData : MarketItemData
     /** The `Merch`'s internal last usage date */
     let lastUsed: NSDate
     
+    /** The `Merch` represented by this data. */
     var item: Merch { return Merch(name: self.name,
                                    unit: self.unit,
                                 numUses: self.numUses,
@@ -36,6 +38,7 @@ class MerchData : MarketItemData
         self.lastUsed = item.lastUsed
     }
     
+    /** Create from data provided by the given decoder. */
     @objc convenience required init?(coder: NSCoder)
     {
         guard let name = (coder.decodeObjectForKey("name") as? String),
@@ -54,11 +57,23 @@ class MerchData : MarketItemData
               lastUsed: lastUsed)
     }
     
+    /** Provide data to the encoder for archiving. */
     @objc func encodeWithCoder(coder: NSCoder)
     {
         coder.encodeObject(self.name, forKey: "name")
         coder.encodeObject(self.unit.rawValue, forKey: "unit")
         coder.encodeInteger(Int(self.numUses), forKey: "numUses")
         coder.encodeObject(self.lastUsed, forKey: "lastUsed")
+    }
+}
+
+private extension Merch
+{
+    init(name: String, unit: Unit, numUses: UInt, lastUsed: NSDate)
+    {
+        self.name = name   
+        self.unit = unit
+        self.numUses = numUses
+        self.lastUsed = lastUsed
     }
 }

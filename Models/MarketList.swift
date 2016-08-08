@@ -43,24 +43,6 @@ struct MarketList<Item: MarketItem>
         self.items.insert(replacement)
     }
     
-    /** 
-     * Use the passed data to create a new item, add it to the list, and then 
-     * return it.
-     */
-    // mutating func createItem<ItemData: MarketItemData where
-//                              ItemData.Item == Item>
-//                             (from data: ItemData)
-//                  -> Item
-//     {
-//         guard let data = (data as? Item.Data) else {
-//             fatalError("Attempt to create value of type \(Item.self) from " +
-//                        "value of wrong type \(ItemData.self)")
-//         }
-//         let item = Item(data: data)
-//         self.items.insert(item)
-//         return item
-//     }
-    
     /** Find the item matching the given key in the collection. */
     func item(forKey key: Item.SearchKey) -> Item?
     {

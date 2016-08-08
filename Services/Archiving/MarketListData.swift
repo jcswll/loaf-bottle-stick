@@ -6,28 +6,24 @@ import class Foundation.NSCoder
  * retrieval. It can construct an appropriately specialized `MarketList`
  * after unarchiving its information.
  */
-class MarketListData<Item : MarketItem, ItemData : MarketItemData 
-                     where ItemData.Item == Item, Item.Data == ItemData>
-                    : NSCoding
-//!!!: Declaring NSCoding conformance in an extension causes the compiler 
-//!!!: (v2.2) to segfault. Unfortunately, the ugly decl has to stay here.
+class MarketListData<ItemData : MarketItemData> : NSCoding
 {
     /** The items of the `MarketList` */
-    let items: Set<Item>
+    let items: Set<ItemData.Item>
     
     /** Construct a new `MarketList` from the stored items. */
-    var marketList: MarketList<Item> { 
+    var marketList: MarketList<ItemData.Item> { 
         return MarketList(items: self.items) 
     }
     
     /** Create with a set of items. */
-    init(items: Set<Item>)
+    init(items: Set<ItemData.Item>)
     {
         self.items = items
     }
     
     /** Create by decomposing an existing `MarketList`. */
-    convenience init(_ list: MarketList<Item>)
+    convenience init(_ list: MarketList<ItemData.Item>)
     {
         self.init(items: list.items)
     }
@@ -43,7 +39,7 @@ class MarketListData<Item : MarketItem, ItemData : MarketItemData
         }
         
         // Transform to the appropriate `MarketItem` type.
-        let items = Set<Item>(itemData.map { $0.item })
+        let items = Set<ItemData.Item>(itemData.map { $0.item })
         
         self.init(items: items)
     }
