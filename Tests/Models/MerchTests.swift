@@ -35,6 +35,18 @@ class MerchTests : XCTestCase
     }
     
     //MARK: Mutation
+    func testPurchaseSetsNumUsesAndDate()
+    {
+        let name = "Broccoli"
+
+        let merch = Merch(name: name, unit: nil)
+        let purchased = merch.purchasing()
+        
+        XCTAssertEqual(merch.numUses + 1, purchased.numUses)
+        XCTAssertEqualWithAccuracy(0, purchased.lastUsed.timeIntervalSinceNow,
+                                   accuracy: self.allowableSecondsDelta)
+    }
+    
     func testPurchasePreservesNameAndUnit()
     {
         let name = "Broccoli"
@@ -47,16 +59,14 @@ class MerchTests : XCTestCase
         XCTAssertEqual(unit, purchased.unit)
     }
     
-    func testPurchaseSetsNumUsesAndDate()
+    func testChangingName()
     {
         let name = "Broccoli"
-
-        let merch = Merch(name: name, unit: nil)
-        let purchased = merch.purchasing()
+        let newName = "Milk"
         
-        XCTAssertEqual(merch.numUses + 1, purchased.numUses)
-        XCTAssertEqualWithAccuracy(0, purchased.lastUsed.timeIntervalSinceNow,
-                                   accuracy: self.allowableSecondsDelta)
+        let renamed = Merch(name: name, unit: nil).changingName(to: newName)
+        
+        XCTAssertEqual(newName, renamed.name)
     }
     
     func testChangingNamePreservesOtherFields()
@@ -75,14 +85,15 @@ class MerchTests : XCTestCase
                                    accuracy: self.allowableSecondsDelta)
     }
     
-    func testChangingName()
+    func testChangingUnit()
     {
         let name = "Broccoli"
-        let newName = "Milk"
-        
-        let renamed = Merch(name: name, unit: nil).changingName(to: newName)
-        
-        XCTAssertEqual(newName, renamed.name)
+        let unit = Unit.Head
+        let newUnit = Unit.Box
+
+        let changed = Merch(name: name, unit: unit).changingUnit(to: newUnit)
+
+        XCTAssertEqual(newUnit, changed.unit)
     }
     
     func testChangingUnitPreservesOtherFields()
@@ -99,17 +110,6 @@ class MerchTests : XCTestCase
         XCTAssertEqualWithAccuracy(merch.lastUsed.timeIntervalSinceNow,    
                                    changed.lastUsed.timeIntervalSinceNow,
                                    accuracy: self.allowableSecondsDelta)
-    }
-    
-    func testChangingUnit()
-    {
-        let name = "Broccoli"
-        let unit = Unit.Head
-        let newUnit = Unit.Box
-
-        let changed = Merch(name: name, unit: unit).changingUnit(to: newUnit)
-
-        XCTAssertEqual(newUnit, changed.unit)
     }
     
     //MARK: Sorting

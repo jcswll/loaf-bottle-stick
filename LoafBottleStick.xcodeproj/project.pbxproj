@@ -42,6 +42,7 @@
 		031FF7F41D5943FB00351869 /* MarketRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */; };
 		031FF7F61D59442400351869 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F51D59442400351869 /* MarketRepository.swift */; };
 		031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F91D595D3100351869 /* MerchTests.swift */; };
+		031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7FB1D59697D00351869 /* PurchaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,12 +117,13 @@
 		031FF7A51D582A0900351869 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		031FF7A71D582BDE00351869 /* MarketDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDataTests.swift; sourceTree = "<group>"; };
 		031FF7A91D58323A00351869 /* MarketListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListTests.swift; sourceTree = "<group>"; };
-		031FF7AB1D5832E400351869 /* Merch+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Merch+Dummy.swift"; sourceTree = "<group>"; };
+		031FF7AB1D5832E400351869 /* Merch+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Merch+Dummy.swift"; path = "../../Merch+Dummy.swift"; sourceTree = "<group>"; };
 		031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+StopFailure.swift"; sourceTree = "<group>"; };
 		031FF7F11D59376A00351869 /* Purchase+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Purchase+Dummy.swift"; path = "Tests/Purchase+Dummy.swift"; sourceTree = SOURCE_ROOT; };
 		031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRepositoryTests.swift; sourceTree = "<group>"; };
 		031FF7F51D59442400351869 /* MarketRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRepository.swift; sourceTree = "<group>"; };
 		031FF7F91D595D3100351869 /* MerchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchTests.swift; sourceTree = "<group>"; };
+		031FF7FB1D59697D00351869 /* PurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +326,7 @@
 		031FF7F81D595D3100351869 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				031FF7FB1D59697D00351869 /* PurchaseTests.swift */,
 				031FF7F91D595D3100351869 /* MerchTests.swift */,
 			);
 			path = Models;
@@ -548,6 +551,7 @@
 				031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */,
 				031FF7EA1D592F9E00351869 /* PurchaseDataTests.swift in Sources */,
 				031FF7F41D5943FB00351869 /* MarketRepositoryTests.swift in Sources */,
+				031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */,
 				031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */,
 				031FF7E91D592F9E00351869 /* MarketListTests.swift in Sources */,
 				031FF7F01D5930FC00351869 /* MarketDataTests.swift in Sources */,

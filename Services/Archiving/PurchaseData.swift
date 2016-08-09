@@ -8,7 +8,7 @@ class PurchaseData : MarketItemData
     /** The `Purchase`'s `note` */
     let note: String?
     /** The `Purchase`'s quantity */
-    let quantity: UInt?
+    let quantity: UInt
     /** The `Purchase`'s state of being checked off the list */
     let isCheckedOff: Bool
     
@@ -20,7 +20,7 @@ class PurchaseData : MarketItemData
     }
 
     /** Create by composing from given field values */
-    init(merch: Merch, note: String?, quantity: UInt?, checkedOff: Bool)
+    init(merch: Merch, note: String?, quantity: UInt, checkedOff: Bool)
     {
         self.merch = merch
         self.note = note
@@ -52,7 +52,7 @@ class PurchaseData : MarketItemData
         
         self.init(merch: merchData.item,
                    note: (note != "") ? note : nil, 
-               quantity: (quantity != 0) ? quantity : nil,
+               quantity: quantity,
              checkedOff: checkedOff)
     }
     
@@ -61,14 +61,14 @@ class PurchaseData : MarketItemData
     {
         coder.encodeObject(MerchData(item: self.merch), forKey: "merch")
         coder.encodeObject(self.note ?? "", forKey: "note")
-        coder.encodeInteger(Int(self.quantity ?? 0), forKey: "quantity")
+        coder.encodeInteger(Int(self.quantity), forKey: "quantity")
         coder.encodeBool(self.isCheckedOff, forKey: "checkedOff")
     }
 }
 
 private extension Purchase
 {
-    init(merch: Merch, note: String?, quantity: UInt?, checkedOff: Bool)
+    init(merch: Merch, note: String?, quantity: UInt, checkedOff: Bool)
     {
         self.merch = merch
         self.note = note

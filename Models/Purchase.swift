@@ -14,13 +14,13 @@ struct Purchase : MarketItem
     var unit: Unit? { return self.merch.unit }
     /** An optional note on the list item, as entered by the user. */
     let note: String?
-    /** Optional amount to be purchased, in the unit defined by the `Merch`. */
-    let quantity: UInt?
+    /** Amount to be purchased, in the unit defined by the `Merch`. */
+    let quantity: UInt
     /** The state of the item w/r/t the user's "shopping basket": */
     let isCheckedOff: Bool
     
-    /** Creation for a given `Merch`, with optional quantity. */
-    init(merch: Merch, quantity: UInt?)
+    /** Creation for a given `Merch`, with quantity. */
+    init(merch: Merch, quantity: UInt=0)
     {
         self.merch = merch
         self.quantity = quantity
@@ -42,46 +42,39 @@ struct Purchase : MarketItem
         }
     }
     
-    var hashValue: Int { return self.merch.hashValue }
-    
     /** Mutation: checking off, editing note or quantity */
-    mutating func checkingOff() -> Purchase
+    func checkingOff() -> Purchase
     {
         return Purchase(copy: self, checkingOff: true)
     }
-
-    mutating func unchecking() -> Purchase
+    
+    func unchecking() -> Purchase
     {
         return Purchase(copy: self, checkingOff: false)
     }
-
+    
     func changingNote(to note: String?) -> Purchase
     {
-        return Purchase(copy: self, note: note, quantity: self.quantity)
+        return Purchase(copy: self, quantity: self.quantity, note: note)
     }
-
-    func changingQuantity(to quantity: UInt?) -> Purchase
+    
+    func changingQuantity(to quantity: UInt) -> Purchase
     {
-        // Convert 0 quantity into nil
-        let quantity = (quantity == 0) ? nil : quantity
-        return Purchase(copy: self, note: self.note, quantity: quantity)
+        return Purchase(copy: self, quantity: quantity, note: self.note)
     }
-
-    func changingMerch(to merch: Merch) -> Purchase 
+    
+    func changingName(to name: String) -> Purchase 
     {
+        let merch = self.merch.changingName(to: name)
+        return Purchase(copy: self, merch: merch)
+    }
+    
+    func changingUnit(to unit: Unit) -> Purchase 
+    {
+        let merch = self.merch.changingUnit(to: unit)
         return Purchase(copy: self, merch: merch)
     }
 
-    private init(copy original: Purchase, 
-                  note newNote: String?,
-          quantity newQuantity: UInt?)
-    {
-        self.merch = original.merch
-        self.note = newNote
-        self.quantity = newQuantity
-        self.isCheckedOff = original.isCheckedOff
-    }
-    
     private init(copy original: Purchase, checkingOff checked: Bool)
     {
         self.merch = original.merch
@@ -89,10 +82,21 @@ struct Purchase : MarketItem
         self.quantity = original.quantity
         self.isCheckedOff = checked
     }
-
-    private init(copy original: Purchase, merch: Merch)
+    
+    private init(copy original: Purchase,
+          quantity newQuantity: UInt,
+                  note newNote: String?)
     {
-        self.merch = merch
+        self.merch = original.merch
+        self.note = newNote
+        self.quantity = newQuantity
+        self.isCheckedOff = original.isCheckedOff
+    }
+    
+    private init(copy original: Purchase,
+                merch newMerch: Merch)
+    {
+        self.merch = newMerch
         self.note = original.note
         self.quantity = original.quantity
         self.isCheckedOff = original.isCheckedOff

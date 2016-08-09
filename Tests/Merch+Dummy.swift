@@ -8,7 +8,8 @@ extension Merch
         return Merch(name: "Broccoli",
                      unit: .Head,
                   numUses: 17,
-                 lastUsed: NSDate.distantFuture())
+                 // Date of iPhone introduction: Jan 9, 2007, 9:43 AM PST
+                 lastUsed: NSDate(timeIntervalSince1970:1168364580))
     }
     
     /** Easy creation for testing */
