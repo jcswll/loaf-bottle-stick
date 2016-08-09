@@ -63,7 +63,7 @@ struct Merch : MarketItem
     
         return leftDate < rightDate
     }
-
+    
     /** Compare `Merch`s by number of uses, or name if the counts are equal. */
     private static func usesComparator(lhs: Merch, rhs: Merch) -> Bool
     {
@@ -73,9 +73,6 @@ struct Merch : MarketItem
         }
         return leftUses < rightUses
     }
-    
-    var hashValue: Int { return self.name.hashValue }
-    
     
     // MARK: - Mutation
     /** Update the internal usage tracking info. */

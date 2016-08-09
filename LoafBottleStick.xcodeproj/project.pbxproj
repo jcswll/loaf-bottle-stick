@@ -41,6 +41,7 @@
 		031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F11D59376A00351869 /* Purchase+Dummy.swift */; };
 		031FF7F41D5943FB00351869 /* MarketRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */; };
 		031FF7F61D59442400351869 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F51D59442400351869 /* MarketRepository.swift */; };
+		031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F91D595D3100351869 /* MerchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		031FF7F11D59376A00351869 /* Purchase+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Purchase+Dummy.swift"; path = "Tests/Purchase+Dummy.swift"; sourceTree = SOURCE_ROOT; };
 		031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRepositoryTests.swift; sourceTree = "<group>"; };
 		031FF7F51D59442400351869 /* MarketRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRepository.swift; sourceTree = "<group>"; };
+		031FF7F91D595D3100351869 /* MerchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 		031FF7181D56BB4700351869 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				031FF7F81D595D3100351869 /* Models */,
 				031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */,
 				031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */,
 				031FF72C1D56C8B800351869 /* Services */,
@@ -316,6 +319,14 @@
 				031FF7741D56E97900351869 /* Info.plist */,
 			);
 			path = LoafBottleStickKit;
+			sourceTree = "<group>";
+		};
+		031FF7F81D595D3100351869 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				031FF7F91D595D3100351869 /* MerchTests.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +548,7 @@
 				031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */,
 				031FF7EA1D592F9E00351869 /* PurchaseDataTests.swift in Sources */,
 				031FF7F41D5943FB00351869 /* MarketRepositoryTests.swift in Sources */,
+				031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */,
 				031FF7E91D592F9E00351869 /* MarketListTests.swift in Sources */,
 				031FF7F01D5930FC00351869 /* MarketDataTests.swift in Sources */,
 			);
@@ -808,6 +820,7 @@
 				031FF7891D56E97A00351869 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		031FF78B1D56E97A00351869 /* Build configuration list for PBXNativeTarget "LoafBottleStickKitTests" */ = {
 			isa = XCConfigurationList;
@@ -816,6 +829,7 @@
 				031FF78D1D56E97A00351869 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
