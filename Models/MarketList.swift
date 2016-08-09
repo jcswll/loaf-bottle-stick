@@ -50,6 +50,7 @@ struct MarketList<Item: MarketItem>
     }
 }
 
+/** `MarketList`s can be compared by their enclosed collections. */
 func ==<Item>(lhs: MarketList<Item>, rhs: MarketList<Item>) -> Bool
 {
     return lhs.items == rhs.items

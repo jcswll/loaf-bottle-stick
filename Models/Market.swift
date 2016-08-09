@@ -38,3 +38,14 @@ struct Market
         self.trip = trip
     }
 }
+
+// Markets can be compared memberwise.
+func ==(lhs: Market, rhs: Market) -> Bool
+{
+    return lhs.name == rhs.name &&
+           lhs.ident == rhs.ident &&
+           lhs.inventory == rhs.inventory &&
+           lhs.trip == rhs.trip
+}
+
+extension Market : Equatable {}
