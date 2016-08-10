@@ -186,4 +186,18 @@ class MarketListTests : XCTestCase
         
         XCTAssertNil(found)
     }
+    
+    //MARK: Search key merch
+    func testMerchIsUsed()
+    {
+        let merch = Merch.dummy
+        let unusedMerch = Merch(name: "Milk", unit: .Gallon)
+        let purchase = Purchase(merch: merch, quantity: 0)
+        let contents: Set<Purchase> = [purchase]
+        
+        let list = MarketList(items: contents)
+        
+        XCTAssertTrue(list.merchIsUsed(merch))
+        XCTAssertFalse(list.merchIsUsed(unusedMerch))
+    }
 }
