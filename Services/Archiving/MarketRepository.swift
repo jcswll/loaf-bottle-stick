@@ -48,9 +48,11 @@ class MarketRepository
     /**
      * Read the `Market` in `unarchiver`'s archive for the given `Key`.
      *
-     * - Throws: `MarketRepositoryError.NoUnarchiver` if no archiver has
+     * - Throws:
+     *    `MarketRepositoryError.NoUnarchiver` if no archiver has
      * been provided.
-     * - Throws: `MarketRepositoryError.KeyNotPresent` if the key does not
+     *
+     *    `MarketRepositoryError.KeyNotPresent` if the key does not
      * exist in the archive. The key is associated to the error.
      *
      * - Returns: A `Market`, or `nil` if the data cannot compose a 

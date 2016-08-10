@@ -1,8 +1,7 @@
 import class Foundation.NSDate
-import class Foundation.NSCoder
 
 /** The data representation of a `Merch`. */
-class MerchData : MarketItemData
+class MerchData : MarketItemData, Decodable, Encodable
 {
     /** The name of the `Merch` */
     let name: String
@@ -39,18 +38,19 @@ class MerchData : MarketItemData
     }
     
     /** Create from data provided by the given decoder. */
-    @objc convenience required init?(coder: NSCoder)
+    convenience required init?(decoder: Decoder)
     {
-        guard let name = (coder.decodeObjectForKey("name") as? String),
-              let unitName = (coder.decodeObjectForKey("unit") as? String),
-              let unit = Unit(rawValue: unitName),
-              let lastUsed = (coder.decodeObjectForKey("lastUsed") as? NSDate)
+        guard 
+            let name = decoder.decodeString(forKey: "name"),
+            let unitName = decoder.decodeString(forKey: "unit"),
+            let unit = Unit(rawValue: unitName),
+            let lastUsed = decoder.decodeDate(forKey: "lastUsed"),
+            let numUses = decoder.decodeUnsignedInt(forKey: "numUses")
         else {
             
             return nil
         }
         
-        let numUses = UInt(coder.decodeIntegerForKey("numUses"))
         self.init(name: name, 
                   unit: unit, 
                numUses: numUses, 
@@ -58,12 +58,12 @@ class MerchData : MarketItemData
     }
     
     /** Provide data to the encoder for archiving. */
-    @objc func encodeWithCoder(coder: NSCoder)
+    func encode(withEncoder encoder: Encoder)
     {
-        coder.encodeObject(self.name, forKey: "name")
-        coder.encodeObject(self.unit.rawValue, forKey: "unit")
-        coder.encodeInteger(Int(self.numUses), forKey: "numUses")
-        coder.encodeObject(self.lastUsed, forKey: "lastUsed")
+        encoder.encode(string: self.name, forKey: "name")
+        encoder.encode(string: self.unit.rawValue, forKey: "unit")
+        encoder.encode(unsignedInt: self.numUses, forKey: "numUses")
+        encoder.encode(date: self.lastUsed, forKey: "lastUsed")
     }
 }
 

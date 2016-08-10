@@ -1,7 +1,7 @@
 import class Foundation.NSCoder
 
 /** The data representation of a `Purchase`. */
-class PurchaseData : MarketItemData
+class PurchaseData : MarketItemData, NSCoding
 {
     /** The `Merch` of the `Purchase` */
     let merch: Merch

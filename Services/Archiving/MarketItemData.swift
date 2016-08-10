@@ -1,10 +1,8 @@
-import protocol Foundation.NSCoding
-
 /** 
  * An object representing a `MarketItem`, for archiving and retrieval.
  * 
  */
-protocol MarketItemData : class, NSCoding
+protocol MarketItemData : class
 {
     /** The item type that this data represents. */
     associatedtype Item : MarketItem

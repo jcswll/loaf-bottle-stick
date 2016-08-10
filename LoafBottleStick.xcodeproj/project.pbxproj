@@ -33,7 +33,6 @@
 		031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AB1D5832E400351869 /* Merch+Dummy.swift */; };
 		031FF7E91D592F9E00351869 /* MarketListDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A91D58323A00351869 /* MarketListDataTests.swift */; };
 		031FF7EA1D592F9E00351869 /* PurchaseDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A31D581D5500351869 /* PurchaseDataTests.swift */; };
-		031FF7EB1D592F9E00351869 /* MerchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A11D57F85400351869 /* MerchDataTests.swift */; };
 		031FF7EE1D5930E700351869 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E61D56BB3900351869 /* Market.swift */; };
 		031FF7EF1D5930F200351869 /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6FC1D56BB3900351869 /* MarketData.swift */; };
 		031FF7F01D5930FC00351869 /* MarketDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7A71D582BDE00351869 /* MarketDataTests.swift */; };
@@ -46,6 +45,12 @@
 		03B1CD301D5A839500229C51 /* MarketListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD2F1D5A839500229C51 /* MarketListTests.swift */; };
 		03B1CD321D5A8F4600229C51 /* AssertNoThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD311D5A8F4600229C51 /* AssertNoThrow.swift */; };
 		03B1CD341D5AB18800229C51 /* MarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD331D5AB18800229C51 /* MarketTests.swift */; };
+		03B1CD381D5ABE0D00229C51 /* NSKeyedUnarchiver+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD371D5ABE0D00229C51 /* NSKeyedUnarchiver+Decoder.swift */; };
+		03B1CD3A1D5AC34B00229C51 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD391D5AC34B00229C51 /* Decoder.swift */; };
+		03B1CD3C1D5AC3BE00229C51 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD3B1D5AC3BE00229C51 /* Codable.swift */; };
+		03B1CD3E1D5ACB2100229C51 /* MerchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD3D1D5ACB2100229C51 /* MerchDataTests.swift */; };
+		03B1CD401D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD3F1D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift */; };
+		03B1CD431D5AD44200229C51 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD421D5AD44200229C51 /* Encoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +103,7 @@
 		031FF6F21D56BB3900351869 /* MerchPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchPresentation.swift; sourceTree = "<group>"; };
 		031FF6F31D56BB3900351869 /* PurchasePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePresentation.swift; sourceTree = "<group>"; };
 		031FF6F41D56BB3900351869 /* TripPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPresentation.swift; sourceTree = "<group>"; };
-		031FF6F61D56BB3900351869 /* MarketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItem.swift; sourceTree = "<group>"; };
+		031FF6F61D56BB3900351869 /* MarketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketItem.swift; path = ../Protocols/MarketItem.swift; sourceTree = "<group>"; };
 		031FF6F71D56BB3900351869 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+lt.swift"; sourceTree = "<group>"; };
 		031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
 		031FF6F91D56BB3900351869 /* Sortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
@@ -114,12 +119,11 @@
 		031FF7721D56E97900351869 /* LoafBottleStickKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoafBottleStickKit.h; path = LoafBottleStickKit/LoafBottleStickKit.h; sourceTree = SOURCE_ROOT; };
 		031FF7741D56E97900351869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031FF7791D56E97900351869 /* LoafBottleStickKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoafBottleStickKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		031FF7A11D57F85400351869 /* MerchDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchDataTests.swift; sourceTree = "<group>"; };
 		031FF7A31D581D5500351869 /* PurchaseDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDataTests.swift; sourceTree = "<group>"; };
 		031FF7A51D582A0900351869 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		031FF7A71D582BDE00351869 /* MarketDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDataTests.swift; sourceTree = "<group>"; };
 		031FF7A91D58323A00351869 /* MarketListDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListDataTests.swift; sourceTree = "<group>"; };
-		031FF7AB1D5832E400351869 /* Merch+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Merch+Dummy.swift"; path = "../../Merch+Dummy.swift"; sourceTree = "<group>"; };
+		031FF7AB1D5832E400351869 /* Merch+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Merch+Dummy.swift"; sourceTree = "<group>"; };
 		031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+StopFailure.swift"; sourceTree = "<group>"; };
 		031FF7F11D59376A00351869 /* Purchase+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Purchase+Dummy.swift"; path = "Tests/Purchase+Dummy.swift"; sourceTree = SOURCE_ROOT; };
 		031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRepositoryTests.swift; sourceTree = "<group>"; };
@@ -130,6 +134,12 @@
 		03B1CD2F1D5A839500229C51 /* MarketListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListTests.swift; sourceTree = "<group>"; };
 		03B1CD311D5A8F4600229C51 /* AssertNoThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssertNoThrow.swift; sourceTree = "<group>"; };
 		03B1CD331D5AB18800229C51 /* MarketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTests.swift; sourceTree = "<group>"; };
+		03B1CD371D5ABE0D00229C51 /* NSKeyedUnarchiver+Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSKeyedUnarchiver+Decoder.swift"; sourceTree = "<group>"; };
+		03B1CD391D5AC34B00229C51 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		03B1CD3B1D5AC3BE00229C51 /* Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		03B1CD3D1D5ACB2100229C51 /* MerchDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchDataTests.swift; sourceTree = "<group>"; };
+		03B1CD3F1D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSKeyedArchiver+Encoder.swift"; sourceTree = "<group>"; };
+		03B1CD421D5AD44200229C51 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,13 +231,14 @@
 		031FF6E51D56BB3900351869 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				031FF6E61D56BB3900351869 /* Market.swift */,
-				031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */,
-				031FF6E81D56BB3900351869 /* MarketList.swift */,
-				031FF6EA1D56BB3900351869 /* Merch.swift */,
-				031FF6EB1D56BB3900351869 /* MerchInfo.swift */,
-				031FF6EC1D56BB3900351869 /* Purchase.swift */,
+				031FF6F61D56BB3900351869 /* MarketItem.swift */,
 				031FF6ED1D56BB3900351869 /* Unit.swift */,
+				031FF6EA1D56BB3900351869 /* Merch.swift */,
+				031FF6EC1D56BB3900351869 /* Purchase.swift */,
+				031FF6E81D56BB3900351869 /* MarketList.swift */,
+				031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */,
+				031FF6E61D56BB3900351869 /* Market.swift */,
+				031FF6EB1D56BB3900351869 /* MerchInfo.swift */,
 			);
 			path = Models;
 			sourceTree = SOURCE_ROOT;
@@ -248,7 +259,6 @@
 		031FF6F51D56BB3900351869 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				031FF6F61D56BB3900351869 /* MarketItem.swift */,
 				031FF6F71D56BB3900351869 /* NSDate+lt.swift */,
 				031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */,
 				031FF6F91D56BB3900351869 /* Sortable.swift */,
@@ -267,12 +277,13 @@
 		031FF6FB1D56BB3900351869 /* Archiving */ = {
 			isa = PBXGroup;
 			children = (
-				031FF7F51D59442400351869 /* MarketRepository.swift */,
-				031FF6FC1D56BB3900351869 /* MarketData.swift */,
+				03B1CD411D5AD41E00229C51 /* Archivers */,
 				031FF6FD1D56BB3900351869 /* MarketItemData.swift */,
-				031FF6FE1D56BB3900351869 /* MarketListData.swift */,
 				031FF6FF1D56BB3900351869 /* MerchData.swift */,
 				031FF7001D56BB3900351869 /* PurchaseData.swift */,
+				031FF6FE1D56BB3900351869 /* MarketListData.swift */,
+				031FF6FC1D56BB3900351869 /* MarketData.swift */,
+				031FF7F51D59442400351869 /* MarketRepository.swift */,
 			);
 			path = Archiving;
 			sourceTree = "<group>";
@@ -280,6 +291,8 @@
 		031FF7181D56BB4700351869 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				031FF7F11D59376A00351869 /* Purchase+Dummy.swift */,
+				031FF7AB1D5832E400351869 /* Merch+Dummy.swift */,
 				03B1CD311D5A8F4600229C51 /* AssertNoThrow.swift */,
 				031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */,
 				031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */,
@@ -309,13 +322,11 @@
 		031FF72D1D56C8B800351869 /* Archiving */ = {
 			isa = PBXGroup;
 			children = (
-				031FF7F11D59376A00351869 /* Purchase+Dummy.swift */,
-				031FF7AB1D5832E400351869 /* Merch+Dummy.swift */,
-				031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */,
-				031FF7A71D582BDE00351869 /* MarketDataTests.swift */,
-				031FF7A91D58323A00351869 /* MarketListDataTests.swift */,
+				03B1CD3D1D5ACB2100229C51 /* MerchDataTests.swift */,
 				031FF7A31D581D5500351869 /* PurchaseDataTests.swift */,
-				031FF7A11D57F85400351869 /* MerchDataTests.swift */,
+				031FF7A91D58323A00351869 /* MarketListDataTests.swift */,
+				031FF7A71D582BDE00351869 /* MarketDataTests.swift */,
+				031FF7F31D5943FB00351869 /* MarketRepositoryTests.swift */,
 			);
 			path = Archiving;
 			sourceTree = "<group>";
@@ -333,12 +344,24 @@
 			isa = PBXGroup;
 			children = (
 				03B1CD2C1D5A7D9400229C51 /* UnitEnumTests.swift */,
-				031FF7FB1D59697D00351869 /* PurchaseTests.swift */,
 				031FF7F91D595D3100351869 /* MerchTests.swift */,
+				031FF7FB1D59697D00351869 /* PurchaseTests.swift */,
 				03B1CD2F1D5A839500229C51 /* MarketListTests.swift */,
 				03B1CD331D5AB18800229C51 /* MarketTests.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		03B1CD411D5AD41E00229C51 /* Archivers */ = {
+			isa = PBXGroup;
+			children = (
+				03B1CD421D5AD44200229C51 /* Encoder.swift */,
+				03B1CD3B1D5AC3BE00229C51 /* Codable.swift */,
+				03B1CD391D5AC34B00229C51 /* Decoder.swift */,
+				03B1CD371D5ABE0D00229C51 /* NSKeyedUnarchiver+Decoder.swift */,
+				03B1CD3F1D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift */,
+			);
+			name = Archivers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,18 +556,23 @@
 				031FF79C1D56E9B800351869 /* MarketItemData.swift in Sources */,
 				031FF79D1D56E9B800351869 /* MarketListData.swift in Sources */,
 				031FF79E1D56E9B800351869 /* MerchData.swift in Sources */,
+				03B1CD401D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift in Sources */,
 				031FF79F1D56E9B800351869 /* PurchaseData.swift in Sources */,
 				031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */,
 				031FF7901D56E9AD00351869 /* MarketList.swift in Sources */,
 				031FF7921D56E9AD00351869 /* Merch.swift in Sources */,
+				03B1CD3C1D5AC3BE00229C51 /* Codable.swift in Sources */,
 				031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */,
 				031FF7941D56E9AD00351869 /* Purchase.swift in Sources */,
+				03B1CD381D5ABE0D00229C51 /* NSKeyedUnarchiver+Decoder.swift in Sources */,
 				031FF7951D56E9AD00351869 /* Unit.swift in Sources */,
 				031FF7EE1D5930E700351869 /* Market.swift in Sources */,
+				03B1CD3A1D5AC34B00229C51 /* Decoder.swift in Sources */,
 				031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */,
 				031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */,
 				031FF7F61D59442400351869 /* MarketRepository.swift in Sources */,
 				031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */,
+				03B1CD431D5AD44200229C51 /* Encoder.swift in Sources */,
 				031FF7991D56E9AD00351869 /* Sortable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,11 +582,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */,
-				031FF7EB1D592F9E00351869 /* MerchDataTests.swift in Sources */,
 				03B1CD321D5A8F4600229C51 /* AssertNoThrow.swift in Sources */,
 				031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */,
 				031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */,
 				031FF7EA1D592F9E00351869 /* PurchaseDataTests.swift in Sources */,
+				03B1CD3E1D5ACB2100229C51 /* MerchDataTests.swift in Sources */,
 				031FF7F41D5943FB00351869 /* MarketRepositoryTests.swift in Sources */,
 				03B1CD2E1D5A7E9400229C51 /* UnitEnumTests.swift in Sources */,
 				031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */,
