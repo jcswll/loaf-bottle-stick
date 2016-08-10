@@ -1,5 +1,5 @@
 /** `Unit` represents a real-world unit of measurement. */
-public enum Unit : String
+enum Unit : String
 {   
     // Weight: U.S./Imperial
     case Ton, Pound, Ounce
@@ -21,7 +21,7 @@ public enum Unit : String
     case Each
     
     /** Properly-pluralized name of the unit. */
-    public func pluralName() -> String 
+    func pluralName() -> String 
     {
         switch self {
             case Each:

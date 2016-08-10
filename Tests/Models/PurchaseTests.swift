@@ -23,7 +23,7 @@ class PurchaseTests : XCTestCase
        XCTAssertEqual(0, purchaseNoQuantity.quantity)
     }
     
-    func testSearchKeyCorrect()
+    func testSearchesByMerch()
     {
         let merch = Merch.dummy
         
@@ -100,7 +100,7 @@ class PurchaseTests : XCTestCase
         
         XCTAssertEqual(newQuantity, changed.quantity)
     }
-    
+     
     func testChangingName()
     {
         let merch = Merch.dummy

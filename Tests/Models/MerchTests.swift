@@ -25,7 +25,7 @@ class MerchTests : XCTestCase
         XCTAssertEqual(Unit.Each, merchNoUnit.unit)
     }
     
-    func testSearchKeyCorrect()
+    func testSearchesByName()
     {
         let name = "Broccoli"
         

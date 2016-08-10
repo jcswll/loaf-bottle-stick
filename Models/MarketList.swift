@@ -33,7 +33,8 @@ struct MarketList<Item: MarketItem>
     /** 
      * Replace the old item with the new. 
      *
-     * It is an error to try to update an nonexistent item. 
+     * - Throws: `MarketListError.ItemNotFound`, with the item associated, if
+     * the item does not exist in the list.
      */
     mutating func update(item: Item, to replacement: Item) throws
     {
@@ -57,3 +58,13 @@ func ==<Item>(lhs: MarketList<Item>, rhs: MarketList<Item>) -> Bool
 }
 
 extension MarketList : Equatable {}
+
+
+enum MarketListError<Item: MarketItem> : ErrorType
+{
+    /**
+     * Thrown when an `Item` passed in for deletion or updating is not
+     * found in the list.
+     */
+    case ItemNotFound(Item)
+}
