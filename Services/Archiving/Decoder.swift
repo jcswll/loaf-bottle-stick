@@ -3,7 +3,7 @@ import class Foundation.NSDate
 
 protocol Decoder : class
 {
-    init(forReadingWithData: NSData)
+    init(forReadingWithData data: NSData)
     
     func decodeEncodable(forKey key: String) -> Decodable?
     

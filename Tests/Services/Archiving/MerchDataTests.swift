@@ -97,8 +97,8 @@ class MerchDataTests : XCTestCase
         // All expected keys, and *only* expected keys, encoded
         XCTAssert(encoder.fullyEncoded,
                   "Actual and expected encoding keys do not match.\n" +
-                  "Expected \(encoder.encodedKeys)\n" +
-                  "Have \(Array(encoder.info.keys))")
+                  "Expected \(encoder.expectedKeys)\n" +
+                  "Have \(Array(encoder.actualKeys))")
         
         // All data present and correct
         stopOnFailure { XCTAssertNotNil(encoder.name) }
@@ -116,105 +116,29 @@ class MerchDataTests : XCTestCase
     }
 }
 
-final class MockMerchDecoder : Decoder 
+final class MockMerchDecoder : MockDecoder 
 {
-    var fullyDecoded: Bool { 
-        return self.decodedKeys.sort() == self.info.keys.sort()
-    }
-    var decodedKeys: [String] = []
-    var info: [String : AnyObject] = ["name" : "Broccoli",
-                                      "unit" : "Head",
-                                      "numUses" : 17,
-                                      "lastUsed" : NSDate.distantFuture()]
-    
+    override var info: [String : AnyObject] {
+        return ["name" : "Broccoli",
+                "unit" : "Head",
+                "numUses" : 17,
+                "lastUsed" : NSDate.distantFuture()]
+    }    
+
     var name: String { return self.info["name"] as! String }
     var unit: String { return self.info["unit"] as! String }
     var numUses: Int { return self.info["numUses"] as! Int }
     var lastUsed: NSDate { return self.info["lastUsed"] as! NSDate }
-    
-    init() {}
-    
-    init(forReadingWithData: NSData) {}
-    
-    func decodeEncodable(forKey key: String) -> Decodable?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key] as? Decodable
-    }
-    
-    func decodeDate(forKey key: String) -> NSDate?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key] as? NSDate
-    }
-    
-    func decodeString(forKey key: String) -> String?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key] as? String
-    }
-    
-    func decodeInt(forKey key: String) -> Int?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key] as? Int
-    }
-    
-    func decodeUnsignedInt(forKey key: String) -> UInt?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key] as? UInt
-    }
-    
-    func decodeBool(forKey key: String) -> Bool?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key] as? Bool
-    }
 }
 
-final class MockMerchEncoder : Encoder
+final class MockMerchEncoder : MockEncoder
 {
-    var fullyEncoded: Bool { 
-        return self.encodedKeys.sort() == self.info.keys.sort()
+    override var expectedKeys: [String] {
+        return ["name", "unit", "numUses", "lastUsed"]
     }
-    var encodedKeys: [String] = ["name", "unit", "numUses", "lastUsed"]
-    var info: [String : AnyObject] = [:]
     
     var name: String? { return self.info["name"] as? String }
     var unit: String? { return self.info["unit"] as? String }
     var numUses: Int? { return self.info["numUses"] as? Int }
     var lastUsed: NSDate? { return self.info["lastUsed"] as? NSDate }
-    
-    init() {}
-    
-    init(forWritingWithMutableData: NSMutableData) {}
-   
-    func encode(codable codable: Encodable, forKey key: String)
-    {
-        guard let object = codable as? AnyObject else {
-            return
-        }
-        self.info[key] = object
-    }
-    
-    func encode(unsignedInt uint: UInt, forKey key: String)  
-    {
-        self.info[key] = uint  
-    }
-    
-    func encode(string string: String, forKey key: String)
-    {
-        self.info[key] = string
-    }
-    
-    func encode(date date: NSDate, forKey key: String)
-    {
-        self.info[key] = date
-    }
-    
-    func encode(bool bool: Bool, forKey key: String)
-    {
-        self.info[key] = bool
-    }
 }

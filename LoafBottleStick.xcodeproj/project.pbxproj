@@ -51,6 +51,8 @@
 		03B1CD401D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD3F1D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift */; };
 		03B1CD431D5AD44200229C51 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD421D5AD44200229C51 /* Encoder.swift */; };
 		03B1CD451D5BC95500229C51 /* PurchaseDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD441D5BC95500229C51 /* PurchaseDataTests.swift */; };
+		03B1CD471D5BCF6B00229C51 /* MockDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD461D5BCF6B00229C51 /* MockDecoder.swift */; };
+		03B1CD491D5BD44000229C51 /* MockEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD481D5BD44000229C51 /* MockEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		03B1CD3F1D5AD40F00229C51 /* NSKeyedArchiver+Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSKeyedArchiver+Encoder.swift"; sourceTree = "<group>"; };
 		03B1CD421D5AD44200229C51 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		03B1CD441D5BC95500229C51 /* PurchaseDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseDataTests.swift; sourceTree = "<group>"; };
+		03B1CD461D5BCF6B00229C51 /* MockDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDecoder.swift; sourceTree = "<group>"; };
+		03B1CD481D5BD44000229C51 /* MockEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockEncoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +326,8 @@
 		031FF72D1D56C8B800351869 /* Archiving */ = {
 			isa = PBXGroup;
 			children = (
+				03B1CD481D5BD44000229C51 /* MockEncoder.swift */,
+				03B1CD461D5BCF6B00229C51 /* MockDecoder.swift */,
 				03B1CD3D1D5ACB2100229C51 /* MerchDataTests.swift */,
 				03B1CD441D5BC95500229C51 /* PurchaseDataTests.swift */,
 				031FF7A91D58323A00351869 /* MarketListDataTests.swift */,
@@ -584,8 +590,10 @@
 				031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */,
 				03B1CD451D5BC95500229C51 /* PurchaseDataTests.swift in Sources */,
 				03B1CD321D5A8F4600229C51 /* AssertNoThrow.swift in Sources */,
+				03B1CD471D5BCF6B00229C51 /* MockDecoder.swift in Sources */,
 				031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */,
 				031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */,
+				03B1CD491D5BD44000229C51 /* MockEncoder.swift in Sources */,
 				03B1CD3E1D5ACB2100229C51 /* MerchDataTests.swift in Sources */,
 				031FF7F41D5943FB00351869 /* MarketRepositoryTests.swift in Sources */,
 				03B1CD2E1D5A7E9400229C51 /* UnitEnumTests.swift in Sources */,
