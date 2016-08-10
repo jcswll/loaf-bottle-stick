@@ -2,7 +2,7 @@
  * An object representing a `MarketItem`, for archiving and retrieval.
  * 
  */
-protocol MarketItemData : class
+protocol MarketItemData : class, Decodable, Encodable
 {
     /** The item type that this data represents. */
     associatedtype Item : MarketItem

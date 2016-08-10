@@ -212,4 +212,9 @@ final class MockMerchEncoder : Encoder
     {
         self.info[key] = date
     }
+    
+    func encode(bool bool: Bool, forKey key: String)
+    {
+        self.info[key] = bool
+    }
 }

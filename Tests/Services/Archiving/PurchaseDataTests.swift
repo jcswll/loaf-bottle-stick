@@ -58,12 +58,12 @@ class PurchaseDataTests : XCTestCase
         XCTAssertEqual(quantity, data.quantity)
         XCTAssertEqual(isCheckedOff, data.isCheckedOff)
     }
-
+    
     func testDecodesFullyAndCorrectly()
     {
         let decoder = MockPurchaseDecoder()
 
-        guard let data = PurchaseData(coder: decoder) else {
+        guard let data = PurchaseData(decoder: decoder) else {
             XCTFail("Could not construct PurchaseData from decoder.")
             return
         }
@@ -80,7 +80,7 @@ class PurchaseDataTests : XCTestCase
         XCTAssertEqual(UInt(decoder.quantity), data.quantity)
         XCTAssertEqual(decoder.isCheckedOff, data.isCheckedOff)
     }
-
+    
     func testEncodesFullyAndCorrectly()
     {
         let encoder = MockPurchaseEncoder()
@@ -93,7 +93,7 @@ class PurchaseDataTests : XCTestCase
                              quantity: quantity,
                            checkedOff: isCheckedOff)
 
-        data.encodeWithCoder(encoder)
+        data.encode(withEncoder: encoder)
 
         // All expected keys, and *only* expected keys, encoded
         XCTAssert(encoder.fullyEncoded,
@@ -113,7 +113,7 @@ class PurchaseDataTests : XCTestCase
     }
 }
 
-class MockPurchaseDecoder : NSCoder
+final class MockPurchaseDecoder : Decoder
 {
     var fullyDecoded: Bool { 
         return self.decodedKeys.sort() == self.info.keys.sort() 
@@ -127,29 +127,51 @@ class MockPurchaseDecoder : NSCoder
 
     var merch: MerchData { return self.info["merch"] as! MerchData }
     var note: String { return self.info["note"] as! String }
-    var quantity: Int { return self.info["quantity"] as! Int }
+    var quantity: UInt { return self.info["quantity"] as! UInt }
     var isCheckedOff: Bool { return self.info["checkedOff"] as! Bool }
-
-    override func decodeObjectForKey(key: String) -> AnyObject?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key]
-    }
-
-    override func decodeIntegerForKey(key: String) -> Int
-    {
-        self.decodedKeys.append(key)
-        return (self.info[key] as? Int) ?? 0
-    }
     
-    override func decodeBoolForKey(key: String) -> Bool
+    init() {}
+    
+    init(forReadingWithData: NSData) {}
+
+    func decodeEncodable(forKey key: String) -> Decodable?
     {
         self.decodedKeys.append(key)
-        return (self.info[key] as? Bool) ?? false
+        return self.info[key] as? Decodable
+    }
+
+    func decodeDate(forKey key: String) -> NSDate?
+    {
+        self.decodedKeys.append(key)
+        return self.info[key] as? NSDate
+    }
+
+    func decodeString(forKey key: String) -> String?
+    {
+        self.decodedKeys.append(key)
+        return self.info[key] as? String
+    }
+
+    func decodeInt(forKey key: String) -> Int?
+    {
+        self.decodedKeys.append(key)
+        return self.info[key] as? Int
+    }
+
+    func decodeUnsignedInt(forKey key: String) -> UInt?
+    {
+        self.decodedKeys.append(key)
+        return self.info[key] as? UInt
+    }
+
+    func decodeBool(forKey key: String) -> Bool?
+    {
+        self.decodedKeys.append(key)
+        return self.info[key] as? Bool
     }
 }
 
-class MockPurchaseEncoder : NSCoder
+final class MockPurchaseEncoder : Encoder
 {
     var fullyEncoded: Bool { 
         return self.encodedKeys.sort() == self.info.keys.sort() 
@@ -162,18 +184,35 @@ class MockPurchaseEncoder : NSCoder
     var quantity: Int? { return self.info["quantity"] as? Int }
     var isCheckedOff: Bool? { return self.info["checkedOff"] as? Bool }
 
-    override func encodeObject(object: AnyObject?, forKey key: String)
+    init() {}
+    
+    init(forWritingWithMutableData: NSMutableData) {}
+   
+    func encode(codable codable: Encodable, forKey key: String)
     {
+        guard let object = codable as? AnyObject else {
+            return
+        }
         self.info[key] = object
     }
-
-    override func encodeInteger(integer: Int, forKey key: String)
+    
+    func encode(unsignedInt uint: UInt, forKey key: String)  
     {
-        self.info[key] = integer
+        self.info[key] = uint  
     }
     
-    override func encodeBool(value: Bool, forKey key: String)
+    func encode(string string: String, forKey key: String)
     {
-        self.info[key] = value
+        self.info[key] = string
+    }
+    
+    func encode(date date: NSDate, forKey key: String)
+    {
+        self.info[key] = date
+    }
+    
+    func encode(bool bool: Bool, forKey key: String)
+    {
+        self.info[key] = bool
     }
 }

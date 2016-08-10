@@ -12,4 +12,6 @@ protocol Encoder
     func encode(string string: String, forKey key: String)
     
     func encode(date date: NSDate, forKey key: String)
+    
+    func encode(bool bool: Bool, forKey key: String)
 }

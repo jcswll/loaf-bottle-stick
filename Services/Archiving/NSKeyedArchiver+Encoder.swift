@@ -23,4 +23,9 @@ extension NSKeyedArchiver : Encoder
     {
         self.encodeObject(date, forKey: key)
     }
+    
+    func encode(bool bool: Bool, forKey key: String)
+    {
+        self.encodeBool(bool, forKey: key)
+    }
 }

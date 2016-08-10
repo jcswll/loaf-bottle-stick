@@ -1,7 +1,7 @@
 import class Foundation.NSDate
 
 /** The data representation of a `Merch`. */
-class MerchData : MarketItemData, Decodable, Encodable
+class MerchData : MarketItemData
 {
     /** The name of the `Merch` */
     let name: String

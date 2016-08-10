@@ -1,7 +1,7 @@
 import class Foundation.NSCoder
 
 /** The data representation of a `Purchase`. */
-class PurchaseData : MarketItemData, NSCoding
+class PurchaseData : MarketItemData
 {
     /** The `Merch` of the `Purchase` */
     let merch: Merch
@@ -38,17 +38,18 @@ class PurchaseData : MarketItemData, NSCoding
     }
     
     /** Create from data provided by the given decoder. */
-    @objc convenience required init?(coder: NSCoder)
+    convenience required init?(decoder: Decoder)
     {
-        guard let merchData = (coder.decodeObjectForKey("merch") as? MerchData),
-              let note = (coder.decodeObjectForKey("note") as? String)
+        guard 
+            let merchDecoded = decoder.decodeEncodable(forKey: "merch"),
+            let merchData = merchDecoded as? MerchData,
+            let note = decoder.decodeString(forKey: "note"),
+            let quantity = decoder.decodeUnsignedInt(forKey: "quantity"),
+            let checkedOff = decoder.decodeBool(forKey: "checkedOff")
         else {
             
             return nil
         }
-        
-        let quantity: UInt = UInt(coder.decodeIntegerForKey("quantity"))
-        let checkedOff = coder.decodeBoolForKey("checkedOff")
         
         self.init(merch: merchData.item,
                    note: (note != "") ? note : nil, 
@@ -57,12 +58,12 @@ class PurchaseData : MarketItemData, NSCoding
     }
     
     /** Provide data to the encoder for archiving. */
-    @objc func encodeWithCoder(coder: NSCoder)
+    func encode(withEncoder encoder: Encoder)
     {
-        coder.encodeObject(MerchData(item: self.merch), forKey: "merch")
-        coder.encodeObject(self.note ?? "", forKey: "note")
-        coder.encodeInteger(Int(self.quantity), forKey: "quantity")
-        coder.encodeBool(self.isCheckedOff, forKey: "checkedOff")
+        encoder.encode(codable: MerchData(item: self.merch), forKey: "merch")
+        encoder.encode(string: self.note ?? "", forKey: "note")
+        encoder.encode(unsignedInt: self.quantity, forKey: "quantity")
+        encoder.encode(bool: self.isCheckedOff, forKey: "checkedOff")
     }
 }
 
