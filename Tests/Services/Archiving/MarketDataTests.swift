@@ -63,7 +63,7 @@ class MarketDataTests : XCTestCase
     {
         let decoder = MockMarketDecoder()
 
-        guard let data = MarketData(coder: decoder) else {
+        guard let data = MarketData(decoder: decoder) else {
             XCTFail("Could not construct Market from decoder.")
             return
         }
@@ -96,12 +96,12 @@ class MarketDataTests : XCTestCase
                              ident: ident,
                          inventory: inventory,
                               trip: trip)
-        data.encodeWithCoder(encoder)
+        data.encode(withEncoder: encoder)
 
         // All expected keys, and *only* expected keys, encoded
         XCTAssert(encoder.fullyEncoded,
                   "Actual and expected encoding keys do not match.\n" +
-                  "Expected \(encoder.encodedKeys)\n" +
+                  "Expected \(encoder.expectedKeys)\n" +
                   "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
@@ -116,17 +116,14 @@ class MarketDataTests : XCTestCase
     }
 }
 
-class MockMarketDecoder : NSCoder
+class MockMarketDecoder : MockDecoder
 {
-    var fullyDecoded: Bool { 
-        return self.decodedKeys.sort() == self.info.keys.sort()
+    override var info: [String : AnyObject] {
+            return ["name" : "Abbandando's Groceria",
+                    "ident" : "ABCD-1234",
+                    "inventory" : MarketListData<MerchData>(MarketList()),
+                    "trip" : MarketListData<PurchaseData>(MarketList())]
     }
-    var decodedKeys: [String] = []
-    var info: [String : AnyObject] =
-            ["name" : "Abbandando's Groceria",
-             "ident" : "ABCD-1234",
-             "inventory" : MarketListData<MerchData>(MarketList()),
-             "trip" : MarketListData<PurchaseData>(MarketList())]
 
     var name: String { return self.info["name"] as! String }
     var ident: String { return self.info["ident"] as! String }
@@ -136,27 +133,13 @@ class MockMarketDecoder : NSCoder
     var trip: MarketListData<PurchaseData> { 
         return self.info["trip"] as! MarketListData<PurchaseData>
     }
-
-    override func decodeObjectForKey(key: String) -> AnyObject?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key]
-    }
-
-    override func decodeIntegerForKey(key: String) -> Int
-    {
-        self.decodedKeys.append(key)
-        return (self.info[key] as? Int) ?? 0
-    }
 }
 
-class MockMarketEncoder : NSCoder
+class MockMarketEncoder : MockEncoder
 {
-    var fullyEncoded: Bool {
-        return self.encodedKeys.sort() == self.info.keys.sort()
+    override var expectedKeys: [String] {
+        return ["name", "ident", "inventory", "trip"]
     }
-    var encodedKeys: [String] = ["name", "ident", "inventory", "trip"]
-    var info: [String : AnyObject] = [:]
 
     var name: String? { return self.info["name"] as? String }
     var ident: String? { return self.info["ident"] as? String }
@@ -165,15 +148,5 @@ class MockMarketEncoder : NSCoder
     }
     var trip: MarketListData<PurchaseData>? {
         return self.info["trip"] as? MarketListData<PurchaseData>
-    }
-
-    override func encodeObject(object: AnyObject?, forKey key: String)
-    {
-        self.info[key] = object
-    }
-
-    override func encodeInteger(integer: Int, forKey key: String)
-    {
-        self.info[key] = integer
     }
 }

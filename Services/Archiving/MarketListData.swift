@@ -6,7 +6,7 @@ import class Foundation.NSCoder
  * retrieval. It can construct an appropriately specialized `MarketList`
  * after unarchiving its information.
  */
-class MarketListData<ItemData : MarketItemData> : NSCoding
+class MarketListData<ItemData : MarketItemData> : Decodable, Encodable
 {
     /** The items of the `MarketList` */
     let items: Set<ItemData.Item>
@@ -29,14 +29,11 @@ class MarketListData<ItemData : MarketItemData> : NSCoding
     }
     
     /** Create from the archive provided by the given decoder. */
-    @objc convenience required init?(coder: NSCoder)
+    convenience required init?(decoder: Decoder)
     {
         // Items are stored as their representative `MarketItemData`.
-        let decodedItems = coder.decodeObjectForKey("items")
-        guard let itemData = decodedItems as? [ItemData] else {
-            
-            return nil
-        }
+        let decodedItems = decoder.decodeArray(forKey: "items")
+        guard let itemData = decodedItems as? [ItemData] else { return nil }
         
         // Transform to the appropriate `MarketItem` type.
         let items = Set<ItemData.Item>(itemData.map { $0.item })
@@ -45,11 +42,11 @@ class MarketListData<ItemData : MarketItemData> : NSCoding
     }
     
     /** Save into an archive using the given encoder. */
-    @objc func encodeWithCoder(coder: NSCoder)
+    func encode(withEncoder encoder: Encoder)
     {
         // `MarketItem`s cannot be encoded directly; transform to
         // the representative `MarketItemData`
         let itemsData = self.items.map { ItemData(item: $0) }
-        coder.encodeObject(itemsData, forKey: "items")
+        encoder.encode(array: itemsData, forKey: "items")
     }
 }

@@ -38,7 +38,7 @@ class MarketListDataTests : XCTestCase
     {
         let decoder = MockMarketListDecoder()
 
-        guard let data = MarketListData<MerchData>(coder: decoder) else {
+        guard let data = MarketListData<MerchData>(decoder: decoder) else {
             XCTFail("Could not construct MarketList from decoder.")
             return
         }
@@ -62,12 +62,12 @@ class MarketListDataTests : XCTestCase
 
         let data = MarketListData<MerchData>(items: items)
 
-        data.encodeWithCoder(encoder)
+        data.encode(withEncoder: encoder)
 
         // All expected keys, and *only* expected keys, encoded
         XCTAssert(encoder.fullyEncoded,
                   "Actual and expected encoding keys do not match.\n" +
-                  "Expected \(encoder.encodedKeys)\n" +
+                  "Expected \(encoder.expectedKeys)\n" +
                   "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
@@ -77,37 +77,19 @@ class MarketListDataTests : XCTestCase
     }
 }
 
-class MockMarketListDecoder : NSCoder
+class MockMarketListDecoder : MockDecoder
 {
-    var fullyDecoded: Bool { 
-        return self.decodedKeys.sort() == self.info.keys.sort()
+    override var info: [String : AnyObject] {
+        return ["items" : [MerchData(item: Merch.dummy), 
+                           MerchData(item: Merch.dummy)]]
     }
-    var decodedKeys: [String] = []
-    let info: [String : AnyObject] = ["items" : 
-                                        [MerchData(item: Merch.dummy), 
-                                         MerchData(item: Merch.dummy)]]
 
     var items: [MerchData] { return self.info["items"] as! [MerchData] }
-
-    override func decodeObjectForKey(key: String) -> AnyObject?
-    {
-        self.decodedKeys.append(key)
-        return self.info[key]
-    }
 }
 
-class MockMarketListEncoder : NSCoder
+class MockMarketListEncoder : MockEncoder
 {
-    var fullyEncoded: Bool { 
-        return self.encodedKeys.sort() == self.info.keys.sort()
-    }
-    var encodedKeys: [String] = ["items"]
-    var info: [String : AnyObject] = [:]
+    override var expectedKeys: [String] { return ["items"] }
 
     var items: [MerchData]? { return self.info["items"] as? [MerchData] }
-
-    override func encodeObject(object: AnyObject?, forKey key: String)
-    {
-        self.info[key] = object
-    }
 }

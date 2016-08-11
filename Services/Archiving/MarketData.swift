@@ -4,7 +4,7 @@ import class Foundation.NSCoder
  * A `MarketData` represents a `Market` for archiving. It contains
  * `MarketListData` for the `Market`'s `MarketList`s.
  */
-class MarketData
+class MarketData : Decodable, Encodable
 {
     /** The `Market`'s name */
     let name: String
@@ -42,15 +42,16 @@ class MarketData
         self.trip = market.trip
     }
     
-    @objc convenience init?(coder: NSCoder)
+    convenience required init?(decoder: Decoder)
     {
-        let codedInventory = coder.decodeObjectForKey("inventory")
-        let codedTrip = coder.decodeObjectForKey("trip")
+        let decodedInventory = decoder.decodeEncodable(forKey: "inventory")
+        let decodedTrip = decoder.decodeEncodable(forKey: "trip")
         
-        guard let name = (coder.decodeObjectForKey("name") as? String),
-              let ident = (coder.decodeObjectForKey("ident") as? String),
-              let inventoryData = codedInventory as? MarketListData<MerchData>,
-              let tripData = codedTrip as? MarketListData<PurchaseData>
+        guard 
+            let name = decoder.decodeString(forKey: "name"),
+            let ident = decoder.decodeString(forKey: "ident"),
+            let inventoryData = decodedInventory as? MarketListData<MerchData>,
+            let tripData = decodedTrip as? MarketListData<PurchaseData>
         else {
 
             return nil
@@ -62,13 +63,13 @@ class MarketData
                   trip: tripData.marketList)
     }
     
-    @objc func encodeWithCoder(coder: NSCoder)
+    func encode(withEncoder encoder: Encoder)
     {
-        coder.encodeObject(self.name, forKey: "name")
-        coder.encodeObject(self.ident, forKey: "ident")
+        encoder.encode(string: self.name, forKey: "name")
+        encoder.encode(string: self.ident, forKey: "ident")
         let inventoryData = MarketListData<MerchData>(self.inventory)
-        coder.encodeObject(inventoryData, forKey: "inventory")
+        encoder.encode(codable: inventoryData, forKey: "inventory")
         let tripData = MarketListData<PurchaseData>(self.trip)
-        coder.encodeObject(tripData, forKey: "trip")
+        encoder.encode(codable: tripData, forKey: "trip")
     }
 }

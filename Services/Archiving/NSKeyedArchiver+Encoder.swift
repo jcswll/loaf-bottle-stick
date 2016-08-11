@@ -3,10 +3,9 @@ import class Foundation.NSMutableData
 
 extension NSKeyedArchiver : Encoder
 {    
-    func encode(codable codable: Encodable, forKey key: String)
+    func encode(codable codable: AnyObject, forKey key: String)
     {
-        let object = codable as? AnyObject
-        self.encodeObject(object, forKey: key)
+        self.encodeObject(codable, forKey: key)
     } 
     
     func encode(unsignedInt uint: UInt, forKey key: String)
@@ -27,5 +26,10 @@ extension NSKeyedArchiver : Encoder
     func encode(bool bool: Bool, forKey key: String)
     {
         self.encodeBool(bool, forKey: key)
+    }
+    
+    func encode(array array: [AnyObject], forKey key: String)
+    {
+        self.encodeObject(array, forKey: key)
     }
 }

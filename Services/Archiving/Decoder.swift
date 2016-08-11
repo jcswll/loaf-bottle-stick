@@ -5,7 +5,7 @@ protocol Decoder : class
 {
     init(forReadingWithData data: NSData)
     
-    func decodeEncodable(forKey key: String) -> Decodable?
+    func decodeEncodable(forKey key: String) -> AnyObject?
     
     func decodeDate(forKey key: String) -> NSDate?
     
@@ -16,4 +16,6 @@ protocol Decoder : class
     func decodeUnsignedInt(forKey key: String) -> UInt?
     
     func decodeBool(forKey key: String) -> Bool?
+    
+    func decodeArray(forKey key: String) -> [AnyObject]?
 }

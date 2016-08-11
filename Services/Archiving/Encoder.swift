@@ -5,7 +5,7 @@ protocol Encoder
 {
     init(forWritingWithMutableData: NSMutableData)
     
-    func encode(codable codable: Encodable, forKey key: String)  
+    func encode(codable codable: AnyObject, forKey key: String)  
     
     func encode(unsignedInt uint: UInt, forKey key: String)  
     
@@ -14,4 +14,6 @@ protocol Encoder
     func encode(date date: NSDate, forKey key: String)
     
     func encode(bool bool: Bool, forKey key: String)
+    
+    func encode(array array: [AnyObject], forKey key: String)
 }

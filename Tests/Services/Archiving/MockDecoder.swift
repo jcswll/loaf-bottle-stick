@@ -20,10 +20,10 @@ class MockDecoder : Decoder
     
     required init(forReadingWithData data: NSData) {}
 
-    func decodeEncodable(forKey key: String) -> Decodable?
+    func decodeEncodable(forKey key: String) -> AnyObject?
     {
         self.decodedKeys.append(key)
-        return self.info[key] as? Decodable
+        return self.info[key]
     }
 
     func decodeDate(forKey key: String) -> NSDate?
@@ -54,5 +54,11 @@ class MockDecoder : Decoder
     {
         self.decodedKeys.append(key)
         return self.info[key] as? Bool
+    }
+    
+    func decodeArray(forKey key: String) -> [AnyObject]?
+    {
+        self.decodedKeys.append(key)
+        return self.info[key] as? [AnyObject]
     }
 }

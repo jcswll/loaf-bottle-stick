@@ -22,12 +22,9 @@ class MockEncoder : Encoder
     
     required init(forWritingWithMutableData: NSMutableData) {}
    
-    func encode(codable codable: Encodable, forKey key: String)
+    func encode(codable codable: AnyObject, forKey key: String)
     {
-        guard let object = codable as? AnyObject else {
-            return
-        }
-        self.info[key] = object
+        self.info[key] = codable
         self.actualKeys.append(key)
     }
     
@@ -52,6 +49,12 @@ class MockEncoder : Encoder
     func encode(bool bool: Bool, forKey key: String)
     {
         self.info[key] = bool
+        self.actualKeys.append(key)
+    }
+    
+    func encode(array array: [AnyObject], forKey key: String)
+    {
+        self.info[key] = array
         self.actualKeys.append(key)
     }
 }

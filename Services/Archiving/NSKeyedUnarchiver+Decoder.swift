@@ -2,9 +2,9 @@ import class Foundation.NSKeyedUnarchiver
 
 extension NSKeyedUnarchiver : Decoder
 {   
-    func decodeEncodable(forKey key: String) -> Decodable?
+    func decodeEncodable(forKey key: String) -> AnyObject?
     {
-        return self.decodeObjectForKey(key) as? Decodable
+        return self.decodeObjectForKey(key)
     }
     
     func decodeDate(forKey key: String) -> NSDate? 
@@ -30,5 +30,10 @@ extension NSKeyedUnarchiver : Decoder
     func decodeBool(forKey key: String) -> Bool? 
     {
         return self.decodeBoolForKey(key)
+    }
+    
+    func decodeArray(forKey key: String) -> [AnyObject]?
+    {
+        return (self.decodeObjectForKey(key) as? NSArray) as? [AnyObject]
     }
 }
