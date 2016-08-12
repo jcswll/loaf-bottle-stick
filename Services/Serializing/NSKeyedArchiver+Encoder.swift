@@ -1,6 +1,6 @@
 import class Foundation.NSKeyedArchiver
-import class Foundation.NSMutableData
 
+/** Allow `NSKeyedArchiver` to be used anywhere an `Encoder` is needed. */
 extension NSKeyedArchiver : Encoder
 {    
     func encode(codable codable: AnyObject, forKey key: String)

@@ -1,11 +1,14 @@
-import class Foundation.NSData
 import class Foundation.NSDate
 
+/** 
+ * A type that deserializes data from an archive of some kind.
+ *
+ * This is an adapter layer for `NSCoder`'s "decode" functionality, providing
+ * more type information.
+ */
 protocol Decoder : class
-{
-    init(forReadingWithData data: NSData)
-    
-    func decodeEncodable(forKey key: String) -> AnyObject?
+{    
+    func decodeCodable(forKey key: String) -> AnyObject?
     
     func decodeDate(forKey key: String) -> NSDate?
     

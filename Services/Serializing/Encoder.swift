@@ -1,10 +1,13 @@
 import class Foundation.NSDate
-import class Foundation.NSMutableData
 
+/** 
+ * A type that serializes data into an archive of some kind.
+ *
+ * This is an adapter layer for `NSCoder`'s "encode" functionality, providing
+ * more type information.
+ */
 protocol Encoder
 {
-    init(forWritingWithMutableData: NSMutableData)
-    
     func encode(codable codable: AnyObject, forKey key: String)  
     
     func encode(unsignedInt uint: UInt, forKey key: String)  

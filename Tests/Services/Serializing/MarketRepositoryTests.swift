@@ -96,15 +96,9 @@ class MockUnarchiver : MockDecoder
     init(fromData data: MarketData)
     {
         self.data = data
-        super.init()
     }
     
-    required init(forReadingWithData data: NSData) 
-    {
-        fatalError()
-    }
-    
-    override func decodeEncodable(forKey key: String) -> AnyObject?
+    override func decodeCodable(forKey key: String) -> AnyObject?
     {
         self.didDecode = true
         self.key = key

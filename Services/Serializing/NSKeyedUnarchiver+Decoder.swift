@@ -1,8 +1,9 @@
 import class Foundation.NSKeyedUnarchiver
 
+/** Allow `NSKeyedUnarchiver` to be used anywhere a `Decoder` is needed. */
 extension NSKeyedUnarchiver : Decoder
 {   
-    func decodeEncodable(forKey key: String) -> AnyObject?
+    func decodeCodable(forKey key: String) -> AnyObject?
     {
         return self.decodeObjectForKey(key)
     }

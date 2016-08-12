@@ -1,10 +1,8 @@
-import class Foundation.NSCoder
-
 /**
- * A `MarketData` represents a `Market` for archiving. It contains
- * `MarketListData` for the `Market`'s `MarketList`s.
+ * A `MarketData` represents a `Market` for archiving. It creates  
+ * `MarketListData` instances to represent the `Market`'s `MarketList`s.
  */
-class MarketData : Decodable, Encodable
+class MarketData : Codable
 {
     /** The `Market`'s name */
     let name: String
@@ -44,8 +42,8 @@ class MarketData : Decodable, Encodable
     
     convenience required init?(decoder: Decoder)
     {
-        let decodedInventory = decoder.decodeEncodable(forKey: "inventory")
-        let decodedTrip = decoder.decodeEncodable(forKey: "trip")
+        let decodedInventory = decoder.decodeCodable(forKey: "inventory")
+        let decodedTrip = decoder.decodeCodable(forKey: "trip")
         
         guard 
             let name = decoder.decodeString(forKey: "name"),

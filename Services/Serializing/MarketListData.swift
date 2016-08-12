@@ -1,12 +1,9 @@
-import protocol Foundation.NSCoding
-import class Foundation.NSCoder
-
 /**
- * A `MarketListData` instance represents a `MarketList` for archiving and
- * retrieval. It can construct an appropriately specialized `MarketList`
- * after unarchiving its information.
+ * A `MarketListData` instance represents a `MarketList` for serializing. 
+ * It can construct an appropriately specialized `MarketList` after
+ * unarchiving its information.
  */
-class MarketListData<ItemData : MarketItemData> : Decodable, Encodable
+class MarketListData<ItemData : MarketItemData> : Codable
 {
     /** The items of the `MarketList` */
     let items: Set<ItemData.Item>

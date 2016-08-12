@@ -16,11 +16,6 @@ class MockEncoder : Encoder
     var fullyEncoded: Bool { 
         return self.expectedKeys.sort() == self.actualKeys.sort()
     }
-
-    // No need to actually create an NSData just for testing
-    init() {}
-    
-    required init(forWritingWithMutableData: NSMutableData) {}
    
     func encode(codable codable: AnyObject, forKey key: String)
     {

@@ -1,5 +1,3 @@
-import class Foundation.NSCoder
-
 /** 
  * `MarketRepository` is the root of the model serialization system. It
  * translates between `Market` and `MarketData`. It works with an 
@@ -63,7 +61,7 @@ class MarketRepository
             throw MarketRepositoryError.NoDecoder
         }
         
-        guard let data = decoder.decodeEncodable(forKey: key) else {
+        guard let data = decoder.decodeCodable(forKey: key) else {
             throw MarketRepositoryError.KeyNotPresent(key)
         }
 

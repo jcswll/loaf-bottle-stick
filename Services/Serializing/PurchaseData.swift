@@ -1,5 +1,3 @@
-import class Foundation.NSCoder
-
 /** The data representation of a `Purchase`. */
 class PurchaseData : MarketItemData
 {
@@ -41,7 +39,7 @@ class PurchaseData : MarketItemData
     convenience required init?(decoder: Decoder)
     {
         guard 
-            let merchDecoded = decoder.decodeEncodable(forKey: "merch"),
+            let merchDecoded = decoder.decodeCodable(forKey: "merch"),
             let merchData = merchDecoded as? MerchData,
             let note = decoder.decodeString(forKey: "note"),
             let quantity = decoder.decodeUnsignedInt(forKey: "quantity"),

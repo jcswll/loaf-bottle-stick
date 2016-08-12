@@ -14,13 +14,8 @@ class MockDecoder : Decoder
     var fullyDecoded: Bool { 
         return self.decodedKeys.sort() == self.info.keys.sort() 
     }
-    
-    // No need to actually create an NSData just for testing.
-    init() {}
-    
-    required init(forReadingWithData data: NSData) {}
 
-    func decodeEncodable(forKey key: String) -> AnyObject?
+    func decodeCodable(forKey key: String) -> AnyObject?
     {
         self.decodedKeys.append(key)
         return self.info[key]
