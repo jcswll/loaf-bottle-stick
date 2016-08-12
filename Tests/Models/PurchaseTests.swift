@@ -33,11 +33,10 @@ class PurchaseTests : XCTestCase
     }
     
     //MARK: Mutation
-    func testCheckingOff()
+    func testCheckingAndUnchecking()
     {
-        let merch = Merch.dummy
-
-        let purchase = Purchase(merch: merch)
+        let purchase = Purchase.dummy
+        
         let checked = purchase.checkingOff()
         let unchecked = purchase.unchecking()
         
@@ -45,30 +44,35 @@ class PurchaseTests : XCTestCase
         XCTAssertFalse(unchecked.isCheckedOff)
     }
     
-    func testCheckingOffPreservesOtherFields()
+    func testCheckingAndUncheckingPreservesOtherFields()
     {
         let merch = Merch.dummy
-        let note: String? = nil    // Default empty note
+        let note = "Get the organic kind"
         let quantity: UInt = 3
-
-        let purchase = Purchase(merch: merch, quantity: quantity)
+        let checkedOff = true
+        // All fields explicitly set for this test
+        let purchase = Purchase(merch: merch, 
+                                 note: note,
+                             quantity: quantity,
+                           checkedOff: checkedOff)
+        
         let checked = purchase.checkingOff()
         let unchecked = purchase.unchecking()
 
-        XCTAssertEqual(merch, checked.merch)
-        XCTAssertEqual(merch, unchecked.merch)
-        XCTAssertEqual(quantity, checked.quantity)
-        XCTAssertEqual(quantity, unchecked.quantity)
-        XCTAssertEqual(note, checked.note)
-        XCTAssertEqual(note, unchecked.note)
+        XCTAssertEqual(purchase.name, checked.name)
+        XCTAssertEqual(purchase.name, unchecked.name)
+        XCTAssertEqual(purchase.unit, checked.unit)
+        XCTAssertEqual(purchase.unit, unchecked.unit)
+        XCTAssertEqual(purchase.quantity, checked.quantity)
+        XCTAssertEqual(purchase.quantity, unchecked.quantity)
+        XCTAssertEqual(purchase.note, checked.note)
+        XCTAssertEqual(purchase.note, unchecked.note)
     }
     
     func testChangingNote()
     {
-        let merch = Merch.dummy
-        let quantity: UInt = 3
+        let purchase = Purchase.dummy
         let newNote = "Get the organic kind"
-        let purchase = Purchase(merch: merch, quantity: quantity)
         
         let changed = purchase.changingNote(to: newNote)
         
@@ -79,14 +83,21 @@ class PurchaseTests : XCTestCase
     {
         let merch = Merch.dummy
         let quantity: UInt = 3
+        let note = "Make sure it's fresh"
+        let checkedOff = true
         let newNote = "Get the organic kind"
-        let purchase = Purchase(merch: merch, quantity: quantity)
+        // All fields explicitly set for this test
+        let purchase = Purchase(merch: merch, 
+                                 note: note,
+                             quantity: quantity,
+                           checkedOff: checkedOff)
         
         let changed = purchase.changingNote(to: newNote)
         
-        XCTAssertEqual(merch, changed.merch)
-        XCTAssertEqual(quantity, changed.quantity)
-        XCTAssertFalse(changed.isCheckedOff)
+        XCTAssertEqual(purchase.name, changed.name)
+        XCTAssertEqual(purchase.unit, changed.unit)
+        XCTAssertEqual(purchase.quantity, changed.quantity)
+        XCTAssertEqual(purchase.isCheckedOff, changed.isCheckedOff)
     }
     
     func testChangingQuantity()
@@ -99,6 +110,27 @@ class PurchaseTests : XCTestCase
         let changed = purchase.changingQuantity(to: newQuantity)
         
         XCTAssertEqual(newQuantity, changed.quantity)
+    }
+    
+    func testChangingQuantityPreservesOtherFields()
+    {
+        let merch = Merch.dummy
+        let quantity: UInt = 3
+        let note = "Get the organic kind"
+        let checkedOff = true
+        let newQuantity: UInt = 21
+        // All fields explicitly set for this test
+        let purchase = Purchase(merch: merch, 
+                                 note: note,
+                             quantity: quantity,
+                           checkedOff: checkedOff)
+                           
+        let changed = purchase.changingQuantity(to: newQuantity)
+        
+        XCTAssertEqual(purchase.name, changed.name)
+        XCTAssertEqual(purchase.unit, changed.unit)
+        XCTAssertEqual(purchase.note, changed.note)
+        XCTAssertEqual(purchase.isCheckedOff, changed.isCheckedOff)
     }
      
     func testChangingName()
@@ -117,16 +149,21 @@ class PurchaseTests : XCTestCase
     {
         let merch = Merch.dummy
         let quantity: UInt = 3
-        let note: String? = nil    // Default empty note
+        let note = "Get the organic kind"
+        let checkedOff = true
         let newName = "Milk"
-        let purchase = Purchase(merch: merch, quantity: quantity)
+        // All fields explicitly set for this test
+        let purchase = Purchase(merch: merch, 
+                                 note: note,
+                             quantity: quantity,
+                           checkedOff: checkedOff)
 
         let changed = purchase.changingName(to: newName)
         
         XCTAssertEqual(purchase.unit, changed.unit)
-        XCTAssertEqual(quantity, changed.quantity)
-        XCTAssertEqual(note, changed.note)
-        XCTAssertFalse(changed.isCheckedOff)
+        XCTAssertEqual(purchase.quantity, changed.quantity)
+        XCTAssertEqual(purchase.note, changed.note)
+        XCTAssertEqual(purchase.isCheckedOff, changed.isCheckedOff)
     }
     
     func testChangingUnit()
@@ -145,23 +182,28 @@ class PurchaseTests : XCTestCase
     {
         let merch = Merch.dummy
         let quantity: UInt = 3
-        let note: String? = nil    // Default empty note
-        let newUnit = Unit.Box
-        let purchase = Purchase(merch: merch, quantity: quantity)
+        let note = "Get the organic kind"
+        let checkedOff = true
+        // All fields explicitly set for this test
+        let purchase = Purchase(merch: merch, 
+                                 note: note,
+                             quantity: quantity,
+                           checkedOff: checkedOff)
 
+        let newUnit = Unit.Box
         let changed = purchase.changingUnit(to: newUnit)
         
         XCTAssertEqual(purchase.name, changed.name)
-        XCTAssertEqual(quantity, changed.quantity)
-        XCTAssertEqual(note, changed.note)
-        XCTAssertFalse(changed.isCheckedOff)
+        XCTAssertEqual(purchase.quantity, changed.quantity)
+        XCTAssertEqual(purchase.note, changed.note)
+        XCTAssertEqual(purchase.isCheckedOff, changed.isCheckedOff)
     }
     
     //MARK: Sorting
     func testCanSortByName()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let merches = names.map { Merch(name: $0, unit: nil) }
+        let names = Merch.dummyNames
+        let merches = Merch.dummies
         let purchases = merches.map { Purchase(merch: $0) }
         
         let comparator = Purchase.comparator(forKey: Purchase.SortKey.Name)

@@ -115,8 +115,8 @@ class MerchTests : XCTestCase
     //MARK: Sorting
     func testCanSortByName()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let merches = names.map { Merch(name: $0, unit: nil) }
+        let names = Merch.dummyNames
+        let merches = Merch.dummies
         
         let comparator = Merch.comparator(forKey: Merch.SortKey.Name)
         let sorted = merches.sort(comparator)

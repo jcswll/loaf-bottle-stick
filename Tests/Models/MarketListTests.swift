@@ -42,8 +42,8 @@ class MarketListTests : XCTestCase
     
     func testCannotDeleteNonexistent()
     {
-        let contents: Set<Merch> = [Merch.dummy]
-        let needle = Merch(name: "Milk", unit: .Gallon)
+        let contents: Set<Merch> = Set(Merch.dummies)
+        let needle = Merch.offListDummy
         
         var list = MarketList(items: contents)
         
@@ -53,8 +53,7 @@ class MarketListTests : XCTestCase
     
     func testCanDeleteFromMany()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        var contents = Set(names.map { Merch(name: $0, unit: nil) })
+        var contents = Set(Merch.dummies)
 
         var list = MarketList(items: contents)
         let needle = contents.popFirst()!
@@ -65,9 +64,8 @@ class MarketListTests : XCTestCase
     
     func testCannotDeleteNonexistentFromMany()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let contents = Set(names.map { Merch(name: $0, unit: nil) })
-        let needle = Merch(name: "Milk", unit: .Gallon)
+        let contents = Set(Merch.dummies)
+        let needle = Merch.offListDummy
         
         var list = MarketList(items: contents)
         
@@ -80,7 +78,7 @@ class MarketListTests : XCTestCase
     {
         let original = Merch.dummy
         let contents: Set<Merch> = [original]
-        let replacement = Merch(name: "Milk", unit: .Gallon)
+        let replacement = Merch.offListDummy
         
         var list = MarketList(items: contents)
         
@@ -93,7 +91,7 @@ class MarketListTests : XCTestCase
     {
         let original = Merch.dummy
         let contents: Set<Merch> = [original]
-        let replacement = Merch(name: "Milk", unit: .Gallon)
+        let replacement = Merch.offListDummy
         
         var list = MarketList(items: contents)
         _ = try? list.update(original, to: replacement)
@@ -106,7 +104,7 @@ class MarketListTests : XCTestCase
     {
         let original = Merch.dummy
         let contents: Set<Merch> = [original]
-        let replacement = Merch(name: "Milk", unit: .Gallon)
+        let replacement = Merch.offListDummy
         let nonexistent = Merch(name: "", unit: .Each)
         
         var list = MarketList(items: contents)
@@ -116,10 +114,9 @@ class MarketListTests : XCTestCase
     
     func testUpdateAmongMany()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let contents = Set(names.map { Merch(name: $0, unit: nil) })
+        let contents = Set(Merch.dummies)
         let needle = contents.first!
-        let replacement = Merch(name: "Milk", unit: .Gallon)
+        let replacement = Merch.offListDummy
         
         var list = MarketList(items: contents)
         _ = try? list.update(needle, to: replacement)
@@ -132,9 +129,8 @@ class MarketListTests : XCTestCase
     
     func testCannotUpdateNonexistentAmongMany()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let contents = Set(names.map { Merch(name: $0, unit: nil) })
-        let needle = Merch(name: "Milk", unit: .Gallon)
+        let contents = Set(Merch.dummies)
+        let needle = Merch.offListDummy
         
         var list = MarketList(items: contents)
         
@@ -165,8 +161,7 @@ class MarketListTests : XCTestCase
     
     func testSearchMany()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let contents = Set(names.map { Merch(name: $0, unit: nil) })
+        let contents = Set(Merch.dummies)
         let needle = contents.first!
         
         let list = MarketList(items: contents)
@@ -177,9 +172,8 @@ class MarketListTests : XCTestCase
     
     func testSearchDoesNotFindNonexistent()
     {
-        let names = ["Broccoli", "Bananas", "Carrots", "Apples", "Quince"]
-        let contents = Set(names.map { Merch(name: $0, unit: nil) })
-        let needle = Merch(name: "Milk", unit: .Gallon)
+        let contents = Set(Merch.dummies)
+        let needle = Merch.offListDummy
         
         let list = MarketList(items: contents)
         let found = list.item(forKey: needle.searchKey)
@@ -191,7 +185,7 @@ class MarketListTests : XCTestCase
     func testMerchIsUsed()
     {
         let merch = Merch.dummy
-        let unusedMerch = Merch(name: "Milk", unit: .Gallon)
+        let unusedMerch = Merch.offListDummy
         let purchase = Purchase(merch: merch, quantity: 0)
         let contents: Set<Purchase> = [purchase]
         
