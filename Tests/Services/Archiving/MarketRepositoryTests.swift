@@ -8,7 +8,7 @@ class MarketRepositoryTests : XCTestCase
         let archiver = MockArchiver()
         let market = Market(name: "Abbandando's Groceria")
         
-        let repo = MarketRepository(archiver: archiver)
+        let repo = MarketRepository(encoder: archiver)
         let key = try? repo.write(market)
         
         // Encode method was called
@@ -27,7 +27,7 @@ class MarketRepositoryTests : XCTestCase
         let data = MarketData(market)
         let unarchiver = MockUnarchiver(fromData: data)
         
-        let repo = MarketRepository(unarchiver: unarchiver)
+        let repo = MarketRepository(decoder: unarchiver)
         let decodedMarket = try? repo.readMarket(forKey: market.ident)
         
         // Decode method was called
@@ -46,7 +46,7 @@ class MarketRepositoryTests : XCTestCase
         let data = MarketData(market)
         let unarchiver = MockUnarchiver(fromData: data)
         
-        let repo = MarketRepository(unarchiver: unarchiver)
+        let repo = MarketRepository(decoder: unarchiver)
         
         XCTAssertThrowsError(try repo.write(market))
     }
@@ -56,7 +56,7 @@ class MarketRepositoryTests : XCTestCase
         let market = Market(name: "Abbandando's Groceria")
         let archiver = MockArchiver()
         
-        let repo = MarketRepository(archiver: archiver)
+        let repo = MarketRepository(encoder: archiver)
         
         XCTAssertThrowsError(try repo.readMarket(forKey: market.ident))
     }
@@ -67,27 +67,27 @@ class MarketRepositoryTests : XCTestCase
         let data = MarketData(market)
         let unarchiver = MockUnarchiver(fromData: data)
         
-        let repo = MarketRepository(unarchiver: unarchiver)
+        let repo = MarketRepository(decoder: unarchiver)
         
         XCTAssertThrowsError(try repo.readMarket(forKey: ""))
     }
 }
 
-class MockArchiver : NSCoder 
+class MockArchiver : MockEncoder 
 {
     var didEncode: Bool = false
     var key: MarketRepository.Key? = nil
     
-    override func encodeObject(object: AnyObject?, forKey: String) 
+    override func encode(codable codable: AnyObject, forKey key: String) 
     {
         self.didEncode = true
-        if let marketData = object as? MarketData {
+        if let marketData = codable as? MarketData {
             self.key = marketData.ident
         }
     }
 }
 
-class MockUnarchiver : NSCoder
+class MockUnarchiver : MockDecoder
 {
     var didDecode: Bool = false
     var key: MarketRepository.Key? = nil
@@ -96,9 +96,15 @@ class MockUnarchiver : NSCoder
     init(fromData data: MarketData)
     {
         self.data = data
+        super.init()
     }
     
-    override func decodeObjectForKey(key: String) -> AnyObject?
+    required init(forReadingWithData data: NSData) 
+    {
+        fatalError()
+    }
+    
+    override func decodeEncodable(forKey key: String) -> AnyObject?
     {
         self.didDecode = true
         self.key = key
