@@ -53,6 +53,10 @@
 		03B1CDA01D5E734700229C51 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD861D5E72FF00229C51 /* MarketRepository.swift */; };
 		03B1CDA11D5E734700229C51 /* MerchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD871D5E72FF00229C51 /* MerchData.swift */; };
 		03B1CDA21D5E734700229C51 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD8A1D5E72FF00229C51 /* PurchaseData.swift */; };
+		03B1CDA31D5E962F00229C51 /* MerchPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F21D56BB3900351869 /* MerchPresentation.swift */; };
+		03B1CDA61D5E975F00229C51 /* MerchPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */; };
+		03B1CDA71D5EB78F00229C51 /* PurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F31D56BB3900351869 /* PurchasePresentation.swift */; };
+		03B1CDA91D5EB79900229C51 /* PurchasePresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +148,8 @@
 		03B1CD881D5E72FF00229C51 /* NSKeyedArchiver+Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSKeyedArchiver+Encoder.swift"; sourceTree = "<group>"; };
 		03B1CD891D5E72FF00229C51 /* NSKeyedUnarchiver+Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSKeyedUnarchiver+Decoder.swift"; sourceTree = "<group>"; };
 		03B1CD8A1D5E72FF00229C51 /* PurchaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseData.swift; sourceTree = "<group>"; };
+		03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MerchPresentationTests.swift; path = Presentations/MerchPresentationTests.swift; sourceTree = "<group>"; };
+		03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchasePresentationTests.swift; path = Presentations/PurchasePresentationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,7 @@
 				031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */,
 				031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */,
 				031FF7F81D595D3100351869 /* Models */,
+				03B1CDA41D5E974900229C51 /* Presentations */,
 				031FF72C1D56C8B800351869 /* Services */,
 				031FF7191D56BB4700351869 /* Info.plist */,
 			);
@@ -368,6 +375,15 @@
 				03B1CD891D5E72FF00229C51 /* NSKeyedUnarchiver+Decoder.swift */,
 			);
 			name = Archivers;
+			sourceTree = "<group>";
+		};
+		03B1CDA41D5E974900229C51 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */,
+				03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */,
+			);
+			name = Presentations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +586,7 @@
 				031FF7941D56E9AD00351869 /* Purchase.swift in Sources */,
 				03B1CDA21D5E734700229C51 /* PurchaseData.swift in Sources */,
 				03B1CD9B1D5E734700229C51 /* NSKeyedArchiver+Encoder.swift in Sources */,
+				03B1CDA71D5EB78F00229C51 /* PurchasePresentation.swift in Sources */,
 				031FF7951D56E9AD00351869 /* Unit.swift in Sources */,
 				031FF7EE1D5930E700351869 /* Market.swift in Sources */,
 				031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */,
@@ -578,6 +595,7 @@
 				031FF7991D56E9AD00351869 /* Sortable.swift in Sources */,
 				03B1CD9E1D5E734700229C51 /* MarketItemData.swift in Sources */,
 				03B1CD9F1D5E734700229C51 /* MarketListData.swift in Sources */,
+				03B1CDA31D5E962F00229C51 /* MerchPresentation.swift in Sources */,
 				03B1CDA11D5E734700229C51 /* MerchData.swift in Sources */,
 				03B1CD991D5E734700229C51 /* Decoder.swift in Sources */,
 			);
@@ -599,9 +617,11 @@
 				031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */,
 				03B1CD7E1D5E72D200229C51 /* PurchaseDataTests.swift in Sources */,
 				03B1CD7B1D5E72D200229C51 /* MerchDataTests.swift in Sources */,
+				03B1CDA91D5EB79900229C51 /* PurchasePresentationTests.swift in Sources */,
 				031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */,
 				03B1CD341D5AB18800229C51 /* MarketTests.swift in Sources */,
 				03B1CD301D5A839500229C51 /* MarketListTests.swift in Sources */,
+				03B1CDA61D5E975F00229C51 /* MerchPresentationTests.swift in Sources */,
 				03B1CD781D5E72D200229C51 /* MarketDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,6 +804,7 @@
 				INFOPLIST_FILE = LoafBottleStickKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D TESTING";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -804,6 +825,7 @@
 				INFOPLIST_FILE = LoafBottleStickKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -818,6 +840,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";
@@ -829,6 +852,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "";

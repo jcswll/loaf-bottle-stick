@@ -11,7 +11,7 @@ struct Purchase : MarketItem
     /** Purchase's name, from its merch. */
     var name: String { return self.merch.name }
     /** Purchase's unit, from its merch. */
-    var unit: Unit? { return self.merch.unit }
+    var unit: Unit { return self.merch.unit }
     /** An optional note on the list item, as entered by the user. */
     let note: String?
     /** Amount to be purchased, in the unit defined by the `Merch`. */
@@ -42,15 +42,17 @@ struct Purchase : MarketItem
         }
     }
     
-    /** Mutation: checking off, editing note or quantity */
-    func checkingOff() -> Purchase
+    /** Mutation: checking off, editing name, unit, note, or quantity */
+    func changingName(to name: String) -> Purchase 
     {
-        return Purchase(copy: self, checkingOff: true)
+        let merch = self.merch.changingName(to: name)
+        return Purchase(copy: self, merch: merch)
     }
     
-    func unchecking() -> Purchase
+    func changingUnit(to unit: Unit) -> Purchase 
     {
-        return Purchase(copy: self, checkingOff: false)
+        let merch = self.merch.changingUnit(to: unit)
+        return Purchase(copy: self, merch: merch)
     }
     
     func changingNote(to note: String?) -> Purchase
@@ -63,16 +65,14 @@ struct Purchase : MarketItem
         return Purchase(copy: self, quantity: quantity, note: self.note)
     }
     
-    func changingName(to name: String) -> Purchase 
+    func checkingOff() -> Purchase
     {
-        let merch = self.merch.changingName(to: name)
-        return Purchase(copy: self, merch: merch)
+        return Purchase(copy: self, checkingOff: true)
     }
     
-    func changingUnit(to unit: Unit) -> Purchase 
+    func unchecking() -> Purchase
     {
-        let merch = self.merch.changingUnit(to: unit)
-        return Purchase(copy: self, merch: merch)
+        return Purchase(copy: self, checkingOff: false)
     }
 
     private init(copy original: Purchase, checkingOff checked: Bool)
