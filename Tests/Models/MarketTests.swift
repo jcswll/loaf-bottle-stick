@@ -15,7 +15,7 @@ class MarketTests : XCTestCase
         XCTAssert(market.trip.items.isEmpty)
     }
     
-    func testDistinctIdents()
+    func testDistinctIdentsForEqualNames()
     {
         let name = "Abbandando's Groceria"
         let first = Market(name: name)

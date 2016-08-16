@@ -39,13 +39,10 @@ struct Market
     }
 }
 
-// Markets can be compared memberwise.
+// Markets can be compared by identifier.
 func ==(lhs: Market, rhs: Market) -> Bool
 {
-    return lhs.name == rhs.name &&
-           lhs.ident == rhs.ident &&
-           lhs.inventory == rhs.inventory &&
-           lhs.trip == rhs.trip
+    return lhs.ident == rhs.ident
 }
 
 extension Market : Equatable {}
