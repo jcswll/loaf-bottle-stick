@@ -64,6 +64,8 @@
 		03B1CDBD1D62CC0E00229C51 /* Array+Partition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBA1D62CC0E00229C51 /* Array+Partition.swift */; };
 		03B1CDBE1D62CC0E00229C51 /* NSDate+lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */; };
 		03B1CDBF1D62CC0E00229C51 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */; };
+		03BE9DCA1D63AAE300D52ED9 /* MarketPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F11D56BB3900351869 /* MarketPresentation.swift */; };
+		03BE9DCC1D63AAFA00D52ED9 /* MarketPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE9DCB1D63AAFA00D52ED9 /* MarketPresentationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +112,6 @@
 		031FF6EB1D56BB3900351869 /* MerchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchInfo.swift; sourceTree = "<group>"; };
 		031FF6EC1D56BB3900351869 /* Purchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		031FF6ED1D56BB3900351869 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
-		031FF6EF1D56BB3900351869 /* InventoryAutocompletePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryAutocompletePresentation.swift; sourceTree = "<group>"; };
 		031FF6F01D56BB3900351869 /* InventoryPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryPresentation.swift; sourceTree = "<group>"; };
 		031FF6F11D56BB3900351869 /* MarketPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketPresentation.swift; sourceTree = "<group>"; };
 		031FF6F21D56BB3900351869 /* MerchPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchPresentation.swift; sourceTree = "<group>"; };
@@ -162,6 +163,7 @@
 		03B1CDBA1D62CC0E00229C51 /* Array+Partition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Partition.swift"; sourceTree = "<group>"; };
 		03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+lt.swift"; sourceTree = "<group>"; };
 		03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
+		03BE9DCB1D63AAFA00D52ED9 /* MarketPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketPresentationTests.swift; path = Presentations/MarketPresentationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,12 +271,11 @@
 		031FF6EE1D56BB3900351869 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				031FF6EF1D56BB3900351869 /* InventoryAutocompletePresentation.swift */,
-				031FF6F01D56BB3900351869 /* InventoryPresentation.swift */,
-				031FF6F11D56BB3900351869 /* MarketPresentation.swift */,
 				031FF6F21D56BB3900351869 /* MerchPresentation.swift */,
 				031FF6F31D56BB3900351869 /* PurchasePresentation.swift */,
+				031FF6F01D56BB3900351869 /* InventoryPresentation.swift */,
 				031FF6F41D56BB3900351869 /* TripPresentation.swift */,
+				031FF6F11D56BB3900351869 /* MarketPresentation.swift */,
 			);
 			path = Presentations;
 			sourceTree = SOURCE_ROOT;
@@ -391,12 +392,13 @@
 		03B1CDA41D5E974900229C51 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				03B1CDB41D62BEF600229C51 /* TripPresentationWiringTests.swift */,
-				03B1CDB01D62993A00229C51 /* TripPresentationTests.swift */,
-				03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */,
-				03B1CDAB1D5FC9DA00229C51 /* InventoryPresentationTests.swift */,
-				03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */,
 				03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */,
+				03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */,
+				03B1CDAB1D5FC9DA00229C51 /* InventoryPresentationTests.swift */,
+				03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */,
+				03B1CDB01D62993A00229C51 /* TripPresentationTests.swift */,
+				03B1CDB41D62BEF600229C51 /* TripPresentationWiringTests.swift */,
+				03BE9DCB1D63AAFA00D52ED9 /* MarketPresentationTests.swift */,
 			);
 			name = Presentations;
 			sourceTree = "<group>";
@@ -626,6 +628,7 @@
 				03B1CDA11D5E734700229C51 /* MerchData.swift in Sources */,
 				03B1CDAF1D62993400229C51 /* TripPresentation.swift in Sources */,
 				03B1CD991D5E734700229C51 /* Decoder.swift in Sources */,
+				03BE9DCA1D63AAE300D52ED9 /* MarketPresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +651,7 @@
 				031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */,
 				03B1CDAC1D5FC9DA00229C51 /* InventoryPresentationTests.swift in Sources */,
 				03B1CD7E1D5E72D200229C51 /* PurchaseDataTests.swift in Sources */,
+				03BE9DCC1D63AAFA00D52ED9 /* MarketPresentationTests.swift in Sources */,
 				03B1CD7B1D5E72D200229C51 /* MerchDataTests.swift in Sources */,
 				03B1CDA91D5EB79900229C51 /* PurchasePresentationTests.swift in Sources */,
 				031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */,
