@@ -21,8 +21,6 @@
 		031FF7941D56E9AD00351869 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EC1D56BB3900351869 /* Purchase.swift */; };
 		031FF7951D56E9AD00351869 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6ED1D56BB3900351869 /* Unit.swift */; };
 		031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F61D56BB3900351869 /* MarketItem.swift */; };
-		031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F71D56BB3900351869 /* NSDate+lt.swift */; };
-		031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */; };
 		031FF7991D56E9AD00351869 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F91D56BB3900351869 /* Sortable.swift */; };
 		031FF7A61D582A0900351869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF7A51D582A0900351869 /* Main.storyboard */; };
 		031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */; };
@@ -62,8 +60,10 @@
 		03B1CDAE1D6271C400229C51 /* InventoryPresentationWiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */; };
 		03B1CDAF1D62993400229C51 /* TripPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F41D56BB3900351869 /* TripPresentation.swift */; };
 		03B1CDB11D62993A00229C51 /* TripPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDB01D62993A00229C51 /* TripPresentationTests.swift */; };
-		03B1CDB31D62B74300229C51 /* Array+Partition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDB21D62B74300229C51 /* Array+Partition.swift */; };
 		03B1CDB51D62BEF600229C51 /* TripPresentationWiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDB41D62BEF600229C51 /* TripPresentationWiringTests.swift */; };
+		03B1CDBD1D62CC0E00229C51 /* Array+Partition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBA1D62CC0E00229C51 /* Array+Partition.swift */; };
+		03B1CDBE1D62CC0E00229C51 /* NSDate+lt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */; };
+		03B1CDBF1D62CC0E00229C51 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,8 +117,6 @@
 		031FF6F31D56BB3900351869 /* PurchasePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePresentation.swift; sourceTree = "<group>"; };
 		031FF6F41D56BB3900351869 /* TripPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPresentation.swift; sourceTree = "<group>"; };
 		031FF6F61D56BB3900351869 /* MarketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItem.swift; sourceTree = "<group>"; };
-		031FF6F71D56BB3900351869 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+lt.swift"; path = "../Extensions/NSDate+lt.swift"; sourceTree = "<group>"; };
-		031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SequenceType+FirstElement.swift"; path = "../Extensions/SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
 		031FF6F91D56BB3900351869 /* Sortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
 		031FF7191D56BB4700351869 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031FF71C1D56BC6000351869 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -160,8 +158,10 @@
 		03B1CDAB1D5FC9DA00229C51 /* InventoryPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryPresentationTests.swift; path = Presentations/InventoryPresentationTests.swift; sourceTree = "<group>"; };
 		03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryPresentationWiringTests.swift; path = Presentations/InventoryPresentationWiringTests.swift; sourceTree = "<group>"; };
 		03B1CDB01D62993A00229C51 /* TripPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripPresentationTests.swift; path = Presentations/TripPresentationTests.swift; sourceTree = "<group>"; };
-		03B1CDB21D62B74300229C51 /* Array+Partition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Partition.swift"; sourceTree = "<group>"; };
 		03B1CDB41D62BEF600229C51 /* TripPresentationWiringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripPresentationWiringTests.swift; path = Presentations/TripPresentationWiringTests.swift; sourceTree = "<group>"; };
+		03B1CDBA1D62CC0E00229C51 /* Array+Partition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Partition.swift"; sourceTree = "<group>"; };
+		03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+lt.swift"; sourceTree = "<group>"; };
+		03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +226,7 @@
 				031FF71B1D56BC4900351869 /* Controllers */,
 				031FF6E51D56BB3900351869 /* Models */,
 				031FF6EE1D56BB3900351869 /* Presentations */,
+				03B1CDB91D62CC0E00229C51 /* Extensions */,
 				031FF6F51D56BB3900351869 /* Protocols */,
 				031FF6FA1D56BB3900351869 /* Services */,
 			);
@@ -281,9 +282,6 @@
 		031FF6F51D56BB3900351869 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				03B1CDB21D62B74300229C51 /* Array+Partition.swift */,
-				031FF6F71D56BB3900351869 /* NSDate+lt.swift */,
-				031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */,
 				031FF6F91D56BB3900351869 /* Sortable.swift */,
 			);
 			path = Protocols;
@@ -402,6 +400,16 @@
 			);
 			name = Presentations;
 			sourceTree = "<group>";
+		};
+		03B1CDB91D62CC0E00229C51 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03B1CDBA1D62CC0E00229C51 /* Array+Partition.swift */,
+				03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */,
+				03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */,
+			);
+			path = Extensions;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -591,6 +599,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B1CDBF1D62CC0E00229C51 /* SequenceType+FirstElement.swift in Sources */,
 				03B1CD9D1D5E734700229C51 /* MarketData.swift in Sources */,
 				031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */,
 				031FF7901D56E9AD00351869 /* MarketList.swift in Sources */,
@@ -600,17 +609,16 @@
 				031FF7921D56E9AD00351869 /* Merch.swift in Sources */,
 				03B1CD9C1D5E734700229C51 /* NSKeyedUnarchiver+Decoder.swift in Sources */,
 				031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */,
+				03B1CDBD1D62CC0E00229C51 /* Array+Partition.swift in Sources */,
 				031FF7941D56E9AD00351869 /* Purchase.swift in Sources */,
 				03B1CDA21D5E734700229C51 /* PurchaseData.swift in Sources */,
 				03B1CD9B1D5E734700229C51 /* NSKeyedArchiver+Encoder.swift in Sources */,
 				03B1CDA71D5EB78F00229C51 /* PurchasePresentation.swift in Sources */,
 				031FF7951D56E9AD00351869 /* Unit.swift in Sources */,
 				03B1CDAA1D5FC9C900229C51 /* InventoryPresentation.swift in Sources */,
+				03B1CDBE1D62CC0E00229C51 /* NSDate+lt.swift in Sources */,
 				031FF7EE1D5930E700351869 /* Market.swift in Sources */,
-				03B1CDB31D62B74300229C51 /* Array+Partition.swift in Sources */,
 				031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */,
-				031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */,
-				031FF7981D56E9AD00351869 /* SequenceType+FirstElement.swift in Sources */,
 				031FF7991D56E9AD00351869 /* Sortable.swift in Sources */,
 				03B1CD9E1D5E734700229C51 /* MarketItemData.swift in Sources */,
 				03B1CD9F1D5E734700229C51 /* MarketListData.swift in Sources */,
