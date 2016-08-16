@@ -116,9 +116,9 @@
 		031FF6F21D56BB3900351869 /* MerchPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchPresentation.swift; sourceTree = "<group>"; };
 		031FF6F31D56BB3900351869 /* PurchasePresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePresentation.swift; sourceTree = "<group>"; };
 		031FF6F41D56BB3900351869 /* TripPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPresentation.swift; sourceTree = "<group>"; };
-		031FF6F61D56BB3900351869 /* MarketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketItem.swift; path = ../Protocols/MarketItem.swift; sourceTree = "<group>"; };
-		031FF6F71D56BB3900351869 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+lt.swift"; sourceTree = "<group>"; };
-		031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
+		031FF6F61D56BB3900351869 /* MarketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItem.swift; sourceTree = "<group>"; };
+		031FF6F71D56BB3900351869 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+lt.swift"; path = "../Extensions/NSDate+lt.swift"; sourceTree = "<group>"; };
+		031FF6F81D56BB3900351869 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SequenceType+FirstElement.swift"; path = "../Extensions/SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
 		031FF6F91D56BB3900351869 /* Sortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
 		031FF7191D56BB4700351869 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031FF71C1D56BC6000351869 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
