@@ -84,7 +84,6 @@ class InventoryPresentation
             [weak self] (old, new) in
                 self?.update(old, to: new)
         }
-        presentation.shouldPurchase = { (_, callback) in callback(true) }
         presentation.didPurchase = {
             [weak self] (merch, quantity) in
                 self?.makePurchase?(merch, quantity)

@@ -5,9 +5,6 @@ class MerchPresentationTests : XCTestCase
 {
     let merch: Merch = Merch.dummy
     var presentation: MerchPresentation!
-    let allowPurchase: ((Merch, PermissionCallback) -> Void) = { 
-        (_, callback) in callback(true) 
-    }
     
     override func setUp()
     {
@@ -47,26 +44,12 @@ class MerchPresentationTests : XCTestCase
     
     func testDoesPurchase()
     {
-        self.presentation.shouldPurchase = self.allowPurchase
-        
         self.presentation.purchase()
         
         XCTAssertEqual(self.merch.numUses + 1, self.presentation.numUses)
         let lastUsed = self.presentation.lastUsed
         XCTAssertEqualWithAccuracy(0, lastUsed.timeIntervalSinceNow,
                                    accuracy: 2)
-    }
-    
-    func testDoesNotPurchaseIfDisallowed()
-    {
-        self.presentation.shouldPurchase = {
-            (_, callback) in callback(false)
-        }
-        
-        self.presentation.purchase()
-        
-        XCTAssertEqual(self.merch.numUses, self.presentation.numUses)
-        XCTAssertEqual(self.merch.lastUsed, self.presentation.lastUsed)
     }
     
     //MARK: - View notifications
@@ -94,7 +77,6 @@ class MerchPresentationTests : XCTestCase
     
     func testNotifiesViewOnPurchase()
     {
-        self.presentation.shouldPurchase = self.allowPurchase
         var sentDidUpdate = false
         self.presentation.didUpdate = { sentDidUpdate = true }
         
@@ -142,20 +124,8 @@ class MerchPresentationTests : XCTestCase
         XCTAssertEqual(newUnit, new!.unit)
     }
     
-    // Purchasing has more intricate interaction with parent
-    func testAsksForPermissionToPurchase()
-    {
-        var didAsk = false
-        self.presentation.shouldPurchase = { (_, _) in didAsk = true }
-        
-        self.presentation.purchase()
-        
-        XCTAssertTrue(didAsk)
-    }
-    
     func testNotifiesParentOnPurchase()
     {
-        self.presentation.shouldPurchase = self.allowPurchase
         var sentDidPurchase = false
         var purchasedMerch: Merch?
         self.presentation.didPurchase = { (merch, _) in 
@@ -168,22 +138,5 @@ class MerchPresentationTests : XCTestCase
         XCTAssertTrue(sentDidPurchase)
         stopOnFailure { XCTAssertNotNil(purchasedMerch) }
         XCTAssertEqual(self.merch.name, purchasedMerch!.name)
-    }
-    
-    func testDoesNotNotifyOnDisallowedPurchase()
-    {
-        self.presentation.shouldPurchase = { 
-            (_, callback) in callback(false) 
-        }
-        
-        var sentDidUpdate = false
-        var sentDidPurchase = false
-        self.presentation.didUpdate = { sentDidUpdate = true }
-        self.presentation.didPurchase = { (_) in sentDidPurchase = true }
-        
-        self.presentation.purchase()
-        
-        XCTAssertFalse(sentDidUpdate)
-        XCTAssertFalse(sentDidPurchase)
     }
 }

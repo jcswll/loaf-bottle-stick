@@ -53,8 +53,6 @@ class MerchPresentation
     var didUpdate: (() -> Void)?
     /** Pass value changes out to an observer. */
     var valueDidChange: ((old: Merch, new: Merch) -> Void)?
-    /** Ask whether the purchase should take place. */
-    var shouldPurchase: ((Merch, PermissionCallback) -> Void)?
     /** Pass purchased merch out to an observer. */
     var didPurchase: ((Merch, UInt) -> Void)?
     
@@ -67,24 +65,12 @@ class MerchPresentation
     // MARK: - Input
     /** 
      * Update the enclosed `Merch` by `purchasing()` it, and notify observers.
-     *
-     * The presentation asks for permission first, using its 
-     * `shouldPurchase` callback, passing in its `Merch`. The parent or other
-     * interested object can calculate whether the process should occur. If 
-     * the `PermissionCallback` is passed `false`, no changes or further
-     * notifications will be made.  
      */
     func purchase()
     {
-        self.shouldPurchase?(self.merch) 
-        { 
-          (permission) in
-            guard permission else { return }
-            
-            self.saveValue()
-            self.merch = self.merch.purchasing()
-            self.announceChanges(fromPurchasing: true)
-        }
+        self.saveValue()
+        self.merch = self.merch.purchasing()
+        self.announceChanges(fromPurchasing: true)
     }
     
     // MARK: - Internals
@@ -109,9 +95,6 @@ class MerchPresentation
     /** Peek value from the undo stack */
     private var lastValue: Merch { return self.oldMerch.last! }
 }
-
-/** Callback from `shouldPurchase` to receive permission to proceed. */
-typealias PermissionCallback = ((Bool) -> Void)
 
 // Hacks to allow easy checking of updated values that are otherwise hidden.
 #if TESTING
