@@ -9,6 +9,7 @@ class InventoryPresentationTests : XCTestCase
     override func setUp()
     {
         self.presentation = InventoryPresentation(inventory: self.inventory)
+        self.presentation.sortKey = .Name
     }
 
     //MARK: Sorting
@@ -45,15 +46,41 @@ class InventoryPresentationTests : XCTestCase
     func testCanAdd()
     {
         let addition = Merch.offListDummy
-        
+
         assertNoThrow(try self.presentation.add(addition))
-        
+
         let subPresentations = self.presentation.subPresentations
         let containsPresentation = subPresentations.contains {
-                                       $0.name == addition.name 
+                                       $0.name == addition.name
                                    }
         XCTAssertTrue(containsPresentation)
-    }           
+    }
+    
+    func testIsSortedAfterAdd()
+    {
+        let addition = Merch.offListDummy
+        let sortedNames = (self.inventory.items + [addition])
+                            .map { $0.name }
+                            .sort((<))
+        
+        _ = try? self.presentation.add(addition)
+        
+        XCTAssertEqual(sortedNames,
+                       self.presentation.subPresentations.map {
+                               $0.name
+                       })
+    }
+    
+    func testNotifiesViewAfterAdd()
+    {
+        let addition = Merch.offListDummy
+        var sentDidUpdate = false
+        self.presentation.didUpdate = { sentDidUpdate = true }
+        
+        _ = try? self.presentation.add(addition)
+        
+        XCTAssertTrue(sentDidUpdate)
+    }        
 
     //MARK: Deletion
     func testCanDelete()

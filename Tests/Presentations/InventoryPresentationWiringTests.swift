@@ -9,6 +9,7 @@ class InventoryPresentationWiringTests : XCTestCase
     override func setUp()
     {
         self.presentation = InventoryPresentation(inventory: self.inventory)
+        self.presentation.sortKey = .Name
     }
 
     func testItemModified()
@@ -22,6 +23,17 @@ class InventoryPresentationWiringTests : XCTestCase
         let subPresentations = self.presentation.subPresentations
         XCTAssertTrue(subPresentations.contains { $0.name == newName })
         XCTAssertFalse(subPresentations.contains { $0.name == oldName })
+    }
+    
+    func testNotifiesViewWhenItemModified()
+    {
+        let merchPresentation = self.presentation.subPresentations[0]
+        var sentDidUpdate = false
+        self.presentation.didUpdate = { sentDidUpdate = true }
+        
+        merchPresentation.name = Merch.offListDummy.name
+        
+        XCTAssertTrue(sentDidUpdate)
     }
     
     func testNotifiesParentWhenItemModified()
@@ -64,5 +76,16 @@ class InventoryPresentationWiringTests : XCTestCase
         merchPresentation.purchase()
         
         XCTAssertTrue(sentDidPurchase)
+    }
+    
+    func testNotifiesViewWhenPurchasing()
+    {
+        let merchPresentation = self.presentation.subPresentations[0]
+        var sentDidUpdate = false
+        self.presentation.makePurchase = { (_, _) in sentDidUpdate = true }
+        
+        merchPresentation.purchase()
+        
+        XCTAssertTrue(sentDidUpdate) 
     }
 }

@@ -16,6 +16,14 @@ class PurchasePresentation
         self.purchase = purchase
     }
     
+    /** Allow sorting lists of presentations without exposing `merch`. */
+    func compare(to other: PurchasePresentation, byKey key: Purchase.SortKey) 
+        -> Bool
+    {
+        let comparator = Purchase.comparator(forKey: key)
+        return comparator(self.purchase, other.purchase)
+    }
+    
     // MARK: - Fields
     /** The name of the enclosed `Purchase`. */
     var name: String 
@@ -125,9 +133,8 @@ class PurchasePresentation
             self.merchDidChange?(old: self.lastValue.merch,
                                  new: self.purchase.merch)
         }
-        else {
-            self.valueDidChange?(old: self.lastValue, new: self.purchase)
-        }
+        
+        self.valueDidChange?(old: self.lastValue, new: self.purchase)
     }
     
     /** Push value onto the undo stack */

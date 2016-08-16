@@ -1,3 +1,9 @@
+/** 
+ * Presents a sorted list of `MerchPresentation`s for use by a table view.
+ *
+ * When changes are made, the view and other observers are notified via
+ * callback closures.
+ */
 class InventoryPresentation
 {
     private var inventory: MarketList<Merch>
@@ -6,6 +12,11 @@ class InventoryPresentation
     {
         self.inventory = inventory
         self.sortKey = .Name
+        self.subPresentations = inventory.items.map { 
+                                    self.presentation(forMerch: $0) 
+                                }.sort { (lhs, rhs) in 
+                                    lhs.compare(to: rhs, byKey: self.sortKey) 
+                                }
     }
     
     //MARK: - Fields
@@ -16,13 +27,7 @@ class InventoryPresentation
         } 
     }
     
-    lazy var subPresentations: [MerchPresentation] = {
-        
-        self.inventory.items.map { self.presentation(forMerch: $0) }
-                            .sort { (lhs, rhs) in 
-                                lhs.compare(to: rhs, byKey: self.sortKey) 
-                            }
-    }()
+    var subPresentations: [MerchPresentation]!
     
     //MARK: - Events
     /** Tell view that new values need to be read. */
@@ -40,12 +45,18 @@ class InventoryPresentation
     {
         try self.inventory.add(merch)
         
-        self.subPresentations.append(MerchPresentation(merch: merch))
+        self.subPresentations.append(self.presentation(forMerch: merch))
+        self.sortSubpresentations()
+        self.didUpdate?()
     }
     
     /** Remove the merch and sub-presentation at the given index. */
     func deleteMerch(atIndex index: Int)
     {
+        guard index < self.subPresentations.count else {
+            fatalError("Attempt to delete presentation at index \(index) " +
+                       "outside valid range 0-\(self.subPresentations.count)")
+        }
         let presentation = self.subPresentations.removeAtIndex(index)
         
         presentation.willDelete { (merch) in

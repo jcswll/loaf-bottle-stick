@@ -1,139 +1,167 @@
-/** Present a `Trip` in a way that's consumable in a CLI environment. */
+/** 
+ * Presents a sorted list of `PurchasePresentation`s for use by a table view.
+ *
+ * When changes are made, the view and other observers are notified via
+ * callback closures.
+ */
 class TripPresentation
 {
-    private var trip: Trip
+    private var trip: MarketList<Purchase>
     
-    init(trip: Trip)
+    init(trip: MarketList<Purchase>)
     {
         self.trip = trip
+        self.sortKey = .Name
+        self.separateCheckedItems = false
+        self.subPresentations = trip.items.map {    
+                                    self.presentation(forPurchase: $0) 
+                                }.sort { (lhs, rhs) in
+                                    lhs.compare(to: rhs, byKey: self.sortKey)
+                                }
     }
     
-    // MARK: - Fields
-    var sortKey: Merch.SortKey = .Name  { didSet { self.didChangeOrder?() }}
-    //FIXME: Ignoring sort for the moment
-    /** Sorted list of `Presentation`s for all trip's items */
-    var purchasePresentations: [PurchasePresentation] = []
+    //MARK: - Fields
+    var sortKey: Purchase.SortKey { 
+         didSet {
+            self.sortSubpresentations()
+            self.didUpdate?()
+         }
+    }
     
-    //TODO: Split list
-    /** Optionally split display by checked-off status. */
-
-    // MARK: - Events
+    /** 
+     * Checked-off items can be sorted to the bottom; the two sub-lists
+     * will order themselves according to `sortKey`.
+     */
+    var separateCheckedItems: Bool {
+        didSet {
+            self.sortSubpresentations()
+            self.didUpdate?()
+        }
+    }
+    
+    // IUO to allow construction in init while referring to self
+    private(set) var subPresentations: [PurchasePresentation]!
+    
+    //MARK: - Events
     /** Tell view that new values need to be read. */
     var didUpdate: (() -> Void)?
-    // FIXME: Are these redundant?
-    /** Tell view that the full list needs to be read. */
-    var didChangeOrder: (() -> Void)?
-    /** Notify observer of a change to a contained `Purchase`. */
+    /** Notify parent of deletion, passing new trip and deleted item. */
+    var didDeletePurchase: ((MarketList<Purchase>, Purchase) -> Void)?
+    /** Notify observer of change in a contained `Purchase`. */
     var purchaseDidChange: ((Purchase, Purchase) -> Void)?
+    /** Notify observer of change to a `Merch` in a contained `Purchase`. */
+    var merchDidChange: ((Merch, Merch) -> Void)?
     
-    func load()
+    //MARK: - Input
+    /** Propagates `MarketListError.ItemExists(purchase)` */
+    func add(purchase: Purchase) throws
     {
-        self.purchasePresentations = self.trip.items.map { 
-            self.presentation(forPurchase: $0) 
-        } 
-    }
-    
-    /** Create an item. */
-    // This is a model-layer event, not initiated by the view
-    func createPurchase(ofMerch merch: Merch, inQuantity quantity: UInt?)
-    {
-        //TODO: Handle duplicate purchases
-        // let purchase = self.trip.createPurchase(ofMerch: merch,
-        //                                      inQuantity: quantity)
-        // Create presentation
-        // let presentation = self.presentation(forPurchase: purchase)
-        // Add to list
+        try self.trip.add(purchase)
         
+        let presentation = self.presentation(forPurchase: purchase)
+        self.subPresentations.append(presentation)
+        self.sortSubpresentations()
         self.didUpdate?()
-        self.didChangeOrder?()
     }
     
-    func updatePurchase(ofMerch old: Merch, to new: Merch) throws
+    /** Remove the purchase and sub-presentation at the given index. */
+    func deletePurchase(atIndex index: Int)
     {
-        // Let trip do the update
-        // let purchase = try self.trip.updatePurchase(ofMerch: old, to: new)
-        
-        // Destroy old presentation
-        // Create new presentation; add to list
-        // let presentation = self.presentation(forPurchase: purchase)
-        
-        self.didUpdate?()
-        self.didChangeOrder?()        
-    }
-    
-    func merchIsUsed(merch: Merch) -> Bool 
-    {
-        return self.trip.merchIsUsed(merch)
-    }
-    
-    func deletePurchase(ofMerch merch: Merch) throws
-    {
-        guard let purchase = self.trip.purchase(ofMerch: merch) else {
-            throw MarketListError.ItemNotFound(merch)
+        guard index < self.subPresentations.count else {
+            fatalError("Attempt to delete presentation at index \(index) " +
+                       "outside valid range 0-\(self.subPresentations.count)")
         }
-        
-        try! self.trip.delete(purchase)    // !: Already tested existence
-    }
-    
-    // MARK: - Input
-    /** Remove an item */
-    func removePurchase(atIndex index: Int)
-    {
-        // Find appropriate Purchase; remove presentation
-        let presentation = self.purchasePresentations.removeAtIndex(index)
-        presentation.willDelete { purchase in
+        let presentation = self.subPresentations.removeAtIndex(index)
+
+        presentation.willDelete { (purchase) in
+
             do {
                 try self.trip.delete(purchase)
+            } catch {
+                fatalError("Attempt to delete non-existent " +
+                           "Purchase\n\(purchase)")
             }
-            catch _ {
-                fatalError("Attempt to delete nonexistent purchase \(purchase)")
-            }
+
+            self.didDeletePurchase?(self.trip, purchase)
         }
-        // Notify up the line
         self.didUpdate?()
-        self.didChangeOrder?()
     }
     
-    /** Remove all checked-off `Purchase`s. */
-    func clearChecked()
-    {
-        self.purchasePresentations
-                .filter { $0.isCheckedOff }
-                .forEach { presentation in
-                    presentation.willDelete { purchase in 
-                        do {
-                            try self.trip.delete(purchase)
-                        }
-                        catch _ {
-                            fatalError("Attempt to delete nonexistent purchase \(purchase)")
-                        }
-                    }
-                }
-                
-        self.didUpdate?()
-        self.didChangeOrder?()
-        //TODO: Need a didClear?
-    }
-    
-    //Should this return an existing presentation if available?
+    //MARK: - Internals
+    /**
+     * Construct a `PurchasePresentation` for the given purchase, wiring its
+     * notification closures up as needed.
+     */
     private func presentation(forPurchase purchase: Purchase) 
-           -> PurchasePresentation 
+                -> PurchasePresentation
     {
         let presentation = PurchasePresentation(purchase: purchase)
-        // Wire up events
-        presentation.didUpdate = { [weak self] (presentation) in
-            self?.didUpdate?() 
-        }       
-        presentation.valueDidChange = { [weak self] (old, new) in
-            self?.trip.update(old, to: new)
-            self?.purchaseDidChange?(old, new)
-            self?.didUpdate?()
-        }       
-        presentation.didToggleChecked = { [weak self] (_) in 
-            self?.didUpdate?()
-            self?.didChangeOrder?()
+        presentation.valueDidChange = {
+            [weak self] (old, new) in
+                self?.update(old, to: new)
         }
+        presentation.merchDidChange = {
+            [weak self] (old, new) in
+                self?.merchDidChange?(old, new)
+        }
+        
         return presentation
+    }
+    
+    /**
+     * Update `trip` with the new value, sort if needed, and notify.
+     */
+    private func update(item: Purchase, to replacement: Purchase)
+    {
+        do { try self.trip.update(item, to: replacement) }
+        catch { fatalError("Attempt to update non-existent Merch\n\(item)") }
+        
+        if self.changedKey(from: item, to: replacement) == self.sortKey {
+            self.sortSubpresentations()
+        }
+            
+        self.purchaseDidChange?(item, replacement)
+        self.didUpdate?()      
+    }
+    
+    /** Re-sort `subPresentations` after a change. */
+    private func sortSubpresentations()
+    {
+        if self.separateCheckedItems {
+            self.sortSubpresentationsSeparated()
+        }
+        else {
+            self.subPresentations.sortInPlace { 
+                (lhs, rhs) in 
+                    lhs.compare(to: rhs, byKey: self.sortKey) 
+            }
+        }
+    }
+    
+    /** 
+     * Split the sub-presentations by their checked off state, then sort 
+     * the two pieces and rejoin them. 
+     */
+    private func sortSubpresentationsSeparated()
+    {
+        let (checked, unchecked) = self.subPresentations
+                                       .partition { $0.isCheckedOff }
+        let comparator = { 
+            (lhs: PurchasePresentation, rhs: PurchasePresentation) -> Bool in 
+                lhs.compare(to: rhs, byKey: self.sortKey)
+        }
+        self.subPresentations = unchecked.sort(comparator) + 
+                                checked.sort(comparator)
+    }
+    
+    /** 
+     * Figure out which field of the `Purchase` changed so we don't have to
+     * re-sort unnecessarily.
+     */
+    private func changedKey(from from: Purchase, to: Purchase) 
+                -> Purchase.SortKey?
+    {
+        return from.name != to.name ? .Name : nil
     }
 }
 
