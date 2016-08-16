@@ -16,10 +16,18 @@ class MerchPresentation
         self.merch = merch
     }
     
+    /** Allow sorting lists of presentations without exposing `merch`. */
+    func compare(to other: MerchPresentation, byKey key: Merch.SortKey) 
+        -> Bool
+    {
+        let comparator = Merch.comparator(forKey: key)
+        return comparator(self.merch, other.merch)
+    }
+    
     //MARK: - `Merch` fields
     /** The name of the enclosed `Merch` */
     var name: String 
-    { 
+    {
         get { return self.merch.name }
         set(name) 
         {   
@@ -48,7 +56,7 @@ class MerchPresentation
     /** Ask whether the purchase should take place. */
     var shouldPurchase: ((Merch, PermissionCallback) -> Void)?
     /** Pass purchased merch out to an observer. */
-    var didPurchase: ((Merch, UInt?) -> Void)?
+    var didPurchase: ((Merch, UInt) -> Void)?
     
     /** Provide access to private `merch` in a passed-in closure. */
     func willDelete(@noescape deletion: ((Merch) -> Void))
@@ -85,12 +93,11 @@ class MerchPresentation
     {
         self.didUpdate?()
         
+        self.valueDidChange?(old: self.lastValue, new: self.merch)
+        
         if fromPurchasing {
             //FIXME: Get actual quantity
             self.didPurchase?(self.merch, 0)
-        }
-        else {
-            self.valueDidChange?(old: self.lastValue, new: self.merch)
         }
     }
     

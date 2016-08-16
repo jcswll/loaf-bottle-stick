@@ -6,9 +6,10 @@ extension Merch
 {
     /** List of names to be used for test `Merch` creation. */
     static var dummyNames: [String] = ["Broccoli", "Bananas", "Carrots", 
-                                       "Apples", "Quince"]
+                                       "Apples", "Quince", "Eggs"]
     /** A single test `Merch` using the first name from `dummyNames`. */
     static var dummy: Merch {
+        
         return Merch(name: self.dummyNames[0],
                      unit: .Head,
                   numUses: 17,
@@ -18,7 +19,15 @@ extension Merch
     
     /** A list of test `Merch`es created with the `dummyNames`. */
     static var dummies: [Merch] {
-        return self.dummyNames.map { Merch(name: $0, unit: nil) }
+        
+        let uses: [UInt] = [3, 2, 1, 6, 5, 4]
+        let intervals: [NSTimeInterval] = [4, 5, 6, 1, 3, 2]
+        let dates = intervals.map { NSDate(timeIntervalSince1970: $0) }
+        let info = zip(self.dummyNames, zip(uses, dates))
+        return info.map { Merch(name: $0.0,
+                                unit: .Each,
+                             numUses: $0.1.0,
+                            lastUsed: $0.1.1) }
     }
     
     /** A single test `Merch` that is not on the `dummies` list. */

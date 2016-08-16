@@ -19,9 +19,24 @@ struct MarketList<Item: MarketItem>
     }
     
     /**
+     * Add the item to the list.
+     *
+     * - Throws: `MarketListError.ItemExists`, with the new item associated,
+     * if the item is already present in the list.
+     */
+    mutating func add(item: Item) throws
+    {
+        guard self.item(forKey: item.searchKey) == nil else {
+            throw MarketListError.ItemExists(item)
+        }
+        self.items.insert(item)
+    }
+    
+    /**
      * Remove the item from the list.
      *
-     * It is an error to request deletion of an item that does not exist.
+     * - Throws: `MarketListError.ItemNotFound`, with the item associated, if
+     * the item does not exist in the list.
      */
     mutating func delete(item: Item) throws
     {
@@ -34,7 +49,7 @@ struct MarketList<Item: MarketItem>
      * Replace the old item with the new. 
      *
      * - Throws: `MarketListError.ItemNotFound`, with the item associated, if
-     * the item does not exist in the list.
+     * the first item does not exist in the list.
      */
     mutating func update(item: Item, to replacement: Item) throws
     {
@@ -67,4 +82,9 @@ enum MarketListError<Item: MarketItem> : ErrorType
      * found in the list.
      */
     case ItemNotFound(Item)
+    
+    /**
+     * Thrown when an `Item` passed in for addition is already in the list.
+     */
+    case ItemExists(Item)
 }

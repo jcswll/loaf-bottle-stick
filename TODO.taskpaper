@@ -6,3 +6,5 @@
 - Add quantity tracking to Merch @feature @status(planned) @date-added(2016-07-23)
 - Use didUpdate of MerchPres and PurchPres to only update the particular cells in their containers @enhancement @status(planned) @date-added(2016-07-24)
 - Create `AnyCodable` type eraser to replace the `AnyObject`s in `Encoder`/`Decoder @enhancement @status(planned) @date-added(2016-08-12)
+- Implement reverse sorting. @feature @status(planned) @date-added(2016-08-13)
+- Do not sort Inventory unless the sorted-by value changed @enhancement @status(planned) @date-added(2016-08-15) @done(2016-08-15)

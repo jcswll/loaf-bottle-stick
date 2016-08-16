@@ -57,6 +57,9 @@
 		03B1CDA61D5E975F00229C51 /* MerchPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */; };
 		03B1CDA71D5EB78F00229C51 /* PurchasePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F31D56BB3900351869 /* PurchasePresentation.swift */; };
 		03B1CDA91D5EB79900229C51 /* PurchasePresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */; };
+		03B1CDAA1D5FC9C900229C51 /* InventoryPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F01D56BB3900351869 /* InventoryPresentation.swift */; };
+		03B1CDAC1D5FC9DA00229C51 /* InventoryPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDAB1D5FC9DA00229C51 /* InventoryPresentationTests.swift */; };
+		03B1CDAE1D6271C400229C51 /* InventoryPresentationWiringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +153,8 @@
 		03B1CD8A1D5E72FF00229C51 /* PurchaseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseData.swift; sourceTree = "<group>"; };
 		03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MerchPresentationTests.swift; path = Presentations/MerchPresentationTests.swift; sourceTree = "<group>"; };
 		03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchasePresentationTests.swift; path = Presentations/PurchasePresentationTests.swift; sourceTree = "<group>"; };
+		03B1CDAB1D5FC9DA00229C51 /* InventoryPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryPresentationTests.swift; path = Presentations/InventoryPresentationTests.swift; sourceTree = "<group>"; };
+		03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InventoryPresentationWiringTests.swift; path = Presentations/InventoryPresentationWiringTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +385,8 @@
 		03B1CDA41D5E974900229C51 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				03B1CDAD1D6271C400229C51 /* InventoryPresentationWiringTests.swift */,
+				03B1CDAB1D5FC9DA00229C51 /* InventoryPresentationTests.swift */,
 				03B1CDA81D5EB79900229C51 /* PurchasePresentationTests.swift */,
 				03B1CDA51D5E975F00229C51 /* MerchPresentationTests.swift */,
 			);
@@ -588,6 +595,7 @@
 				03B1CD9B1D5E734700229C51 /* NSKeyedArchiver+Encoder.swift in Sources */,
 				03B1CDA71D5EB78F00229C51 /* PurchasePresentation.swift in Sources */,
 				031FF7951D56E9AD00351869 /* Unit.swift in Sources */,
+				03B1CDAA1D5FC9C900229C51 /* InventoryPresentation.swift in Sources */,
 				031FF7EE1D5930E700351869 /* Market.swift in Sources */,
 				031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */,
 				031FF7971D56E9AD00351869 /* NSDate+lt.swift in Sources */,
@@ -607,6 +615,7 @@
 			files = (
 				031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */,
 				03B1CD7D1D5E72D200229C51 /* MockEncoder.swift in Sources */,
+				03B1CDAE1D6271C400229C51 /* InventoryPresentationWiringTests.swift in Sources */,
 				03B1CD321D5A8F4600229C51 /* AssertNoThrow.swift in Sources */,
 				031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */,
 				031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */,
@@ -615,6 +624,7 @@
 				03B1CD7A1D5E72D200229C51 /* MarketRepositoryTests.swift in Sources */,
 				03B1CD2E1D5A7E9400229C51 /* UnitEnumTests.swift in Sources */,
 				031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */,
+				03B1CDAC1D5FC9DA00229C51 /* InventoryPresentationTests.swift in Sources */,
 				03B1CD7E1D5E72D200229C51 /* PurchaseDataTests.swift in Sources */,
 				03B1CD7B1D5E72D200229C51 /* MerchDataTests.swift in Sources */,
 				03B1CDA91D5EB79900229C51 /* PurchasePresentationTests.swift in Sources */,

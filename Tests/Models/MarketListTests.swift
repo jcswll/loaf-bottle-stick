@@ -13,11 +13,34 @@ class MarketListTests : XCTestCase
     
     func testCanInitializeWithItems()
     {
-        let contents: Set<Merch> = [Merch.dummy]
+        let contents = Set(Merch.dummies)
         
         let list = MarketList(items: contents)
         
         XCTAssertEqual(contents, list.items)
+    }
+    
+    //MARK: Addition
+    func testCanAdd()
+    {
+        let merch = Merch.dummy
+        let contents: Set<Merch> = [merch]
+        let addition = Merch.offListDummy
+        
+        var list = MarketList(items: contents)
+        
+        assertNoThrow(try list.add(addition))
+        XCTAssertNotNil(list.item(forKey: addition.searchKey))
+    }
+    
+    func testCannotAddExisting()
+    {
+        let merch = Merch.dummies[0]
+        let contents = Set(Merch.dummies)
+        
+        var list = MarketList<Merch>(items: contents)
+        
+        XCTAssertThrowsError(try list.add(merch))
     }
 
     //MARK: Deletion

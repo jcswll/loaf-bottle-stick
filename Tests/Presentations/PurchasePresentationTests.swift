@@ -32,7 +32,7 @@ class PurchasePresentationTests : XCTestCase
     }
     
     // Description of unit should changed based on quantity
-    func testZeroUnitDescription()
+    func testZeroUnitDescribedAsNil()
     {
         let purchase = Purchase(merch: Merch.dummy, quantity: 0)
         
