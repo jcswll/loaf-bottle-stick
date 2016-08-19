@@ -5,20 +5,20 @@ class UnitEnumTests : XCTestCase
 {
     func testPlurals()
     {
-        let plurals: [Unit : String] = 
-                      [.Ton : "Tons", .Pound : "Pounds", .Ounce : "Ounces", 
-                       .Kilogram : "Kilograms", .Gram : "Grams", 
-                       .Milligram : "Milligrams", .Gallon : "Gallons", 
-                       .Quart : "Quarts", .Pint : "Pints", .Cup : "Cups", 
-                       .Tablespoon : "Tablespoons", .Teaspoon : "Teaspoons", 
-                       .Liter : "Liters", .Milliliter : "Milliliters", 
-                       .Yard : "Yards", .Foot : "Feet", .Inch : "Inches", 
-                       .Meter : "Meters", .Centimeter : "Centimeters", 
-                       .Millimeter : "Millimeters", .Box : "Boxes", 
-                       .Can : "Cans", .Jar : "Jars", .Bottle : "Bottles", 
-                       .Package : "Packages", .Case : "Cases", 
-                       .Pallet : "Pallets", .Loaf : "Loaves", 
-                       .Bunch : "Bunches", .Head : "Heads", .Roll : "Rolls", 
+        let plurals: [Unit : String] =
+                      [.Ton : "Tons", .Pound : "Pounds", .Ounce : "Ounces",
+                       .Kilogram : "Kilograms", .Gram : "Grams",
+                       .Milligram : "Milligrams", .Gallon : "Gallons",
+                       .Quart : "Quarts", .Pint : "Pints", .Cup : "Cups",
+                       .Tablespoon : "Tablespoons", .Teaspoon : "Teaspoons",
+                       .Liter : "Liters", .Milliliter : "Milliliters",
+                       .Yard : "Yards", .Foot : "Feet", .Inch : "Inches",
+                       .Meter : "Meters", .Centimeter : "Centimeters",
+                       .Millimeter : "Millimeters", .Box : "Boxes",
+                       .Can : "Cans", .Jar : "Jars", .Bottle : "Bottles",
+                       .Package : "Packages", .Case : "Cases",
+                       .Pallet : "Pallets", .Loaf : "Loaves",
+                       .Bunch : "Bunches", .Head : "Heads", .Roll : "Rolls",
                        .Bar : "Bars", .Each : "Each"]
 
         for unit in Unit.Ton...Unit.Each {
@@ -35,6 +35,8 @@ class UnitEnumTests : XCTestCase
 /** Allow iteration over all cases */
 extension Unit : ForwardIndexType
 {
+    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable function_body_length
     func successor() -> Unit
     {
         switch self

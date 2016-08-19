@@ -4,43 +4,43 @@ import XCTest
 class PurchaseDataTests : XCTestCase
 {
     let merch: Merch = Merch.dummy
-    
+
     func testHoldsData()
     {
         let note = "Get the organic stuff"
         let quantity: UInt = 3
         let isCheckedOff = true
-        
+
         let data = PurchaseData(merch: self.merch,
                                  note: note,
                              quantity: quantity,
                            checkedOff: isCheckedOff)
-        
+
         XCTAssertEqual(merch, data.merch)
         XCTAssertEqual(note, data.note)
         XCTAssertEqual(quantity, data.quantity)
         XCTAssertEqual(isCheckedOff, data.isCheckedOff)
     }
-    
+
     func testCanConstructPurchase()
     {
         let note = "Get the organic stuff"
         let quantity: UInt = 3
         let isCheckedOff = true
-        
+
         let data = PurchaseData(merch: self.merch,
                                  note: note,
                              quantity: quantity,
                            checkedOff: isCheckedOff)
         let purchase = data.item
-        
+
         XCTAssertEqual(self.merch.name, purchase.name)
         XCTAssertEqual(self.merch.unit, purchase.unit)
         XCTAssertEqual(note, purchase.note)
         XCTAssertEqual(quantity, purchase.quantity)
         XCTAssertEqual(isCheckedOff, purchase.isCheckedOff)
     }
-    
+
     func testCanDecomposePurchase()
     {
         let note = "Get the organic stuff"
@@ -58,7 +58,7 @@ class PurchaseDataTests : XCTestCase
         XCTAssertEqual(quantity, data.quantity)
         XCTAssertEqual(isCheckedOff, data.isCheckedOff)
     }
-    
+
     func testDecodesFullyAndCorrectly()
     {
         let decoder = MockPurchaseDecoder()
@@ -69,8 +69,8 @@ class PurchaseDataTests : XCTestCase
         }
 
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded, 
-                  "Actual and expected decoding keys do not match.\n" + 
+        XCTAssert(decoder.fullyDecoded,
+                  "Actual and expected decoding keys do not match.\n" +
                   "Expected \(decoder.decodedKeys)\n" +
                   "Have \(Array(decoder.info.keys))")
 
@@ -80,7 +80,7 @@ class PurchaseDataTests : XCTestCase
         XCTAssertEqual(UInt(decoder.quantity), data.quantity)
         XCTAssertEqual(decoder.isCheckedOff, data.isCheckedOff)
     }
-    
+
     func testEncodesFullyAndCorrectly()
     {
         let encoder = MockPurchaseEncoder()
@@ -102,6 +102,7 @@ class PurchaseDataTests : XCTestCase
                   "Have \(Array(encoder.actualKeys))")
 
         // All data present and correct
+        //swiftlint:disable force_unwrapping
         stopOnFailure { XCTAssertNotNil(encoder.merch) }
         XCTAssertEqual(encoder.merch!.item, self.merch)
         stopOnFailure { XCTAssertNotNil(encoder.note) }
@@ -110,6 +111,7 @@ class PurchaseDataTests : XCTestCase
         XCTAssertEqual(UInt(encoder.quantity!), quantity)
         stopOnFailure { XCTAssertNotNil(encoder.isCheckedOff) }
         XCTAssertEqual(encoder.isCheckedOff!, isCheckedOff)
+        //swiftlint:enable force_unwrapping
     }
 }
 
@@ -117,15 +119,17 @@ final class MockPurchaseDecoder : MockDecoder
 {
     override var info: [String : AnyObject] {
         return ["merch" : MerchData(item: Merch.dummy),
-                "note" : "Get the organic stuff", 
-                "quantity" : 3, 
+                "note" : "Get the organic stuff",
+                "quantity" : 3,
                 "checkedOff" : true]
     }
-    
+
+    // swiftlint:disable force_cast
     var merch: MerchData { return self.info["merch"] as! MerchData }
     var note: String { return self.info["note"] as! String }
     var quantity: UInt { return self.info["quantity"] as! UInt }
     var isCheckedOff: Bool { return self.info["checkedOff"] as! Bool }
+    // swiftlint:enable force_cast
 }
 
 final class MockPurchaseEncoder : MockEncoder

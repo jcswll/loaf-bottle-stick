@@ -7,29 +7,31 @@ class MarketRepositoryTests : XCTestCase
     {
         let archiver = MockArchiver()
         let market = Market(name: "Abbandando's Groceria")
-        
+
         let repo = MarketRepository(encoder: archiver)
         let key = try? repo.write(market)
-        
+
         // Encode method was called
         XCTAssert(archiver.didEncode)
-        // Using the market's key
+        // ...using the market's key
         XCTAssertEqual(market.ident, archiver.key)
         // The returned key exists
         stopOnFailure { XCTAssertNotNil(key) }
-        // and matches the original market's
+        // ...and matches the original market's
+        //swiftlint:disable force_unwrapping
         XCTAssertEqual(market.ident, key!)
+        //swiftlint:enable force_unwrapping
     }
-    
+
     func testDecodes()
     {
         let market = Market(name: "Abbandando's Groceria")
         let data = MarketData(market)
         let unarchiver = MockUnarchiver(fromData: data)
-        
+
         let repo = MarketRepository(decoder: unarchiver)
         let decodedMarket = try? repo.readMarket(forKey: market.ident)
-        
+
         // Decode method was called
         XCTAssert(unarchiver.didDecode)
         // Using the market's key
@@ -37,48 +39,50 @@ class MarketRepositoryTests : XCTestCase
         // The decoded market exists
         stopOnFailure { XCTAssertNotNil(decodedMarket) }
         // and matches the original
+        //swiftlint:disable force_unwrapping
         XCTAssertEqual(decodedMarket!, market)
+        //swiftlint:enable force_unwrapping
     }
-    
+
     func testWillNotEncodeWithoutArchiver()
     {
         let market = Market(name: "Abbandando's Groceria")
         let data = MarketData(market)
         let unarchiver = MockUnarchiver(fromData: data)
-        
+
         let repo = MarketRepository(decoder: unarchiver)
-        
+
         XCTAssertThrowsError(try repo.write(market))
     }
-    
+
     func testWillNotDecodeWithoutUnarchiver()
     {
         let market = Market(name: "Abbandando's Groceria")
         let archiver = MockArchiver()
-        
+
         let repo = MarketRepository(encoder: archiver)
-        
+
         XCTAssertThrowsError(try repo.readMarket(forKey: market.ident))
     }
-    
+
     func testCannotDecodeNonexistentKey()
     {
         let market = Market(name: "Abbandando's Groceria")
         let data = MarketData(market)
         let unarchiver = MockUnarchiver(fromData: data)
-        
+
         let repo = MarketRepository(decoder: unarchiver)
-        
+
         XCTAssertThrowsError(try repo.readMarket(forKey: ""))
     }
 }
 
-class MockArchiver : MockEncoder 
+class MockArchiver : MockEncoder
 {
     var didEncode: Bool = false
     var key: MarketRepository.Key? = nil
-    
-    override func encode(codable codable: AnyObject, forKey key: String) 
+
+    override func encode(codable codable: AnyObject, forKey key: String)
     {
         self.didEncode = true
         if let marketData = codable as? MarketData {
@@ -92,12 +96,12 @@ class MockUnarchiver : MockDecoder
     var didDecode: Bool = false
     var key: MarketRepository.Key? = nil
     let data: MarketData
-    
+
     init(fromData data: MarketData)
     {
         self.data = data
     }
-    
+
     override func decodeCodable(forKey key: String) -> AnyObject?
     {
         self.didDecode = true

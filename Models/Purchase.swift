@@ -3,8 +3,8 @@
  */
 struct Purchase : MarketItem
 {
-    /** 
-     * The represented `Merch`; this provides access to name and unit, and 
+    /**
+     * The represented `Merch`; this provides access to name and unit, and
      * facilitates sort.
      */
     let merch: Merch
@@ -18,7 +18,7 @@ struct Purchase : MarketItem
     let quantity: UInt
     /** The state of the item w/r/t the user's "shopping basket": */
     let isCheckedOff: Bool
-    
+
     /** Creation for a given `Merch`, with quantity. */
     init(merch: Merch, quantity: UInt=0)
     {
@@ -27,49 +27,50 @@ struct Purchase : MarketItem
         self.note = nil
         self.isCheckedOff = false
     }
-    
+
     var searchKey: Merch { return self.merch }
-    
+
     //MARK: - Sortability
     /* Purchases simply sort by their contained Merch. */
     typealias SortKey = Merch.SortKey
-    
-    static func comparator(forKey key: SortKey) -> (Purchase, Purchase) -> Bool
+
+    static func comparator(forKey key: SortKey)
+               -> ((Purchase, Purchase) -> Bool)
     {
         return { (lhs: Purchase, rhs: Purchase) -> Bool in
             let comparator = Merch.comparator(forKey: key)
             return comparator(lhs.merch, rhs.merch)
         }
     }
-    
+
     /** Mutation: checking off, editing name, unit, note, or quantity */
-    func changingName(to name: String) -> Purchase 
+    func changingName(to name: String) -> Purchase
     {
         let merch = self.merch.changingName(to: name)
         return Purchase(copy: self, merch: merch)
     }
-    
-    func changingUnit(to unit: Unit) -> Purchase 
+
+    func changingUnit(to unit: Unit) -> Purchase
     {
         let merch = self.merch.changingUnit(to: unit)
         return Purchase(copy: self, merch: merch)
     }
-    
+
     func changingNote(to note: String?) -> Purchase
     {
         return Purchase(copy: self, quantity: self.quantity, note: note)
     }
-    
+
     func changingQuantity(to quantity: UInt) -> Purchase
     {
         return Purchase(copy: self, quantity: quantity, note: self.note)
     }
-    
+
     func checkingOff() -> Purchase
     {
         return Purchase(copy: self, checkingOff: true)
     }
-    
+
     func unchecking() -> Purchase
     {
         return Purchase(copy: self, checkingOff: false)
@@ -82,7 +83,7 @@ struct Purchase : MarketItem
         self.quantity = original.quantity
         self.isCheckedOff = checked
     }
-    
+
     private init(copy original: Purchase,
           quantity newQuantity: UInt,
                   note newNote: String?)
@@ -92,7 +93,7 @@ struct Purchase : MarketItem
         self.quantity = newQuantity
         self.isCheckedOff = original.isCheckedOff
     }
-    
+
     private init(copy original: Purchase,
                 merch newMerch: Merch)
     {

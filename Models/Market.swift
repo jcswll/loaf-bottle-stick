@@ -2,7 +2,7 @@ import Foundation
 /**
  * A `Market` is a container for a list of `Merch` (the "inventory"),
  * and a list of `Purchases` (a "trip").
- * It represents a place the user goes to buy things.  
+ * It represents a place the user goes to buy things.
  */
 struct Market
 {
@@ -25,12 +25,12 @@ struct Market
         self.inventory = MarketList()
         self.trip = MarketList()
     }
-    
+
     /** Creation from given field values */
-    init(name: String, 
-         ident: Market.UniqueID, 
-         inventory: MarketList<Merch>, 
-         trip: MarketList<Purchase>) 
+    init(name: String,
+         ident: Market.UniqueID,
+         inventory: MarketList<Merch>,
+         trip: MarketList<Purchase>)
     {
         self.name = name
         self.ident = ident

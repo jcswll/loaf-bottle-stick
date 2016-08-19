@@ -4,7 +4,7 @@ struct MerchInfo
     let name: String
     let unit: Unit?
     let quantity: UInt?
-    
+
     init(_ merch: Merch)
     {
         self.name = merch.name

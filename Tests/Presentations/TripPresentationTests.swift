@@ -16,7 +16,7 @@ class TripPresentationTests : XCTestCase
     func testPresentsListSorted()
     {
         let sortKeys: [Purchase.SortKey] = [.Name, .Date, .Uses]
-        for sortKey in sortKeys 
+        for sortKey in sortKeys
         {
             let comparator = Purchase.comparator(forKey: sortKey)
             let sortedNames = self.trip.items.sort(comparator)
@@ -30,18 +30,18 @@ class TripPresentationTests : XCTestCase
                            })
         }
     }
-    
+
     func testNotifiesViewOnChangeOrder()
     {
         let newSortKey: Purchase.SortKey = .Uses
         var sentDidChangeOrder = false
         self.presentation.didUpdate = { sentDidChangeOrder = true }
-        
+
         self.presentation.sortKey = newSortKey
-        
+
         XCTAssertTrue(sentDidChangeOrder)
     }
-    
+
     //MARK: Addition
     func testCanAdd()
     {
@@ -55,33 +55,33 @@ class TripPresentationTests : XCTestCase
                                    }
         XCTAssertTrue(containsPresentation)
     }
-    
+
     func testIsSortedAfterAdd()
     {
         let addition = Purchase.offListDummy
         let sortedNames = (self.trip.items + [addition])
                             .map { $0.name }
                             .sort((<))
-        
+
         _ = try? self.presentation.add(addition)
-        
+
         XCTAssertEqual(sortedNames,
                        self.presentation.subPresentations.map {
                                $0.name
                        })
     }
-    
+
     func testNotifiesViewAfterAdd()
     {
         let addition = Purchase.offListDummy
         var sentDidUpdate = false
         self.presentation.didUpdate = { sentDidUpdate = true }
-        
+
         _ = try? self.presentation.add(addition)
-        
+
         XCTAssertTrue(sentDidUpdate)
     }
-    
+
     //MARK: Deletion
     func testCanDelete()
     {
@@ -94,40 +94,42 @@ class TripPresentationTests : XCTestCase
                            $0.name == deleted.name
                        })
     }
-    
+
     func testNotifiesViewOnDelete()
     {
         let deleteIdx = 3
         var sentDidUpdate = false
         self.presentation.didUpdate = { sentDidUpdate = true }
-        
+
         self.presentation.deletePurchase(atIndex: deleteIdx)
-        
+
         XCTAssertTrue(sentDidUpdate)
     }
-    
-    
+
+
     func testNotifiesParentOnDelete()
     {
         let deleteIdx = 3
         let nameToDelete = self.presentation.subPresentations[deleteIdx].name
         var updatedTrip: MarketList<Purchase>?
         var deletedPurchase: Purchase?
-        self.presentation.didDeletePurchase = { 
+        self.presentation.didDeletePurchase = {
             (trip, purchase) in
                 updatedTrip = trip
                 deletedPurchase = purchase
         }
-        
+
         self.presentation.deletePurchase(atIndex: deleteIdx)
-        
+
         stopOnFailure { XCTAssertNotNil(updatedTrip) }
         stopOnFailure { XCTAssertNotNil(deletedPurchase) }
+        // swiftlint:disable force_unwrapping
         XCTAssertEqual(nameToDelete, deletedPurchase!.name)
         let key = deletedPurchase!.searchKey
         XCTAssertNil(updatedTrip!.item(forKey: key))
+        // swiftlint:enable force_unwrapping
     }
-    
+
     //MARK: Splitting
     func checkedAndUncheckedPurchases() -> [Purchase]
     {
@@ -135,29 +137,31 @@ class TripPresentationTests : XCTestCase
                 Purchase(merch: Merch(name: "Broccoli", unit: nil)),
                 Purchase(merch: Merch(name: "Carrots", unit: nil)),
                 Purchase(merch: Merch(name: "Eggs", unit: nil)),
+                //swiftlint:disable line_length
                 Purchase(merch: Merch(name: "Apples", unit: nil)).checkingOff(),
                 Purchase(merch: Merch(name: "Quince", unit: nil)).checkingOff()]
+                //swiftlint:enable line_length
     }
-    
+
     func testSplitting()
     {
         let purchases = self.checkedAndUncheckedPurchases()
         let trip = MarketList(items: Set(purchases))
         let presentation = TripPresentation(trip: trip)
-        
+
         presentation.separateCheckedItems = true
-        
-        XCTAssertEqual(purchases.map { $0.name },   
+
+        XCTAssertEqual(purchases.map { $0.name },
                        presentation.subPresentations.map { $0.name })
     }
-    
+
     func testNotifiesViewWhenChangingSplitting()
     {
         var sentDidUpdate = false
         self.presentation.didUpdate = { sentDidUpdate = true }
-        
+
         self.presentation.separateCheckedItems = true
-        
+
         XCTAssertTrue(sentDidUpdate)
     }
 }

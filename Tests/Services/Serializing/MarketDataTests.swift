@@ -2,7 +2,7 @@ import XCTest
 @testable import LoafBottleStickKit
 
 class MarketDataTests : XCTestCase
-{    
+{
     func testHoldsData()
     {
         let name = "Abbandando's Groceria"
@@ -27,13 +27,13 @@ class MarketDataTests : XCTestCase
         let ident = "ABCD-1234"
         let inventory = MarketList<Merch>()
         let trip = MarketList<Purchase>()
-        
-        let data = MarketData(name: name, 
-                             ident: ident, 
-                         inventory: inventory, 
+
+        let data = MarketData(name: name,
+                             ident: ident,
+                         inventory: inventory,
                               trip: trip)
         let market = data.market
-        
+
         XCTAssertEqual(name, market.name)
         XCTAssertEqual(ident, market.ident)
         XCTAssertEqual(inventory, market.inventory)
@@ -47,9 +47,9 @@ class MarketDataTests : XCTestCase
         let inventory = MarketList<Merch>()
         let trip = MarketList<Purchase>()
 
-        let market = Market(name: name, 
+        let market = Market(name: name,
                            ident: ident,
-                       inventory: inventory, 
+                       inventory: inventory,
                             trip: trip)
         let data = MarketData(market)
 
@@ -69,11 +69,11 @@ class MarketDataTests : XCTestCase
         }
 
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded, 
-                  "Actual and expected decoding keys do not match.\n" + 
+        XCTAssert(decoder.fullyDecoded,
+                  "Actual and expected decoding keys do not match.\n" +
                   "Expected \(decoder.decodedKeys)\n" +
                   "Have \(Array(decoder.info.keys))")
-        
+
         let inventory = decoder.inventory.marketList
         let trip = decoder.trip.marketList
 
@@ -106,6 +106,7 @@ class MarketDataTests : XCTestCase
 
         // All data present and correct
         stopOnFailure{ XCTAssertNotNil(encoder.name) }
+        //swiftlint:disable force_unwrapping
         XCTAssertEqual(encoder.name!, name)
         stopOnFailure { XCTAssertNotNil(encoder.ident) }
         XCTAssertEqual(encoder.ident!, ident)
@@ -113,6 +114,7 @@ class MarketDataTests : XCTestCase
         XCTAssertEqual(encoder.inventory!.marketList, inventory)
         stopOnFailure { XCTAssertNotNil(encoder.trip) }
         XCTAssertEqual(encoder.trip!.marketList, trip)
+        //swiftlint:enable force_unwrapping
     }
 }
 
@@ -125,14 +127,16 @@ class MockMarketDecoder : MockDecoder
                     "trip" : MarketListData<PurchaseData>(MarketList())]
     }
 
+    //swiftlint:disable force_cast
     var name: String { return self.info["name"] as! String }
     var ident: String { return self.info["ident"] as! String }
-    var inventory: MarketListData<MerchData> { 
+    var inventory: MarketListData<MerchData> {
         return self.info["inventory"] as! MarketListData<MerchData>
     }
-    var trip: MarketListData<PurchaseData> { 
+    var trip: MarketListData<PurchaseData> {
         return self.info["trip"] as! MarketListData<PurchaseData>
     }
+    //swiftlint:enable force_cast
 }
 
 class MockMarketEncoder : MockEncoder

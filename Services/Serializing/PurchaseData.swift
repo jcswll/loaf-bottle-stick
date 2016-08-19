@@ -9,7 +9,7 @@ class PurchaseData : MarketItemData
     let quantity: UInt
     /** The `Purchase`'s state of being checked off the list */
     let isCheckedOff: Bool
-    
+
     /** The `Purchase` represented by this data. */
     var item: Purchase { return Purchase(merch: self.merch,
                                           note: self.note,
@@ -34,27 +34,27 @@ class PurchaseData : MarketItemData
         self.quantity = item.quantity
         self.isCheckedOff = item.isCheckedOff
     }
-    
+
     /** Create from data provided by the given decoder. */
     convenience required init?(decoder: Decoder)
     {
-        guard 
+        guard
             let merchDecoded = decoder.decodeCodable(forKey: "merch"),
             let merchData = merchDecoded as? MerchData,
             let note = decoder.decodeString(forKey: "note"),
             let quantity = decoder.decodeUnsignedInt(forKey: "quantity"),
             let checkedOff = decoder.decodeBool(forKey: "checkedOff")
         else {
-            
+
             return nil
         }
-        
+
         self.init(merch: merchData.item,
-                   note: (note != "") ? note : nil, 
+                   note: (note != "") ? note : nil,
                quantity: quantity,
              checkedOff: checkedOff)
     }
-    
+
     /** Provide data to the encoder for archiving. */
     func encode(withEncoder encoder: Encoder)
     {

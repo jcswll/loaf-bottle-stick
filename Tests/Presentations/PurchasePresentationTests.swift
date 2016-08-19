@@ -5,71 +5,71 @@ class PurchasePresentationTests : XCTestCase
 {
     let purchase = Purchase(merch: Merch.dummy, quantity: 1)
     var presentation: PurchasePresentation!
-    
+
     override func setUp()
     {
         self.presentation = PurchasePresentation(purchase: self.purchase)
     }
-    
+
     //MARK: - Field values
     func testPresentsAllFields()
     {
         XCTAssertEqual(self.purchase.name, self.presentation.name)
-        XCTAssertEqual(String(self.purchase.unit), 
+        XCTAssertEqual(String(self.purchase.unit),
                        self.presentation.unitDescription)
         XCTAssertEqual(self.purchase.note, self.presentation.note)
-        XCTAssertEqual(String(self.purchase.quantity), 
+        XCTAssertEqual(String(self.purchase.quantity),
                        self.presentation.quantityDescription)
         XCTAssertEqual(self.purchase.isCheckedOff,
                        self.presentation.isCheckedOff)
     }
-    
+
     func testProvidesPurchaseOnDeletionNotice()
     {
         self.presentation.willDelete { deletingPurchase in
             XCTAssertEqual(self.purchase, deletingPurchase)
         }
     }
-    
+
     // Description of unit should changed based on quantity
     func testZeroUnitDescribedAsNil()
     {
         let purchase = Purchase(merch: Merch.dummy, quantity: 0)
-        
+
         let presentation = PurchasePresentation(purchase: purchase)
-        
+
         XCTAssertNil(presentation.unitDescription)
     }
-    
+
     func testPluralUnitDescription()
     {
         let purchase = Purchase(merch: Merch.dummy, quantity: 3)
-        
+
         let presentation = PurchasePresentation(purchase: purchase)
-        
-        XCTAssertEqual(purchase.unit.pluralName(), 
+
+        XCTAssertEqual(purchase.unit.pluralName(),
                        presentation.unitDescription)
     }
-    
+
     func testZeroQuantityDescribedAsNil()
     {
         let purchase = Purchase(merch: Merch.dummy, quantity: 0)
-        
+
         let presentation = PurchasePresentation(purchase: purchase)
-        
+
         XCTAssertNil(presentation.quantityDescription)
-    }  
-    
+    }
+
     //MARK: - Mutation
     func testChangesName()
     {
         let newName = Merch.offListDummy.name
-        
+
         self.presentation.name = newName
-        
+
         XCTAssertEqual(newName, self.presentation.name)
     }
-    
+
    func testChangesUnit()
    {
        let newUnit = Merch.offListDummy.unit
@@ -78,26 +78,26 @@ class PurchasePresentationTests : XCTestCase
 
        XCTAssertEqual(String(newUnit), self.presentation.unitDescription)
    }
-   
+
    func testChangesNote()
    {
        let newNote = "Get the organic kind"
-       
+
        self.presentation.note = newNote
-       
+
        XCTAssertEqual(newNote, self.presentation.note)
    }
-   
+
    func testChangesQuantity()
    {
        let newQuantity: UInt = 17
-       
+
        self.presentation.setQuantity(newQuantity)
-       
-       XCTAssertEqual(String(newQuantity), 
+
+       XCTAssertEqual(String(newQuantity),
                       self.presentation.quantityDescription)
    }
-   
+
    func testChecksAndUnchecks()
    {
        self.presentation.toggleChecked()
@@ -105,139 +105,147 @@ class PurchasePresentationTests : XCTestCase
        self.presentation.toggleChecked()
        XCTAssertFalse(self.presentation.isCheckedOff)
    }
-   
+
    //MARK: - View notifications
    func testNotifiesViewOnChangingName()
    {
        var sentDidUpdate = false
        self.presentation.didUpdate = { sentDidUpdate = true }
-       
+
        self.presentation.name = ""
-       
+
        XCTAssertTrue(sentDidUpdate)
    }
-   
+
    func testNotifiesViewOnChangingUnit()
    {
        var sentDidUpdate = false
        self.presentation.didUpdate = { sentDidUpdate = true }
-       
+
        self.presentation.setUnit(.Loaf)
-       
+
        XCTAssertTrue(sentDidUpdate)
    }
-   
+
    func testNotifiesViewOnChangingNote()
    {
        var sentDidUpdate = false
        self.presentation.didUpdate = { sentDidUpdate = true }
-       
+
        self.presentation.note = "Get the organic kind"
-       
+
        XCTAssertTrue(sentDidUpdate)
    }
-   
+
    func testNotifiesViewOnChangingQuantity()
    {
        var sentDidUpdate = false
        self.presentation.didUpdate = { sentDidUpdate = true }
-       
+
        self.presentation.setQuantity(17)
-       
+
        XCTAssertTrue(sentDidUpdate)
    }
-   
+
    func testNotifiesViewOnTogglingChecked()
    {
        var sentDidUpdate = false
        self.presentation.didUpdate = { sentDidUpdate = true }
-       
+
        self.presentation.toggleChecked()
-       
+
        XCTAssertTrue(sentDidUpdate)
    }
-   
+
    //MARK: - Parent notifications: sent and passing expected values
    func testNotifiesParentOnChangingName()
    {
        let newName = Merch.offListDummy.name
        var sentMerchDidChange = false
        var oldMerch, newMerch: Merch?
-       self.presentation.merchDidChange = { 
-           (oldVal, newVal) in 
+       self.presentation.merchDidChange = {
+           (oldVal, newVal) in
                sentMerchDidChange = true
                (oldMerch, newMerch) = (oldVal, newVal)
        }
-       
+
        self.presentation.name = newName
-       
+
        XCTAssertTrue(sentMerchDidChange)
        stopOnFailure { XCTAssertNotNil(oldMerch) }
+       //swiftlint:disable force_unwrapping
        XCTAssertEqual(self.purchase.merch, oldMerch!)
        stopOnFailure { XCTAssertNotNil(newMerch) }
        XCTAssertEqual(newName, newMerch!.name)
+       //swiftlint:enable force_unwrapping
    }
-   
+
    func testNotifiesParentOnChangingUnit()
    {
        let newUnit = Merch.offListDummy.unit
        var sentMerchDidChange = false
        var oldMerch, newMerch: Merch?
-       self.presentation.merchDidChange = { 
-           (oldVal, newVal) in 
+       self.presentation.merchDidChange = {
+           (oldVal, newVal) in
                sentMerchDidChange = true
                (oldMerch, newMerch) = (oldVal, newVal)
        }
-       
+
        self.presentation.setUnit(newUnit)
-       
+
        XCTAssertTrue(sentMerchDidChange)
        stopOnFailure { XCTAssertNotNil(oldMerch) }
+       //swiftlint:disable force_unwrapping
        XCTAssertEqual(self.purchase.merch, oldMerch!)
        stopOnFailure { XCTAssertNotNil(newMerch) }
        XCTAssertEqual(newUnit, newMerch!.unit)
+       //swiftlint:enable force_unwrapping
    }
-   
+
    func testNotifiesParentOnChangingQuantity()
    {
        let newQuantity: UInt = 17
        var sentValueDidChange = false
        var oldPurchase, newPurchase: Purchase?
-       self.presentation.valueDidChange = { 
-           (oldVal, newVal) in 
+       self.presentation.valueDidChange = {
+           (oldVal, newVal) in
                sentValueDidChange = true
                (oldPurchase, newPurchase) = (oldVal, newVal)
        }
-       
+
        self.presentation.setQuantity(newQuantity)
-       
+
        XCTAssertTrue(sentValueDidChange)
        stopOnFailure { XCTAssertNotNil(oldPurchase) }
        XCTAssertEqual(self.purchase, oldPurchase)
        stopOnFailure { XCTAssertNotNil(newPurchase) }
+       //swiftlint:disable force_unwrapping
        XCTAssertEqual(newQuantity, newPurchase!.quantity)
+       //swiftlint:enable force_unwrapping
    }
-   
+
    func testNotifiesParentOnChangingNote()
    {
        let newNote = "Get the organic kind"
        var sentValueDidChange = false
        var oldPurchase, newPurchase: Purchase?
-       self.presentation.valueDidChange = { 
-           (oldVal, newVal) in 
+       self.presentation.valueDidChange = {
+           (oldVal, newVal) in
                sentValueDidChange = true
                (oldPurchase, newPurchase) = (oldVal, newVal)
        }
-       
+
        self.presentation.note = newNote
-       
+
        XCTAssertTrue(sentValueDidChange)
        stopOnFailure { XCTAssertNotNil(oldPurchase) }
        XCTAssertEqual(self.purchase, oldPurchase)
        stopOnFailure { XCTAssertNotNil(newPurchase) }
+       //swiftlint:disable force_unwrapping
        XCTAssertEqual(newNote, newPurchase!.note)
+       //swiftlint:enable force_unwrapping
    }
-   
+
    func testNotifiesParentOnTogglingChecked()
    {
        var sentDidToggle = false
@@ -248,18 +256,20 @@ class PurchasePresentationTests : XCTestCase
                sentDidToggle = true
                checkedPurchase = purchase
        }
-       self.presentation.valueDidChange = { 
-           (oldVal, newVal) in 
+       self.presentation.valueDidChange = {
+           (oldVal, newVal) in
                sentValueDidChange = true
                (oldPurchase, newPurchase) = (oldVal, newVal)
        }
-       
+
        self.presentation.toggleChecked()
-       
+
        XCTAssertTrue(sentDidToggle)
        XCTAssertTrue(sentValueDidChange)
        stopOnFailure { XCTAssertNotNil(checkedPurchase) }
+       //swiftlint:disable force_unwrapping
        XCTAssertTrue(checkedPurchase!.isCheckedOff)
+       //swiftlint:enable force_unwrapping
        stopOnFailure { XCTAssertNotNil(oldPurchase) }
        XCTAssertEqual(self.purchase, oldPurchase)
        stopOnFailure { XCTAssertNotNil(newPurchase) }

@@ -4,7 +4,7 @@ import XCTest
 class MarketListDataTests : XCTestCase
 {
     let merch = Merch.dummy
-    
+
     func testHoldsData()
     {
         let items: Set<Merch> = [self.merch]
@@ -23,7 +23,7 @@ class MarketListDataTests : XCTestCase
 
         XCTAssertEqual(Set(items), list.items)
     }
-    
+
     func testCanDecomposeMarketList()
     {
         let items: Set<Merch> = [self.merch]
@@ -44,11 +44,11 @@ class MarketListDataTests : XCTestCase
         }
 
         // All expected keys, and *only* expected keys, decoded
-        XCTAssert(decoder.fullyDecoded, 
-                  "Actual and expected decoding keys do not match.\n" + 
+        XCTAssert(decoder.fullyDecoded,
+                  "Actual and expected decoding keys do not match.\n" +
                   "Expected \(decoder.decodedKeys)\n" +
                   "Have \(Array(decoder.info.keys))")
-        
+
         let decoderItems = Set<Merch>(decoder.items.map { $0.item  })
 
         // All data correct
@@ -71,20 +71,23 @@ class MarketListDataTests : XCTestCase
                   "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
+        // swiftlint:disable force_unwrapping
         stopOnFailure { XCTAssertNotNil(encoder.items) }
         let encoderItems = Set<Merch>(encoder.items!.map { $0.item })
         XCTAssertEqual(encoderItems, items)
+        // swiftlint:enable force_unwrapping
     }
 }
 
 class MockMarketListDecoder : MockDecoder
 {
     override var info: [String : AnyObject] {
-        return ["items" : [MerchData(item: Merch.dummy), 
+        return ["items" : [MerchData(item: Merch.dummy),
                            MerchData(item: Merch.dummy)]]
     }
-
+    // swiftlint:disable force_cast
     var items: [MerchData] { return self.info["items"] as! [MerchData] }
+    // swiftlint:enable force_cast
 }
 
 class MockMarketListEncoder : MockEncoder

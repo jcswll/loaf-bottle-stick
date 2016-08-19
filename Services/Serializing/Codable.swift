@@ -1,5 +1,5 @@
-/** 
- * A type that can be serialized and deserialized by `Encoder` and `Decoder`. 
+/**
+ * A type that can be serialized and deserialized by `Encoder` and `Decoder`.
  *
  * Implementers must store and retrieve their essential properties by calling
  * the appropriate "encode" and "decode" methods on the provided coder.
@@ -8,6 +8,6 @@
  */
 protocol Codable
 {
-    init?(decoder: Decoder)  
+    init?(decoder: Decoder)
     func encode(withEncoder encoder: Encoder)
 }

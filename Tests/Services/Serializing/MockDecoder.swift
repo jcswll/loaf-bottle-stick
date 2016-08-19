@@ -1,6 +1,6 @@
 @testable import LoafBottleStickKit
 
-/** 
+/**
  * Mock decoder base class for testing; retrieves data from a dictionary,
  * keeps track of requested keys.
  */
@@ -10,9 +10,9 @@ class MockDecoder : Decoder
     var decodedKeys: [String] = []
     // Subclasses must create the dictionary with necessary pairs.
     var info: [String : AnyObject] { return [:] }
-    
-    var fullyDecoded: Bool { 
-        return self.decodedKeys.sort() == self.info.keys.sort() 
+
+    var fullyDecoded: Bool {
+        return self.decodedKeys.sort() == self.info.keys.sort()
     }
 
     func decodeCodable(forKey key: String) -> AnyObject?
@@ -50,7 +50,7 @@ class MockDecoder : Decoder
         self.decodedKeys.append(key)
         return self.info[key] as? Bool
     }
-    
+
     func decodeArray(forKey key: String) -> [AnyObject]?
     {
         self.decodedKeys.append(key)

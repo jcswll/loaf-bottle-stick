@@ -1,4 +1,4 @@
-/** 
+/**
  * A `MarketList` manages a collection of `MarketItem`s, creating them,
  * performing updates, and handling requests for deletion.
  */
@@ -6,18 +6,18 @@ struct MarketList<Item: MarketItem>
 {
     /** The inner collection of managed items. */
     private(set) var items: Set<Item>
-    
+
     /** Default creation, empty collection of items. */
     init()
     {
         self.items = []
     }
-    
+
     init(items: Set<Item>)
     {
         self.items = items
     }
-    
+
     /**
      * Add the item to the list.
      *
@@ -31,7 +31,7 @@ struct MarketList<Item: MarketItem>
         }
         self.items.insert(item)
     }
-    
+
     /**
      * Remove the item from the list.
      *
@@ -44,9 +44,9 @@ struct MarketList<Item: MarketItem>
             throw MarketListError.ItemNotFound(item)
         }
     }
-    
-    /** 
-     * Replace the old item with the new. 
+
+    /**
+     * Replace the old item with the new.
      *
      * - Throws: `MarketListError.ItemNotFound`, with the item associated, if
      * the first item does not exist in the list.
@@ -58,7 +58,7 @@ struct MarketList<Item: MarketItem>
         }
         self.items.insert(replacement)
     }
-    
+
     /** Find the item matching the given key in the collection. */
     func item(forKey key: Item.SearchKey) -> Item?
     {
@@ -82,7 +82,7 @@ enum MarketListError<Item: MarketItem> : ErrorType
      * found in the list.
      */
     case ItemNotFound(Item)
-    
+
     /**
      * Thrown when an `Item` passed in for addition is already in the list.
      */

@@ -2,13 +2,13 @@
 class InventoryAutocompletePresentation
 {
     private let inventory: Inventory
-    
+
     init(inventory: Inventory)
     {
         self.inventory = inventory
     }
-    
-    func suggestedMerchInfo(forTerm prefix: String) -> [MerchInfo] 
+
+    func suggestedMerchInfo(forTerm prefix: String) -> [MerchInfo]
     {
         return self.inventory.merch(forTerm: prefix).map { MerchInfo($0) }
     }

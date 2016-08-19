@@ -11,23 +11,23 @@ class MerchData : MarketItemData
     let numUses: UInt
     /** The `Merch`'s internal last usage date */
     let lastUsed: NSDate
-    
+
     /** The `Merch` represented by this data. */
     var item: Merch { return Merch(name: self.name,
                                    unit: self.unit,
                                 numUses: self.numUses,
                                lastUsed: self.lastUsed)
     }
-    
+
     /** Create by composing from given field values */
     init(name: String, unit: Unit, numUses: UInt, lastUsed: NSDate)
     {
         self.name = name
-        self.unit = unit 
+        self.unit = unit
         self.numUses = numUses
         self.lastUsed = lastUsed
     }
-    
+
     /** Create by decomposing an existing `Merch`. */
     required init(item: Merch)
     {
@@ -36,27 +36,27 @@ class MerchData : MarketItemData
         self.numUses = item.numUses
         self.lastUsed = item.lastUsed
     }
-    
+
     /** Create from data provided by the given decoder. */
     convenience required init?(decoder: Decoder)
     {
-        guard 
+        guard
             let name = decoder.decodeString(forKey: "name"),
             let unitName = decoder.decodeString(forKey: "unit"),
             let unit = Unit(rawValue: unitName),
             let lastUsed = decoder.decodeDate(forKey: "lastUsed"),
             let numUses = decoder.decodeUnsignedInt(forKey: "numUses")
         else {
-            
+
             return nil
         }
-        
-        self.init(name: name, 
-                  unit: unit, 
-               numUses: numUses, 
+
+        self.init(name: name,
+                  unit: unit,
+               numUses: numUses,
               lastUsed: lastUsed)
     }
-    
+
     /** Provide data to the encoder for archiving. */
     func encode(withEncoder encoder: Encoder)
     {
@@ -71,7 +71,7 @@ private extension Merch
 {
     init(name: String, unit: Unit, numUses: UInt, lastUsed: NSDate)
     {
-        self.name = name   
+        self.name = name
         self.unit = unit
         self.numUses = numUses
         self.lastUsed = lastUsed

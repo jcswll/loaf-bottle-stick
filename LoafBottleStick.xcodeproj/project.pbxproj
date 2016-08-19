@@ -467,6 +467,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 031FF7871D56E97A00351869 /* Build configuration list for PBXNativeTarget "LoafBottleStickKit" */;
 			buildPhases = (
+				03E843F81D63ECDD00760AE0 /* ShellScript */,
 				031FF76B1D56E97900351869 /* Sources */,
 				031FF76C1D56E97900351869 /* Frameworks */,
 				031FF76D1D56E97900351869 /* Headers */,
@@ -579,6 +580,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03E843F81D63ECDD00760AE0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		031FF6891D56B42400351869 /* Sources */ = {
