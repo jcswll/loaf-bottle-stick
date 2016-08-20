@@ -24,6 +24,7 @@ extension Merch
         let intervals: [NSTimeInterval] = [4, 5, 6, 1, 3, 2]
         let dates = intervals.map { NSDate(timeIntervalSince1970: $0) }
         let info = zip(self.dummyNames, zip(uses, dates))
+
         return info.map { Merch(name: $0.0,
                                 unit: .Each,
                              numUses: $0.1.0,

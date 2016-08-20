@@ -38,6 +38,7 @@ struct Purchase : MarketItem
                -> ((Purchase, Purchase) -> Bool)
     {
         return { (lhs: Purchase, rhs: Purchase) -> Bool in
+
             let comparator = Merch.comparator(forKey: key)
             return comparator(lhs.merch, rhs.merch)
         }

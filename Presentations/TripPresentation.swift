@@ -140,6 +140,7 @@ class TripPresentation
             self.sortSubpresentationsSeparated()
         }
         else {
+
             self.subPresentations.sortInPlace {
                 (lhs, rhs) in
                     lhs.compare(to: rhs, byKey: self.sortKey)
@@ -156,9 +157,11 @@ class TripPresentation
         let (checked, unchecked) = self.subPresentations
                                        .partition { $0.isCheckedOff }
         let comparator = {
+
             (lhs: PurchasePresentation, rhs: PurchasePresentation) -> Bool in
                 lhs.compare(to: rhs, byKey: self.sortKey)
         }
+
         self.subPresentations = unchecked.sort(comparator) +
                                 checked.sort(comparator)
     }

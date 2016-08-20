@@ -22,11 +22,13 @@ class UnitEnumTests : XCTestCase
                        .Bar : "Bars", .Each : "Each"]
 
         for unit in Unit.Ton...Unit.Each {
+
             let computedPlural = unit.pluralName()
             guard let expectedPlural = plurals[unit] else {
                 XCTFail("Expected value for plural of \(unit) not provided.")
                 continue
             }
+
             XCTAssertEqual(expectedPlural, computedPlural)
         }
     }
@@ -39,8 +41,8 @@ extension Unit : ForwardIndexType
     // swiftlint:disable function_body_length
     func successor() -> Unit
     {
-        switch self
-        {    case .Ton:
+        switch self {
+            case .Ton:
                 return .Pound
             case .Pound:
                 return .Ounce

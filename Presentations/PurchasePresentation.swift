@@ -15,7 +15,7 @@ class PurchasePresentation
     {
         self.purchase = purchase
     }
-
+                          
     /** Allow sorting lists of presentations without exposing `merch`. */
     func compare(to other: PurchasePresentation, byKey key: Purchase.SortKey)
         -> Bool
@@ -28,9 +28,11 @@ class PurchasePresentation
     /** The name of the enclosed `Purchase`. */
     var name: String
     {
-        get { return self.purchase.name }
-        set(name)
-        {
+        get {
+            return self.purchase.name
+        }
+        set(name) {
+
             self.saveValue()
             self.purchase = self.purchase.changingName(to: name)
             self.announceChanges(toMerch: true)
@@ -61,9 +63,11 @@ class PurchasePresentation
     /** The note of the enclosed `Purchase`. */
     var note: String?
     {
-        get { return self.purchase.note }
-        set(note)
-        {
+        get {
+            return self.purchase.note
+        }
+        set(note) {
+
             self.saveValue()
             self.purchase = self.purchase.changingNote(to: note)
             self.announceChanges()

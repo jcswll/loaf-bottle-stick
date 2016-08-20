@@ -12,9 +12,11 @@ class MarketPresentation
     /** Market name */
     var name: String
     {
-        get { return self.market.name }
-        set(name)
-        {
+        get {
+            return self.market.name
+        }
+        set(name) {
+
             self.market.name = name
             self.didUpdate?()
         }

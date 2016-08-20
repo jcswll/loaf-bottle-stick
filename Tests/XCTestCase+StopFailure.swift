@@ -3,7 +3,7 @@ import XCTest
 extension XCTestCase
 {
     /** Do not continue after failure of any assertions in the closure. */
-    func stopOnFailure(assertions: () -> Void)
+    func stopOnFailure(@noescape assertions: () -> Void)
     {
         self.continueAfterFailure = false
         // Reset continue status for other tests. Happily, this does run even

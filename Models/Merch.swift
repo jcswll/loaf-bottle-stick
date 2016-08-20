@@ -68,6 +68,7 @@ struct Merch : MarketItem
     private static func usesComparator(lhs: Merch, rhs: Merch) -> Bool
     {
         let (leftUses, rightUses) = (lhs.numUses, rhs.numUses)
+        // For equal use count, resort to default sort
         guard leftUses != rightUses else {
             return lhs < rhs
         }

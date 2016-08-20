@@ -20,8 +20,10 @@ class InventoryPresentation
     }
 
     //MARK: - Fields
-    var sortKey: Merch.SortKey {
+    var sortKey: Merch.SortKey
+    {
         didSet {
+
             self.sortSubpresentations()
             self.didUpdate?()
         }
@@ -83,14 +85,17 @@ class InventoryPresentation
     private func presentation(forMerch merch: Merch) -> MerchPresentation
     {
         let presentation = MerchPresentation(merch: merch)
+
         presentation.valueDidChange = {
             [weak self] (old, new) in
                 self?.update(old, to: new)
         }
+
         presentation.didPurchase = {
             [weak self] (merch, quantity) in
                 self?.makePurchase?(merch, quantity)
         }
+
         return presentation
     }
 

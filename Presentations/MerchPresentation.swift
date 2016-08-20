@@ -28,9 +28,11 @@ class MerchPresentation
     /** The name of the enclosed `Merch` */
     var name: String
     {
-        get { return self.merch.name }
-        set(name)
-        {
+        get {
+            return self.merch.name
+        }
+        set(name) {
+
             self.saveValue()
             self.merch = self.merch.changingName(to: name)
             self.announceChanges()
