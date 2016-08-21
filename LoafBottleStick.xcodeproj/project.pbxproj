@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		031FF6E11D56BB1700351869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031FF6DE1D56BB1700351869 /* Assets.xcassets */; };
 		031FF6E21D56BB1700351869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF6DF1D56BB1700351869 /* LaunchScreen.storyboard */; };
-		031FF71D1D56BC6000351869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF71C1D56BC6000351869 /* AppDelegate.swift */; };
 		031FF76A1D56E8DB00351869 /* LoafBottleStickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */; };
 		031FF7731D56E97900351869 /* LoafBottleStickKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 031FF7721D56E97900351869 /* LoafBottleStickKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		031FF77A1D56E97900351869 /* LoafBottleStickKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031FF7701D56E97900351869 /* LoafBottleStickKit.framework */; };
@@ -17,7 +16,6 @@
 		031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */; };
 		031FF7901D56E9AD00351869 /* MarketList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E81D56BB3900351869 /* MarketList.swift */; };
 		031FF7921D56E9AD00351869 /* Merch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EA1D56BB3900351869 /* Merch.swift */; };
-		031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EB1D56BB3900351869 /* MerchInfo.swift */; };
 		031FF7941D56E9AD00351869 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6EC1D56BB3900351869 /* Purchase.swift */; };
 		031FF7951D56E9AD00351869 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6ED1D56BB3900351869 /* Unit.swift */; };
 		031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F61D56BB3900351869 /* MarketItem.swift */; };
@@ -66,6 +64,7 @@
 		03B1CDBF1D62CC0E00229C51 /* SequenceType+FirstElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */; };
 		03BE9DCA1D63AAE300D52ED9 /* MarketPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F11D56BB3900351869 /* MarketPresentation.swift */; };
 		03BE9DCC1D63AAFA00D52ED9 /* MarketPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BE9DCB1D63AAFA00D52ED9 /* MarketPresentationTests.swift */; };
+		03E844381D67EC6E00760AE0 /* LBSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E844371D67EC6E00760AE0 /* LBSAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +108,6 @@
 		031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MarketList+SearchKeyMerch.swift"; sourceTree = "<group>"; };
 		031FF6E81D56BB3900351869 /* MarketList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketList.swift; sourceTree = "<group>"; };
 		031FF6EA1D56BB3900351869 /* Merch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merch.swift; sourceTree = "<group>"; };
-		031FF6EB1D56BB3900351869 /* MerchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchInfo.swift; sourceTree = "<group>"; };
 		031FF6EC1D56BB3900351869 /* Purchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		031FF6ED1D56BB3900351869 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		031FF6F01D56BB3900351869 /* InventoryPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryPresentation.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 		031FF6F61D56BB3900351869 /* MarketItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItem.swift; sourceTree = "<group>"; };
 		031FF6F91D56BB3900351869 /* Sortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sortable.swift; sourceTree = "<group>"; };
 		031FF7191D56BB4700351869 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		031FF71C1D56BC6000351869 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoafBottleStickTests.swift; sourceTree = "<group>"; };
 		031FF7701D56E97900351869 /* LoafBottleStickKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoafBottleStickKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		031FF7721D56E97900351869 /* LoafBottleStickKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoafBottleStickKit.h; path = LoafBottleStickKit/LoafBottleStickKit.h; sourceTree = SOURCE_ROOT; };
@@ -164,6 +161,8 @@
 		03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+lt.swift"; sourceTree = "<group>"; };
 		03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+FirstElement.swift"; sourceTree = "<group>"; };
 		03BE9DCB1D63AAFA00D52ED9 /* MarketPresentationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketPresentationTests.swift; path = Presentations/MarketPresentationTests.swift; sourceTree = "<group>"; };
+		03E844361D67EC6E00760AE0 /* LBSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBSAppDelegate.h; path = Controllers/LBSAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		03E844371D67EC6E00760AE0 /* LBSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBSAppDelegate.m; path = Controllers/LBSAppDelegate.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,7 +262,6 @@
 				031FF6E81D56BB3900351869 /* MarketList.swift */,
 				031FF6E71D56BB3900351869 /* MarketList+SearchKeyMerch.swift */,
 				031FF6E61D56BB3900351869 /* Market.swift */,
-				031FF6EB1D56BB3900351869 /* MerchInfo.swift */,
 			);
 			path = Models;
 			sourceTree = SOURCE_ROOT;
@@ -315,7 +313,8 @@
 		031FF71B1D56BC4900351869 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				031FF71C1D56BC6000351869 /* AppDelegate.swift */,
+				03E844361D67EC6E00760AE0 /* LBSAppDelegate.h */,
+				03E844371D67EC6E00760AE0 /* LBSAppDelegate.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -602,7 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031FF71D1D56BC6000351869 /* AppDelegate.swift in Sources */,
+				03E844381D67EC6E00760AE0 /* LBSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +626,6 @@
 				03B1CDA01D5E734700229C51 /* MarketRepository.swift in Sources */,
 				031FF7921D56E9AD00351869 /* Merch.swift in Sources */,
 				03B1CD9C1D5E734700229C51 /* NSKeyedUnarchiver+Decoder.swift in Sources */,
-				031FF7931D56E9AD00351869 /* MerchInfo.swift in Sources */,
 				03B1CDBD1D62CC0E00229C51 /* Array+Partition.swift in Sources */,
 				031FF7941D56E9AD00351869 /* Purchase.swift in Sources */,
 				03B1CDA21D5E734700229C51 /* PurchaseData.swift in Sources */,
