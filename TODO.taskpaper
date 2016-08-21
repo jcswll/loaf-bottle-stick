@@ -1,12 +1,13 @@
-- Fuzzy search for InventoryAutocompletePresentation.suggestedMerchInfo(forTerm:) @enhancement @status(planned) @date-added(2016-07-14)
+- Fuzzy search for InventoryAutocompletePresentation.suggestedMerchInfo(forTerm:) @enhancement @status(planned) @date-added(2016-07-14) @cancelled
 - If user tries to add a purchase for an item already on the Trip, what should we do? @design @status(review) @date-added(2016-07-14)
 - Ability to remove items from Inventory. @status(planned) @date-added(2016-07-15) @done
 - Expose undo @enhancement @status(planned) @date-added(2016-07-22)
 - Refactor saving/setting into transform-with-undo function in MerchPres and PurchPres. @refactor @date-added(2016-07-22)
 - Add quantity tracking to Merch @feature @status(planned) @date-added(2016-07-23)
 - Use didUpdate of MerchPres and PurchPres to only update the particular cells in their containers @enhancement @status(planned) @date-added(2016-07-24)
-- Create `AnyCodable` type eraser to replace the `AnyObject`s in `Encoder`/`Decoder @enhancement @status(planned) @date-added(2016-08-12)
+- Create `AnyCodable` type eraser to replace the `AnyObject`s in `Encoder`/`Decoder @code-quality @status(planned) @date-added(2016-08-12)
 - Implement reverse sorting. @feature @status(planned) @date-added(2016-08-13)
 - Do not sort Inventory unless the sorted-by value changed @enhancement @status(planned) @date-added(2016-08-15) @done(2016-08-15)
 - Use CL Visit Monitoring to try to associate lists with locations, allow quick switching to that list when opening app at the location. @feature @date-added(2016-08-18) @status(maybe)
   - Use local notifications triggered by region monitoring for reminders when near a market with active trip. @feature @status(maybe) @date-added(2016-08-18)
+- Check test code coverage (using SwiftCov? https://github.com/realm/SwiftCov) @code-quality @date-added(2016-08-21) @status(planned)

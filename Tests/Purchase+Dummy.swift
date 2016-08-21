@@ -24,4 +24,3 @@ extension Purchase
         self.isCheckedOff = checkedOff
     }
 }
-
