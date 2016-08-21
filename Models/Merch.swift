@@ -41,8 +41,7 @@ struct Merch : MarketItem
 
     static func comparator(forKey key: SortKey) -> (Merch, Merch) -> Bool
     {
-        switch key
-        {
+        switch key {
             case .Name:
                 return (<)
             case .Date:

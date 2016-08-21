@@ -24,7 +24,9 @@ class UnitEnumTests : XCTestCase
         for unit in Unit.Ton...Unit.Each {
 
             let computedPlural = unit.pluralName()
+            
             guard let expectedPlural = plurals[unit] else {
+                
                 XCTFail("Expected value for plural of \(unit) not provided.")
                 continue
             }

@@ -92,6 +92,7 @@ class MerchPresentationTests : XCTestCase
         var sentValueDidChange = false
         var old, new: Merch?
         self.presentation.valueDidChange = { (oldVal, newVal) in
+            
             (old, new) = (oldVal, newVal)
             sentValueDidChange = true
         }
@@ -113,6 +114,7 @@ class MerchPresentationTests : XCTestCase
         var sentValueDidChange = false
         var old, new: Merch?
         self.presentation.valueDidChange = { (oldVal, newVal) in
+            
             (old, new) = (oldVal, newVal)
             sentValueDidChange = true
         }
@@ -133,6 +135,7 @@ class MerchPresentationTests : XCTestCase
         var sentDidPurchase = false
         var purchasedMerch: Merch?
         self.presentation.didPurchase = { (merch, _) in
+            
             sentDidPurchase = true
             purchasedMerch = merch
         }

@@ -2,7 +2,7 @@ import XCTest
 
 extension XCTestCase
 {
-    /** Do not continue after failure of any assertions in the closure. */
+    /** Do not continue after failure of any XCTAssertions in the closure. */
     func stopOnFailure(@noescape assertions: () -> Void)
     {
         self.continueAfterFailure = false

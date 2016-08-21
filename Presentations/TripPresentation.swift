@@ -125,7 +125,8 @@ class TripPresentation
             fatalError("Attempt to update non-existent Merch\n\(item)")
         }
 
-        if self.changedKey(from: item, to: replacement) == self.sortKey {
+        let changedKey = self.changedKey(from: item, to: replacement)
+        if changedKey == self.sortKey {
             self.sortSubpresentations()
         }
 

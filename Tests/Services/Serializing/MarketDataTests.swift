@@ -105,8 +105,8 @@ class MarketDataTests : XCTestCase
                   "Have \(Array(encoder.info.keys))")
 
         // All data present and correct
-        stopOnFailure{ XCTAssertNotNil(encoder.name) }
         //swiftlint:disable force_unwrapping
+        stopOnFailure{ XCTAssertNotNil(encoder.name) }
         XCTAssertEqual(encoder.name!, name)
         stopOnFailure { XCTAssertNotNil(encoder.ident) }
         XCTAssertEqual(encoder.ident!, ident)
@@ -127,6 +127,7 @@ class MockMarketDecoder : MockDecoder
                     "trip" : MarketListData<PurchaseData>(MarketList())]
     }
 
+    // Values and types are hardcoded: casting is known safe
     //swiftlint:disable force_cast
     var name: String { return self.info["name"] as! String }
     var ident: String { return self.info["ident"] as! String }

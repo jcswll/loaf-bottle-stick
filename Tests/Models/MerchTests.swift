@@ -3,6 +3,7 @@ import XCTest
 
 class MerchTests : XCTestCase
 {
+    /** "Accuracy" value when testing last used date after purchasing.*/
     let allowableSecondsDelta = 2.0
 
     //MARK: Basic functionality
@@ -10,7 +11,7 @@ class MerchTests : XCTestCase
     {
         let name = "Broccoli"
         let unit = Unit.Head
-        let numUses: UInt = 0    // New instance has never been used
+        let numUses: UInt = 0    // A new instance has never been used
         let lastUsed = NSDate.distantPast()
 
         let merch = Merch(name: name, unit: unit)

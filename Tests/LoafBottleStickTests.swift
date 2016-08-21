@@ -7,13 +7,3 @@
 //
 
 import XCTest
-
-class LoafBottleStickTests: XCTestCase
-{
-
-    func testExample()
-    {
-        XCTAssertTrue(true)
-    }
-
-}
