@@ -29,9 +29,8 @@ class TripPresentationWiringTests : XCTestCase
     {
         let purchasePresentation = self.presentation.subPresentations[0]
         var sentDidChange = false
-        self.presentation.purchaseDidChange = {
-            (_, _) in
-                sentDidChange = true
+        self.presentation.purchaseDidChange = { (_, _) in
+            sentDidChange = true
         }
 
         purchasePresentation.name = Purchase.offListDummy.name
@@ -54,9 +53,8 @@ class TripPresentationWiringTests : XCTestCase
     {
         let purchasePresentation = self.presentation.subPresentations[0]
         var sentDidChangeMerch = false
-        self.presentation.merchDidChange = {
-            (_, _) in
-                sentDidChangeMerch = true
+        self.presentation.merchDidChange = { (_, _) in
+            sentDidChangeMerch = true
         }
 
         purchasePresentation.name = Purchase.offListDummy.name

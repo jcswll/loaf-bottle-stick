@@ -163,10 +163,10 @@ class PurchasePresentationTests : XCTestCase
        let newName = Merch.offListDummy.name
        var sentMerchDidChange = false
        var oldMerch, newMerch: Merch?
-       self.presentation.merchDidChange = {
-           (oldVal, newVal) in
-               sentMerchDidChange = true
-               (oldMerch, newMerch) = (oldVal, newVal)
+       self.presentation.merchDidChange = { (oldVal, newVal) in
+        
+           sentMerchDidChange = true
+           (oldMerch, newMerch) = (oldVal, newVal)
        }
 
        self.presentation.name = newName
@@ -185,10 +185,10 @@ class PurchasePresentationTests : XCTestCase
        let newUnit = Merch.offListDummy.unit
        var sentMerchDidChange = false
        var oldMerch, newMerch: Merch?
-       self.presentation.merchDidChange = {
-           (oldVal, newVal) in
-               sentMerchDidChange = true
-               (oldMerch, newMerch) = (oldVal, newVal)
+       self.presentation.merchDidChange = { (oldVal, newVal) in
+
+           sentMerchDidChange = true
+           (oldMerch, newMerch) = (oldVal, newVal)
        }
 
        self.presentation.setUnit(newUnit)
@@ -207,10 +207,10 @@ class PurchasePresentationTests : XCTestCase
        let newQuantity: UInt = 17
        var sentValueDidChange = false
        var oldPurchase, newPurchase: Purchase?
-       self.presentation.valueDidChange = {
-           (oldVal, newVal) in
-               sentValueDidChange = true
-               (oldPurchase, newPurchase) = (oldVal, newVal)
+       self.presentation.valueDidChange = { (oldVal, newVal) in
+        
+           sentValueDidChange = true
+           (oldPurchase, newPurchase) = (oldVal, newVal)
        }
 
        self.presentation.setQuantity(newQuantity)
@@ -229,10 +229,10 @@ class PurchasePresentationTests : XCTestCase
        let newNote = "Get the organic kind"
        var sentValueDidChange = false
        var oldPurchase, newPurchase: Purchase?
-       self.presentation.valueDidChange = {
-           (oldVal, newVal) in
-               sentValueDidChange = true
-               (oldPurchase, newPurchase) = (oldVal, newVal)
+       self.presentation.valueDidChange = { (oldVal, newVal) in
+        
+           sentValueDidChange = true
+           (oldPurchase, newPurchase) = (oldVal, newVal)
        }
 
        self.presentation.note = newNote
@@ -251,15 +251,15 @@ class PurchasePresentationTests : XCTestCase
        var sentDidToggle = false
        var sentValueDidChange = false
        var checkedPurchase, oldPurchase, newPurchase: Purchase?
-       self.presentation.didToggleChecked = {
-           purchase in
-               sentDidToggle = true
-               checkedPurchase = purchase
+       self.presentation.didToggleChecked = { purchase in
+        
+           sentDidToggle = true
+           checkedPurchase = purchase
        }
-       self.presentation.valueDidChange = {
-           (oldVal, newVal) in
-               sentValueDidChange = true
-               (oldPurchase, newPurchase) = (oldVal, newVal)
+       self.presentation.valueDidChange = { (oldVal, newVal) in
+
+           sentValueDidChange = true
+           (oldPurchase, newPurchase) = (oldVal, newVal)
        }
 
        self.presentation.toggleChecked()

@@ -53,6 +53,7 @@ class InventoryPresentationTests : XCTestCase
         let containsPresentation = subPresentations.contains {
                                        $0.name == addition.name
                                    }
+        
         XCTAssertTrue(containsPresentation)
     }
 
@@ -60,8 +61,8 @@ class InventoryPresentationTests : XCTestCase
     {
         let addition = Merch.offListDummy
         let sortedNames = (self.inventory.items + [addition])
-                            .map { $0.name }
-                            .sort((<))
+                                         .map { $0.name }
+                                         .sort((<))
 
         _ = try? self.presentation.add(addition)
 
@@ -113,10 +114,10 @@ class InventoryPresentationTests : XCTestCase
         let nameToDelete = self.presentation.subPresentations[deleteIdx].name
         var updatedInventory: MarketList<Merch>?
         var deletedMerch: Merch?
-        self.presentation.didDeleteMerch = {
-            (inventory, merch) in
-                updatedInventory = inventory
-                deletedMerch = merch
+        self.presentation.didDeleteMerch = { (inventory, merch) in
+            
+            updatedInventory = inventory
+            deletedMerch = merch
         }
 
         self.presentation.deleteMerch(atIndex: deleteIdx)

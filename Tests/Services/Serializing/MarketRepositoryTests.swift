@@ -18,9 +18,8 @@ class MarketRepositoryTests : XCTestCase
         // The returned key exists
         stopOnFailure { XCTAssertNotNil(key) }
         // ...and matches the original market's
-        //swiftlint:disable force_unwrapping
+        //swiftlint:disable:next force_unwrapping
         XCTAssertEqual(market.ident, key!)
-        //swiftlint:enable force_unwrapping
     }
 
     func testDecodes()
@@ -39,9 +38,8 @@ class MarketRepositoryTests : XCTestCase
         // The decoded market exists
         stopOnFailure { XCTAssertNotNil(decodedMarket) }
         // and matches the original
-        //swiftlint:disable force_unwrapping
+        //swiftlint:disable:next force_unwrapping
         XCTAssertEqual(decodedMarket!, market)
-        //swiftlint:enable force_unwrapping
     }
 
     func testWillNotEncodeWithoutArchiver()

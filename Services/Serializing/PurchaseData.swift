@@ -11,10 +11,12 @@ class PurchaseData : MarketItemData
     let isCheckedOff: Bool
 
     /** The `Purchase` represented by this data. */
-    var item: Purchase { return Purchase(merch: self.merch,
-                                          note: self.note,
-                                      quantity: self.quantity,
-                                    checkedOff: self.isCheckedOff)
+    var item: Purchase {
+        
+        return Purchase(merch: self.merch,
+                         note: self.note,
+                     quantity: self.quantity,
+                   checkedOff: self.isCheckedOff)
     }
 
     /** Create by composing from given field values */

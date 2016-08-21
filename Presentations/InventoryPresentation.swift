@@ -12,11 +12,11 @@ class InventoryPresentation
     {
         self.inventory = inventory
         self.sortKey = .Name
-        self.subPresentations = inventory.items.map {
-                                    self.presentation(forMerch: $0)
-                                }.sort { (lhs, rhs) in
-                                    lhs.compare(to: rhs, byKey: self.sortKey)
-                                }
+        self.subPresentations =
+            inventory.items.map { self.presentation(forMerch: $0) }
+                           .sort { (lhs, rhs) in
+                                lhs.compare(to: rhs, byKey: self.sortKey)
+            }
     }
 
     //MARK: - Fields
@@ -29,6 +29,7 @@ class InventoryPresentation
         }
     }
 
+    // IUO to allow construction in init while referring to self
     var subPresentations: [MerchPresentation]!
 
     //MARK: - Events
@@ -113,7 +114,8 @@ class InventoryPresentation
             fatalError("Attempt to update non-existent Merch\n\(item)")
         }
 
-        if self.changedKey(from: item, to: replacement) == self.sortKey {
+        let changedKey = self.changedKey(from: item, to: replacement)
+        if changedKey == self.sortKey {
             self.sortSubpresentations()
         }
 

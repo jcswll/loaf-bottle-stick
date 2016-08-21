@@ -59,9 +59,8 @@ class TripPresentationTests : XCTestCase
     func testIsSortedAfterAdd()
     {
         let addition = Purchase.offListDummy
-        let sortedNames = (self.trip.items + [addition])
-                            .map { $0.name }
-                            .sort((<))
+        let sortedNames = (self.trip.items + [addition]).map { $0.name }
+                                                        .sort((<))
 
         _ = try? self.presentation.add(addition)
 
@@ -113,10 +112,10 @@ class TripPresentationTests : XCTestCase
         let nameToDelete = self.presentation.subPresentations[deleteIdx].name
         var updatedTrip: MarketList<Purchase>?
         var deletedPurchase: Purchase?
-        self.presentation.didDeletePurchase = {
-            (trip, purchase) in
-                updatedTrip = trip
-                deletedPurchase = purchase
+        self.presentation.didDeletePurchase = { (trip, purchase) in
+            
+            updatedTrip = trip
+            deletedPurchase = purchase
         }
 
         self.presentation.deletePurchase(atIndex: deleteIdx)

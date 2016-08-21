@@ -47,8 +47,10 @@ class MerchDataTests : XCTestCase
         let numUses: UInt = 17
         let lastUsed = NSDate.distantFuture()
 
-        let merch = Merch(name: name, unit: unit,
-                          numUses: numUses, lastUsed: lastUsed)
+        let merch = Merch(name: name,
+                          unit: unit,
+                       numUses: numUses,
+                      lastUsed: lastUsed)
         let data = MerchData(item: merch)
 
         XCTAssertEqual(name, data.name)
@@ -102,7 +104,7 @@ class MerchDataTests : XCTestCase
                   "Have \(Array(encoder.actualKeys))")
 
         // All data present and correct
-        // swiftlint:disable force_unwrapping
+        //swiftlint:disable force_unwrapping
         stopOnFailure { XCTAssertNotNil(encoder.name) }
         XCTAssertEqual(encoder.name!, name)
         stopOnFailure { XCTAssertNotNil(encoder.unit) }
@@ -115,7 +117,7 @@ class MerchDataTests : XCTestCase
         XCTAssertEqual(UInt(encoder.numUses!), numUses)
         stopOnFailure { XCTAssertNotNil(encoder.lastUsed) }
         XCTAssertEqual(encoder.lastUsed!, lastUsed)
-        // swiftlint:enable force_unwrapping
+        //swiftlint:enable force_unwrapping
     }
 }
 
@@ -128,11 +130,12 @@ final class MockMerchDecoder : MockDecoder
                 "lastUsed" : NSDate.distantFuture()]
     }
 
-    // swiftlint:disable force_cast
+    //swiftlint:disable force_cast
     var name: String { return self.info["name"] as! String }
     var unit: String { return self.info["unit"] as! String }
     var numUses: Int { return self.info["numUses"] as! Int }
     var lastUsed: NSDate { return self.info["lastUsed"] as! NSDate }
+    //swiftlint:enable force_cast
 }
 
 final class MockMerchEncoder : MockEncoder

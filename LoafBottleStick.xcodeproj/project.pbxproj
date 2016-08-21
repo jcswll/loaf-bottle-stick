@@ -351,13 +351,13 @@
 		03B1CD701D5E72D200229C51 /* Serializing */ = {
 			isa = PBXGroup;
 			children = (
-				03B1CD711D5E72D200229C51 /* MarketDataTests.swift */,
-				03B1CD721D5E72D200229C51 /* MarketListDataTests.swift */,
-				03B1CD731D5E72D200229C51 /* MarketRepositoryTests.swift */,
 				03B1CD741D5E72D200229C51 /* MerchDataTests.swift */,
+				03B1CD771D5E72D200229C51 /* PurchaseDataTests.swift */,
+				03B1CD721D5E72D200229C51 /* MarketListDataTests.swift */,
+				03B1CD711D5E72D200229C51 /* MarketDataTests.swift */,
+				03B1CD731D5E72D200229C51 /* MarketRepositoryTests.swift */,
 				03B1CD751D5E72D200229C51 /* MockDecoder.swift */,
 				03B1CD761D5E72D200229C51 /* MockEncoder.swift */,
-				03B1CD771D5E72D200229C51 /* PurchaseDataTests.swift */,
 			);
 			path = Serializing;
 			sourceTree = "<group>";
@@ -366,12 +366,12 @@
 			isa = PBXGroup;
 			children = (
 				03B1CD971D5E732100229C51 /* Archivers */,
-				03B1CD831D5E72FF00229C51 /* MarketData.swift */,
 				03B1CD841D5E72FF00229C51 /* MarketItemData.swift */,
-				03B1CD851D5E72FF00229C51 /* MarketListData.swift */,
-				03B1CD861D5E72FF00229C51 /* MarketRepository.swift */,
 				03B1CD871D5E72FF00229C51 /* MerchData.swift */,
 				03B1CD8A1D5E72FF00229C51 /* PurchaseData.swift */,
+				03B1CD851D5E72FF00229C51 /* MarketListData.swift */,
+				03B1CD831D5E72FF00229C51 /* MarketData.swift */,
+				03B1CD861D5E72FF00229C51 /* MarketRepository.swift */,
 			);
 			path = Serializing;
 			sourceTree = "<group>";

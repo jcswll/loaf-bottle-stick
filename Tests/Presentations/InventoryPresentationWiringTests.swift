@@ -40,9 +40,8 @@ class InventoryPresentationWiringTests : XCTestCase
     {
         let merchPresentation = self.presentation.subPresentations[0]
         var sentDidChange = false
-        self.presentation.merchDidChange = {
-            (_, _) in
-                sentDidChange = true
+        self.presentation.merchDidChange = { (_, _) in
+            sentDidChange = true
         }
 
         merchPresentation.name = Merch.offListDummy.name
