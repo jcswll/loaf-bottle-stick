@@ -20,13 +20,26 @@
 		031FF7951D56E9AD00351869 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6ED1D56BB3900351869 /* Unit.swift */; };
 		031FF7961D56E9AD00351869 /* MarketItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F61D56BB3900351869 /* MarketItem.swift */; };
 		031FF7991D56E9AD00351869 /* Sortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6F91D56BB3900351869 /* Sortable.swift */; };
-		031FF7A61D582A0900351869 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF7A51D582A0900351869 /* Main.storyboard */; };
 		031FF7AE1D591F3400351869 /* XCTestCase+StopFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */; };
 		031FF7E81D592F9E00351869 /* Merch+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7AB1D5832E400351869 /* Merch+Dummy.swift */; };
 		031FF7EE1D5930E700351869 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF6E61D56BB3900351869 /* Market.swift */; };
 		031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F11D59376A00351869 /* Purchase+Dummy.swift */; };
 		031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F91D595D3100351869 /* MerchTests.swift */; };
 		031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7FB1D59697D00351869 /* PurchaseTests.swift */; };
+		03B0CF251D99EA5400084EAA /* LBSCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */; };
+		03B0CF261D99EA5400084EAA /* LBSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF1E1D99EA5400084EAA /* LBSCollectionViewController.m */; };
+		03B0CF271D99EA5400084EAA /* LBSFullscreenLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF201D99EA5400084EAA /* LBSFullscreenLayout.m */; };
+		03B0CF281D99EA5400084EAA /* LBSOverviewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF221D99EA5400084EAA /* LBSOverviewLayout.m */; };
+		03B0CF291D99EA5400084EAA /* LBSShadowLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF241D99EA5400084EAA /* LBSShadowLayoutAttributes.m */; };
+		03B0CF2C1D99EA6700084EAA /* LBSMarketTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF2B1D99EA6700084EAA /* LBSMarketTableController.m */; };
+		03B0CF321D99EA7D00084EAA /* LBSMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF2F1D99EA7D00084EAA /* LBSMarketCell.m */; };
+		03B0CF331D99EA7D00084EAA /* LBSMarketItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF311D99EA7D00084EAA /* LBSMarketItemCell.m */; };
+		03B0CF361D99EAD700084EAA /* UIView+WSSSimpleConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF351D99EAD700084EAA /* UIView+WSSSimpleConstraints.m */; };
+		03B0CF381D99EB3200084EAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF371D99EB3200084EAA /* main.m */; };
+		03B0CF411D99EC4600084EAA /* LBSCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B0CF3D1D99EC4600084EAA /* LBSCollectionViewController.xib */; };
+		03B0CF421D99EC4600084EAA /* LBSMarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B0CF3E1D99EC4600084EAA /* LBSMarketCell.xib */; };
+		03B0CF431D99EC4600084EAA /* LBSMarketItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B0CF3F1D99EC4600084EAA /* LBSMarketItemCell.xib */; };
+		03B0CF441D99EC4600084EAA /* LBSMarketTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B0CF401D99EC4600084EAA /* LBSMarketTableHeader.xib */; };
 		03B1CD2E1D5A7E9400229C51 /* UnitEnumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD2C1D5A7D9400229C51 /* UnitEnumTests.swift */; };
 		03B1CD301D5A839500229C51 /* MarketListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD2F1D5A839500229C51 /* MarketListTests.swift */; };
 		03B1CD321D5A8F4600229C51 /* AssertNoThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1CD311D5A8F4600229C51 /* AssertNoThrow.swift */; };
@@ -123,12 +136,34 @@
 		031FF7721D56E97900351869 /* LoafBottleStickKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoafBottleStickKit.h; path = LoafBottleStickKit/LoafBottleStickKit.h; sourceTree = SOURCE_ROOT; };
 		031FF7741D56E97900351869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031FF7791D56E97900351869 /* LoafBottleStickKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoafBottleStickKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		031FF7A51D582A0900351869 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		031FF7AB1D5832E400351869 /* Merch+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Merch+Dummy.swift"; sourceTree = "<group>"; };
 		031FF7AD1D591F3400351869 /* XCTestCase+StopFailure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+StopFailure.swift"; sourceTree = "<group>"; };
 		031FF7F11D59376A00351869 /* Purchase+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Purchase+Dummy.swift"; path = "Tests/Purchase+Dummy.swift"; sourceTree = SOURCE_ROOT; };
 		031FF7F91D595D3100351869 /* MerchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchTests.swift; sourceTree = "<group>"; };
 		031FF7FB1D59697D00351869 /* PurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTests.swift; sourceTree = "<group>"; };
+		03B0CF1B1D99EA5400084EAA /* LBSCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSCollectionDataSource.h; sourceTree = "<group>"; };
+		03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSCollectionDataSource.m; sourceTree = "<group>"; };
+		03B0CF1D1D99EA5400084EAA /* LBSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSCollectionViewController.h; sourceTree = "<group>"; };
+		03B0CF1E1D99EA5400084EAA /* LBSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSCollectionViewController.m; sourceTree = "<group>"; };
+		03B0CF1F1D99EA5400084EAA /* LBSFullscreenLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSFullscreenLayout.h; sourceTree = "<group>"; };
+		03B0CF201D99EA5400084EAA /* LBSFullscreenLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSFullscreenLayout.m; sourceTree = "<group>"; };
+		03B0CF211D99EA5400084EAA /* LBSOverviewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSOverviewLayout.h; sourceTree = "<group>"; };
+		03B0CF221D99EA5400084EAA /* LBSOverviewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSOverviewLayout.m; sourceTree = "<group>"; };
+		03B0CF231D99EA5400084EAA /* LBSShadowLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSShadowLayoutAttributes.h; sourceTree = "<group>"; };
+		03B0CF241D99EA5400084EAA /* LBSShadowLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSShadowLayoutAttributes.m; sourceTree = "<group>"; };
+		03B0CF2A1D99EA6700084EAA /* LBSMarketTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBSMarketTableController.h; path = Controllers/LBSMarketTableController.h; sourceTree = SOURCE_ROOT; };
+		03B0CF2B1D99EA6700084EAA /* LBSMarketTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LBSMarketTableController.m; path = Controllers/LBSMarketTableController.m; sourceTree = SOURCE_ROOT; };
+		03B0CF2E1D99EA7D00084EAA /* LBSMarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSMarketCell.h; sourceTree = "<group>"; };
+		03B0CF2F1D99EA7D00084EAA /* LBSMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSMarketCell.m; sourceTree = "<group>"; };
+		03B0CF301D99EA7D00084EAA /* LBSMarketItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSMarketItemCell.h; sourceTree = "<group>"; };
+		03B0CF311D99EA7D00084EAA /* LBSMarketItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSMarketItemCell.m; sourceTree = "<group>"; };
+		03B0CF341D99EAD700084EAA /* UIView+WSSSimpleConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WSSSimpleConstraints.h"; sourceTree = "<group>"; };
+		03B0CF351D99EAD700084EAA /* UIView+WSSSimpleConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WSSSimpleConstraints.m"; sourceTree = "<group>"; };
+		03B0CF371D99EB3200084EAA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		03B0CF3D1D99EC4600084EAA /* LBSCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBSCollectionViewController.xib; sourceTree = "<group>"; };
+		03B0CF3E1D99EC4600084EAA /* LBSMarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBSMarketCell.xib; sourceTree = "<group>"; };
+		03B0CF3F1D99EC4600084EAA /* LBSMarketItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBSMarketItemCell.xib; sourceTree = "<group>"; };
+		03B0CF401D99EC4600084EAA /* LBSMarketTableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LBSMarketTableHeader.xib; sourceTree = "<group>"; };
 		03B1CD2C1D5A7D9400229C51 /* UnitEnumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitEnumTests.swift; sourceTree = "<group>"; };
 		03B1CD2F1D5A839500229C51 /* MarketListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketListTests.swift; sourceTree = "<group>"; };
 		03B1CD311D5A8F4600229C51 /* AssertNoThrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssertNoThrow.swift; sourceTree = "<group>"; };
@@ -230,6 +265,7 @@
 				03B1CDB91D62CC0E00229C51 /* Extensions */,
 				031FF6F51D56BB3900351869 /* Protocols */,
 				031FF6FA1D56BB3900351869 /* Services */,
+				03B0CF2D1D99EA7D00084EAA /* Views */,
 			);
 			path = LoafBottleStick;
 			sourceTree = "<group>";
@@ -237,6 +273,7 @@
 		031FF6DC1D56BB0800351869 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03B0CF371D99EB3200084EAA /* main.m */,
 				031FF6E31D56BB2300351869 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -245,7 +282,10 @@
 		031FF6DD1D56BB1700351869 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				031FF7A51D582A0900351869 /* Main.storyboard */,
+				03B0CF3D1D99EC4600084EAA /* LBSCollectionViewController.xib */,
+				03B0CF3E1D99EC4600084EAA /* LBSMarketCell.xib */,
+				03B0CF3F1D99EC4600084EAA /* LBSMarketItemCell.xib */,
+				03B0CF401D99EC4600084EAA /* LBSMarketTableHeader.xib */,
 				031FF6DE1D56BB1700351869 /* Assets.xcassets */,
 				031FF6DF1D56BB1700351869 /* LaunchScreen.storyboard */,
 			);
@@ -315,6 +355,9 @@
 			children = (
 				03E844361D67EC6E00760AE0 /* LBSAppDelegate.h */,
 				03E844371D67EC6E00760AE0 /* LBSAppDelegate.m */,
+				03B0CF1A1D99EA5400084EAA /* Collection */,
+				03B0CF2A1D99EA6700084EAA /* LBSMarketTableController.h */,
+				03B0CF2B1D99EA6700084EAA /* LBSMarketTableController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -347,6 +390,35 @@
 			);
 			path = Models;
 			sourceTree = "<group>";
+		};
+		03B0CF1A1D99EA5400084EAA /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				03B0CF1B1D99EA5400084EAA /* LBSCollectionDataSource.h */,
+				03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */,
+				03B0CF1D1D99EA5400084EAA /* LBSCollectionViewController.h */,
+				03B0CF1E1D99EA5400084EAA /* LBSCollectionViewController.m */,
+				03B0CF1F1D99EA5400084EAA /* LBSFullscreenLayout.h */,
+				03B0CF201D99EA5400084EAA /* LBSFullscreenLayout.m */,
+				03B0CF211D99EA5400084EAA /* LBSOverviewLayout.h */,
+				03B0CF221D99EA5400084EAA /* LBSOverviewLayout.m */,
+				03B0CF231D99EA5400084EAA /* LBSShadowLayoutAttributes.h */,
+				03B0CF241D99EA5400084EAA /* LBSShadowLayoutAttributes.m */,
+			);
+			name = Collection;
+			path = Controllers/Collection;
+			sourceTree = SOURCE_ROOT;
+		};
+		03B0CF2D1D99EA7D00084EAA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03B0CF2E1D99EA7D00084EAA /* LBSMarketCell.h */,
+				03B0CF2F1D99EA7D00084EAA /* LBSMarketCell.m */,
+				03B0CF301D99EA7D00084EAA /* LBSMarketItemCell.h */,
+				03B0CF311D99EA7D00084EAA /* LBSMarketItemCell.m */,
+			);
+			path = Views;
+			sourceTree = SOURCE_ROOT;
 		};
 		03B1CD701D5E72D200229C51 /* Serializing */ = {
 			isa = PBXGroup;
@@ -405,6 +477,8 @@
 		03B1CDB91D62CC0E00229C51 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				03B0CF341D99EAD700084EAA /* UIView+WSSSimpleConstraints.h */,
+				03B0CF351D99EAD700084EAA /* UIView+WSSSimpleConstraints.m */,
 				03B1CDBA1D62CC0E00229C51 /* Array+Partition.swift */,
 				03B1CDBB1D62CC0E00229C51 /* NSDate+lt.swift */,
 				03B1CDBC1D62CC0E00229C51 /* SequenceType+FirstElement.swift */,
@@ -553,9 +627,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031FF7A61D582A0900351869 /* Main.storyboard in Resources */,
 				031FF6E11D56BB1700351869 /* Assets.xcassets in Resources */,
+				03B0CF441D99EC4600084EAA /* LBSMarketTableHeader.xib in Resources */,
+				03B0CF411D99EC4600084EAA /* LBSCollectionViewController.xib in Resources */,
 				031FF6E21D56BB1700351869 /* LaunchScreen.storyboard in Resources */,
+				03B0CF421D99EC4600084EAA /* LBSMarketCell.xib in Resources */,
+				03B0CF431D99EC4600084EAA /* LBSMarketItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,7 +680,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B0CF291D99EA5400084EAA /* LBSShadowLayoutAttributes.m in Sources */,
+				03B0CF251D99EA5400084EAA /* LBSCollectionDataSource.m in Sources */,
 				03E844381D67EC6E00760AE0 /* LBSAppDelegate.m in Sources */,
+				03B0CF281D99EA5400084EAA /* LBSOverviewLayout.m in Sources */,
+				03B0CF271D99EA5400084EAA /* LBSFullscreenLayout.m in Sources */,
+				03B0CF361D99EAD700084EAA /* UIView+WSSSimpleConstraints.m in Sources */,
+				03B0CF261D99EA5400084EAA /* LBSCollectionViewController.m in Sources */,
+				03B0CF2C1D99EA6700084EAA /* LBSMarketTableController.m in Sources */,
+				03B0CF331D99EA7D00084EAA /* LBSMarketItemCell.m in Sources */,
+				03B0CF381D99EB3200084EAA /* main.m in Sources */,
+				03B0CF321D99EA7D00084EAA /* LBSMarketCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,6 +912,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoafBottleStick.app/LoafBottleStick";
 				WARNING_CFLAGS = "";
 			};
@@ -841,6 +929,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStickTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoafBottleStick.app/LoafBottleStick";
 				WARNING_CFLAGS = "";
 			};
