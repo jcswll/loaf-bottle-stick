@@ -7,18 +7,24 @@
 //
 
 #import "LBSAppDelegate.h"
+#import "LBSCollectionViewController.h"
 
 @implementation LBSAppDelegate
 
-- (BOOL)application:(UIApplication *)application
-        didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     CGRect windowFrame = [[UIScreen mainScreen] bounds];
+    
+    LBSCollectionViewController * controller = [LBSCollectionViewController controllerUsingFrame:windowFrame];
+    
     UIWindow * window = [[UIWindow alloc] initWithFrame:windowFrame];
     
     [self setWindow:window];
     
+    [[self window] setRootViewController:controller];
+    [[self window] makeKeyAndVisible];
     
+    return YES;
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  LBSAppDelegate.h
+//  LBSOverviewLayout.h
 //  LoafBottleStick
 //
 //  Created by Joshua Caswell on 8/19/16.
@@ -8,8 +8,8 @@
 
 @import UIKit;
 
-@interface LBSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface LBSOverviewLayout : UICollectionViewFlowLayout
 
-@property (strong, nonatomic) UIWindow * window;
++ (instancetype)layoutWithSize:(CGSize)layoutSize;
 
 @end
