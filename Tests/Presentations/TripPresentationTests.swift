@@ -105,7 +105,6 @@ class TripPresentationTests : XCTestCase
         XCTAssertTrue(sentDidUpdate)
     }
 
-
     func testNotifiesParentOnDelete()
     {
         let deleteIdx = 3

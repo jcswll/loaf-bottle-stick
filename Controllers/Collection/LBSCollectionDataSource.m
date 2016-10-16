@@ -40,18 +40,9 @@ typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
     self = [super init];
     if( !self ) return nil;
     
-    _names = @[@"Groceria Abbandando",
-               @"Mercado de Luis",
-               @"Klaus Lebensmittelmarkt",
-               @"Épicerie Pierre",
-               @"Doyle's Grocery",
-               @"Hans supermarkt",
-               @"Mercearia de João",
-               @"प्रसाद की किराने की दुकान"];
-    
     _tables = [NSMutableArray array];
-    for( NSString * name in _names ){
-        [_tables addObject:[[LBSMarketTableController alloc] initWithMarketName:name]];
+    for( int i = 0; i < 9; i++ ){
+        [_tables addObject:[[LBSMarketTableController alloc] initWithMarketPresentation:[MarketPresentation dummy]]];
     }
 
     // Use identity transform until item movement actually occurs.

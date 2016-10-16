@@ -4,7 +4,7 @@
  * When changes are made, the view and other observers are notified via
  * callback closures.
  */
-class TripPresentation
+public class TripPresentation : NSObject
 {
     private var trip: MarketList<Purchase>
 
@@ -13,6 +13,9 @@ class TripPresentation
         self.trip = trip
         self.sortKey = .Name
         self.separateCheckedItems = false
+        
+        super.init()
+        
         self.subPresentations = trip.items.map {
                                     self.presentation(forPurchase: $0)
                                 }.sort { (lhs, rhs) in
@@ -71,6 +74,7 @@ class TripPresentation
             fatalError("Attempt to delete presentation at index \(index) " +
                        "outside valid range 0-\(self.subPresentations.count)")
         }
+        
         let presentation = self.subPresentations.removeAtIndex(index)
 
         presentation.willDelete { (purchase) in

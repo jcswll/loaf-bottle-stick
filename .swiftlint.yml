@@ -7,6 +7,7 @@ disabled_rules: # rule identifiers to exclude from running
   - opening_brace
   - conditional_binding_cascade
   - colon    # Cannot customize to allow ClassName : Superclass
+  - mark
 opt_in_rules: # some rules are only opt-in
   - empty_count
   - force_unwrapping
@@ -25,8 +26,8 @@ trailing_whitespace:
 statement_position:
     statement_mode: uncuddled_else
 line_length:
-    warning: 78
-    error: 85
+    warning: 130
+    error: 135
 force_cast: error
 force_try: error
 force_unwrapping: error

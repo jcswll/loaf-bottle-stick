@@ -8,7 +8,6 @@ class MarketPresentationTests : XCTestCase
     var market: Market!
     var presentation: MarketPresentation!
 
-
     override func setUp()
     {
         self.market = Market(name: "Abbandando's Groceria",
