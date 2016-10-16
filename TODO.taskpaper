@@ -10,4 +10,5 @@
 - Do not sort Inventory unless the sorted-by value changed @enhancement @status(planned) @date-added(2016-08-15) @done(2016-08-15)
 - Use CL Visit Monitoring to try to associate lists with locations, allow quick switching to that list when opening app at the location. @feature @date-added(2016-08-18) @status(maybe)
   - Use local notifications triggered by region monitoring for reminders when near a market with active trip. @feature @status(maybe) @date-added(2016-08-18)
-- Check test code coverage (using SwiftCov? https://github.com/realm/SwiftCov) @code-quality @date-added(2016-08-21) @status(planned)
+- Check test code coverage (using SwiftCov? https://github.com/realm/SwiftCov) @code-quality @date-added(2016-08-21) @status(maybe)
+- Add ArrayLiteralConvertible to MarketList @code-quality @date-added(2016-10-07) @status(planned)

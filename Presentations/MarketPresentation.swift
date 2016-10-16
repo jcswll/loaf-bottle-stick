@@ -1,5 +1,5 @@
 /** Present a `Market`. */
-class MarketPresentation
+public class MarketPresentation : NSObject
 {
     private var market: Market
 
@@ -10,7 +10,7 @@ class MarketPresentation
 
     //MARK: - Fields
     /** Market name */
-    var name: String
+    public var name: String
     {
         get {
             return self.market.name
@@ -22,7 +22,7 @@ class MarketPresentation
         }
     }
 
-    lazy var inventoryPresentation: InventoryPresentation = {
+    public lazy var inventoryPresentation: InventoryPresentation = {
         return InventoryPresentation(inventory: self.market.inventory)
     }()
 
@@ -32,5 +32,5 @@ class MarketPresentation
 
     //MARK: - Events
     /** Tell view that new values need to be read. */
-    var didUpdate: (() -> Void)?
+    public var didUpdate: (() -> Void)?
 }

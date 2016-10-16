@@ -107,7 +107,6 @@ class InventoryPresentationTests : XCTestCase
         XCTAssertTrue(sentDidUpdate)
     }
 
-
     func testNotifiesParentOnDelete()
     {
         let deleteIdx = 3

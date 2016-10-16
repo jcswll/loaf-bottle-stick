@@ -7,9 +7,10 @@
 //
 
 @import UIKit;
+@import LoafBottleStickKit;
 
 @interface LBSMarketTableController : UITableViewController
 
-- (nullable instancetype)initWithMarketName:(nonnull NSString *)name;
+- (nullable instancetype)initWithMarketPresentation:(nonnull MarketPresentation *)presentation;
 
 @end

@@ -2,7 +2,7 @@
  * A `MarketList` manages a collection of `MarketItem`s, creating them,
  * performing updates, and handling requests for deletion.
  */
-struct MarketList<Item: MarketItem>
+struct MarketList<Item : MarketItem>
 {
     /** The inner collection of managed items. */
     private(set) var items: Set<Item>
@@ -73,7 +73,6 @@ func ==<Item>(lhs: MarketList<Item>, rhs: MarketList<Item>) -> Bool
 }
 
 extension MarketList : Equatable {}
-
 
 enum MarketListError<Item: MarketItem> : ErrorType
 {

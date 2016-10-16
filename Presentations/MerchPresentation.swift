@@ -4,7 +4,7 @@
  * When changes are made, the view and other observers are notified via
  * callback closures.
  */
-class MerchPresentation
+public class MerchPresentation : NSObject
 {
     /** The presented `Merch`. */
     private var merch: Merch
@@ -26,7 +26,7 @@ class MerchPresentation
 
     //MARK: - `Merch` fields
     /** The name of the enclosed `Merch` */
-    var name: String
+    public var name: String
     {
         get {
             return self.merch.name

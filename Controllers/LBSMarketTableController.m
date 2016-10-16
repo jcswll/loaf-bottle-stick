@@ -18,6 +18,7 @@ static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
 
 @property (weak, nonatomic, nullable) IBOutlet UILabel * headerLabel;
 @property (copy, nonatomic, nonnull) NSString * marketName;
+@property (strong, nonatomic, nonnull) InventoryPresentation * inventory;
 
 - (void)registerViews;
 - (UIView *)constructTableHeaderView;
@@ -29,14 +30,14 @@ static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
     NSArray * _items;
 }
 
-- (instancetype)initWithMarketName:(NSString *)name
+- (instancetype)initWithMarketPresentation:(MarketPresentation *)presentation
 {
     self = [super init];
     if( !self ) return nil;
     
     [[self tableView] setAllowsSelection:NO];
-    _marketName = name;
-    _items = @[@"Broccoli", @"Carrots", @"Peas", @"Peppers", @"Emmenthaler", @"Toothpaste", @"Honey", @"Almond paste"];
+    _marketName = [presentation name];
+    _inventory = [presentation inventoryPresentation];
     
     [self registerViews];
     
@@ -87,7 +88,7 @@ static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_items count];
+    return [[[self inventory] subPresentations] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -96,7 +97,10 @@ static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
                                                                forIndexPath:indexPath];
     
     NSUInteger row = [indexPath row];
-    [[cell name] setText:_items[row]];
+    MerchPresentation * item = [[self inventory] subPresentations][row];
+    NSString * itemName = [item name];
+    
+    [[cell name] setText:itemName];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;

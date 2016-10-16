@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0316D5B71DB2DD590016ADB9 /* Presentations+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0316D5B61DB2DD590016ADB9 /* Presentations+Dummy.swift */; };
 		031FF6E11D56BB1700351869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031FF6DE1D56BB1700351869 /* Assets.xcassets */; };
 		031FF6E21D56BB1700351869 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031FF6DF1D56BB1700351869 /* LaunchScreen.storyboard */; };
 		031FF76A1D56E8DB00351869 /* LoafBottleStickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7691D56E8DB00351869 /* LoafBottleStickTests.swift */; };
@@ -95,6 +96,13 @@
 			remoteGlobalIDString = 031FF76F1D56E97900351869;
 			remoteInfo = LoafBottleStickKit;
 		};
+		03B0CF681D9A037900084EAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 031FF6851D56B42400351869 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 031FF76F1D56E97900351869;
+			remoteInfo = LoafBottleStickKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +120,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0316D5B61DB2DD590016ADB9 /* Presentations+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Presentations+Dummy.swift"; sourceTree = "<group>"; };
 		031FF68D1D56B42500351869 /* LoafBottleStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoafBottleStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		031FF6A11D56B42500351869 /* LoafBottleStickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoafBottleStickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		031FF6DE1D56BB1700351869 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,6 +242,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0316D5B51DB2DD230016ADB9 /* Dummy data */ = {
+			isa = PBXGroup;
+			children = (
+				0316D5B61DB2DD590016ADB9 /* Presentations+Dummy.swift */,
+			);
+			name = "Dummy data";
+			sourceTree = "<group>";
+		};
 		031FF6841D56B42400351869 = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +331,7 @@
 				031FF6F01D56BB3900351869 /* InventoryPresentation.swift */,
 				031FF6F41D56BB3900351869 /* TripPresentation.swift */,
 				031FF6F11D56BB3900351869 /* MarketPresentation.swift */,
+				0316D5B51DB2DD230016ADB9 /* Dummy data */,
 			);
 			path = Presentations;
 			sourceTree = SOURCE_ROOT;
@@ -512,6 +530,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				03B0CF691D9A037900084EAA /* PBXTargetDependency */,
 			);
 			name = LoafBottleStick;
 			productName = LoafBottleStick;
@@ -708,6 +727,7 @@
 			files = (
 				03B1CDBF1D62CC0E00229C51 /* SequenceType+FirstElement.swift in Sources */,
 				03B1CD9D1D5E734700229C51 /* MarketData.swift in Sources */,
+				0316D5B71DB2DD590016ADB9 /* Presentations+Dummy.swift in Sources */,
 				031FF78F1D56E9AD00351869 /* MarketList+SearchKeyMerch.swift in Sources */,
 				031FF7901D56E9AD00351869 /* MarketList.swift in Sources */,
 				03B1CD9A1D5E734700229C51 /* Encoder.swift in Sources */,
@@ -778,6 +798,11 @@
 			isa = PBXTargetDependency;
 			target = 031FF76F1D56E97900351869 /* LoafBottleStickKit */;
 			targetProxy = 031FF77B1D56E97900351869 /* PBXContainerItemProxy */;
+		};
+		03B0CF691D9A037900084EAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 031FF76F1D56E97900351869 /* LoafBottleStickKit */;
+			targetProxy = 03B0CF681D9A037900084EAA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

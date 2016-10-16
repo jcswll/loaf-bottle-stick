@@ -4,7 +4,7 @@
  * When changes are made, the view and other observers are notified via
  * callback closures.
  */
-class InventoryPresentation
+public class InventoryPresentation : NSObject
 {
     private var inventory: MarketList<Merch>
 
@@ -12,6 +12,9 @@ class InventoryPresentation
     {
         self.inventory = inventory
         self.sortKey = .Name
+        
+        super.init()
+        
         self.subPresentations =
             inventory.items.map { self.presentation(forMerch: $0) }
                            .sort { (lhs, rhs) in
@@ -30,7 +33,7 @@ class InventoryPresentation
     }
 
     // IUO to allow construction in init while referring to self
-    var subPresentations: [MerchPresentation]!
+    public var subPresentations: [MerchPresentation]!
 
     //MARK: - Events
     /** Tell view that new values need to be read. */
