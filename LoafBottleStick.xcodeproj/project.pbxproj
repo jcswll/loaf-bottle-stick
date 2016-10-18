@@ -30,6 +30,7 @@
 		035A802E1DB5B64C00EBDA48 /* MarketItemPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A802D1DB5B64C00EBDA48 /* MarketItemPresentation.swift */; };
 		035A80301DB5BC0C00EBDA48 /* MerchPresentation+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A802B1DB5B63100EBDA48 /* MerchPresentation+Cell.swift */; };
 		035A80331DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A80321DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift */; };
+		035A80351DB5C73200EBDA48 /* MarketPresentation+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A80341DB5C73200EBDA48 /* MarketPresentation+Cell.swift */; };
 		03B0CF251D99EA5400084EAA /* LBSCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */; };
 		03B0CF261D99EA5400084EAA /* LBSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF1E1D99EA5400084EAA /* LBSCollectionViewController.m */; };
 		03B0CF271D99EA5400084EAA /* LBSFullscreenLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF201D99EA5400084EAA /* LBSFullscreenLayout.m */; };
@@ -157,6 +158,7 @@
 		035A802D1DB5B64C00EBDA48 /* MarketItemPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItemPresentation.swift; sourceTree = "<group>"; };
 		035A80311DB5BCA900EBDA48 /* LoafBottleStick-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoafBottleStick-Bridging.h"; sourceTree = "<group>"; };
 		035A80321DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InventoryPresentation+Table.swift"; sourceTree = "<group>"; };
+		035A80341DB5C73200EBDA48 /* MarketPresentation+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MarketPresentation+Cell.swift"; sourceTree = "<group>"; };
 		03B0CF1B1D99EA5400084EAA /* LBSCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSCollectionDataSource.h; sourceTree = "<group>"; };
 		03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSCollectionDataSource.m; sourceTree = "<group>"; };
 		03B0CF1D1D99EA5400084EAA /* LBSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSCollectionViewController.h; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				035A80321DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift */,
 				031FF6F41D56BB3900351869 /* TripPresentation.swift */,
 				031FF6F11D56BB3900351869 /* MarketPresentation.swift */,
+				035A80341DB5C73200EBDA48 /* MarketPresentation+Cell.swift */,
 				0316D5B51DB2DD230016ADB9 /* Dummy data */,
 			);
 			path = Presentations;
@@ -717,6 +720,7 @@
 				03B0CF281D99EA5400084EAA /* LBSOverviewLayout.m in Sources */,
 				03B0CF271D99EA5400084EAA /* LBSFullscreenLayout.m in Sources */,
 				03B0CF361D99EAD700084EAA /* UIView+WSSSimpleConstraints.m in Sources */,
+				035A80351DB5C73200EBDA48 /* MarketPresentation+Cell.swift in Sources */,
 				035A80301DB5BC0C00EBDA48 /* MerchPresentation+Cell.swift in Sources */,
 				03B0CF261D99EA5400084EAA /* LBSCollectionViewController.m in Sources */,
 				03B0CF2C1D99EA6700084EAA /* LBSMarketTableController.m in Sources */,

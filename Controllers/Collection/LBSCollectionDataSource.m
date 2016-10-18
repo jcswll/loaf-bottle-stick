@@ -9,11 +9,10 @@
 #import "LBSCollectionDataSource.h"
 #import "LBSMarketCell.h"
 #import "LBSMarketTableController.h"
-
-static NSString * const kMarketCellNibName = @"LBSMarketCell";
-static NSString * const kMarketCellReuseIdentifier = @"MarketCell";
+#import "LoafBottleStick-Swift.h"
 
 typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
+
 
 @interface LBSCollectionDataSource ()
 
@@ -24,10 +23,10 @@ typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
 
 @end
 
+
 @implementation LBSCollectionDataSource
 {
-    NSArray<NSString *> * _names;
-    NSMutableArray<LBSMarketTableController *> * _tables;
+    NSMutableArray<MarketPresentation *> * _presentations;
 }
 
 + (instancetype)dataSourceForView:(UICollectionView *)collectionView
@@ -40,10 +39,7 @@ typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
     self = [super init];
     if( !self ) return nil;
     
-    _tables = [NSMutableArray array];
-    for( int i = 0; i < 9; i++ ){
-        [_tables addObject:[[LBSMarketTableController alloc] initWithMarketPresentation:[MarketPresentation dummy]]];
-    }
+    _presentations = [[MarketPresentation dummies] mutableCopy];
 
     // Use identity transform until item movement actually occurs.
     _postMovementIndexPathTransform = ^NSIndexPath * (NSIndexPath * path){
@@ -54,12 +50,19 @@ typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
     
     return self;
 }
-                             
+
+//- (void)setInOverview:(BOOL)inOverview
+//{
+//    _inOverview = inOverview;
+//    
+//    for( MarketPresentation * presentation in _presentations ){
+//        [presentation setInOverview:inOverview];
+//    }
+//}
+
 - (void)registerViewsWithCollectionView:(UICollectionView*)collectionView
 {
-    UINib * cellNib = [UINib nibWithNibName:kMarketCellNibName
-                                     bundle:nil];
-    [collectionView registerNib:cellNib forCellWithReuseIdentifier:kMarketCellReuseIdentifier];
+    [MarketPresentation registerCellWithCollectionView:collectionView];
 }
 
 - (NSIndexPath *)pathAfterMovementForIndexPath:(NSIndexPath *)path
@@ -71,22 +74,16 @@ typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return [_tables count];
+    return [_presentations count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LBSMarketCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kMarketCellReuseIdentifier
-                                                                     forIndexPath:indexPath];
     NSUInteger itemIndex = [indexPath item];
-    LBSMarketTableController * tableController = _tables[itemIndex];
-    UIView * tableView = [tableController tableView];
-
-    [cell setInOverview:[self isInOverview]];
-    [cell setTableView:tableView];
+    MarketPresentation * presentation = _presentations[itemIndex];
     
-    return cell;
+    return [presentation configureCellForCollectionView:collectionView atIndexPath:indexPath];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView
@@ -95,10 +92,10 @@ typedef NSIndexPath * (^IndexPathTransform)(NSIndexPath *);
 {
     NSUInteger sourceIndex = [sourceIndexPath row];
     NSUInteger destinationIndex = [destinationIndexPath row];
-    LBSMarketTableController * movingItem = _tables[sourceIndex];
+    MarketPresentation * movingItem = _presentations[sourceIndex];
     
-    [_tables removeObjectAtIndex:sourceIndex];
-    [_tables insertObject:movingItem atIndex:destinationIndex];
+    [_presentations removeObjectAtIndex:sourceIndex];
+    [_presentations insertObject:movingItem atIndex:destinationIndex];
     
     [self setPostMovementIndexPathTransform:^NSIndexPath * (NSIndexPath * path){
         

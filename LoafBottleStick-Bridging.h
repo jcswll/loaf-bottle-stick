@@ -9,6 +9,8 @@
 #ifndef LoafBottleStick_Bridging_h
 #define LoafBottleStick_Bridging_h
 
+#import "LBSMarketTableController.h"
+#import "LBSMarketCell.h"
 #import "LBSMarketItemCell.h"
 
 #endif /* LoafBottleStick_Bridging_h */

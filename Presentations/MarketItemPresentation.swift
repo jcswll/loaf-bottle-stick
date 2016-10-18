@@ -7,6 +7,6 @@
 //
 
 @objc public protocol MarketItemPresentation : class, UITextFieldDelegate
-{    
+{
     func configureCell(inTableView tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell
 }

@@ -10,9 +10,9 @@ import Foundation
 
 public extension MarketPresentation
 {
-    class func dummy() -> MarketPresentation
+    class func dummies() -> [MarketPresentation]
     {
-        return MarketPresentation(market: Market.dummy())
+        return (0..<10).map({ _ in MarketPresentation(market: Market.dummy()) })
     }
 }
 
