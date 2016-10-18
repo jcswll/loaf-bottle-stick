@@ -27,6 +27,9 @@
 		031FF7F21D59376A00351869 /* Purchase+Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F11D59376A00351869 /* Purchase+Dummy.swift */; };
 		031FF7FA1D595D3100351869 /* MerchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7F91D595D3100351869 /* MerchTests.swift */; };
 		031FF7FC1D59697D00351869 /* PurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031FF7FB1D59697D00351869 /* PurchaseTests.swift */; };
+		035A802E1DB5B64C00EBDA48 /* MarketItemPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A802D1DB5B64C00EBDA48 /* MarketItemPresentation.swift */; };
+		035A80301DB5BC0C00EBDA48 /* MerchPresentation+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A802B1DB5B63100EBDA48 /* MerchPresentation+Cell.swift */; };
+		035A80331DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A80321DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift */; };
 		03B0CF251D99EA5400084EAA /* LBSCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */; };
 		03B0CF261D99EA5400084EAA /* LBSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF1E1D99EA5400084EAA /* LBSCollectionViewController.m */; };
 		03B0CF271D99EA5400084EAA /* LBSFullscreenLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B0CF201D99EA5400084EAA /* LBSFullscreenLayout.m */; };
@@ -150,6 +153,10 @@
 		031FF7F11D59376A00351869 /* Purchase+Dummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Purchase+Dummy.swift"; path = "Tests/Purchase+Dummy.swift"; sourceTree = SOURCE_ROOT; };
 		031FF7F91D595D3100351869 /* MerchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchTests.swift; sourceTree = "<group>"; };
 		031FF7FB1D59697D00351869 /* PurchaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseTests.swift; sourceTree = "<group>"; };
+		035A802B1DB5B63100EBDA48 /* MerchPresentation+Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MerchPresentation+Cell.swift"; sourceTree = "<group>"; };
+		035A802D1DB5B64C00EBDA48 /* MarketItemPresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketItemPresentation.swift; sourceTree = "<group>"; };
+		035A80311DB5BCA900EBDA48 /* LoafBottleStick-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoafBottleStick-Bridging.h"; sourceTree = "<group>"; };
+		035A80321DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "InventoryPresentation+Table.swift"; sourceTree = "<group>"; };
 		03B0CF1B1D99EA5400084EAA /* LBSCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSCollectionDataSource.h; sourceTree = "<group>"; };
 		03B0CF1C1D99EA5400084EAA /* LBSCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSCollectionDataSource.m; sourceTree = "<group>"; };
 		03B0CF1D1D99EA5400084EAA /* LBSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSCollectionViewController.h; sourceTree = "<group>"; };
@@ -292,6 +299,7 @@
 			children = (
 				03B0CF371D99EB3200084EAA /* main.m */,
 				031FF6E31D56BB2300351869 /* Info.plist */,
+				035A80311DB5BCA900EBDA48 /* LoafBottleStick-Bridging.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -326,9 +334,12 @@
 		031FF6EE1D56BB3900351869 /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
+				035A802D1DB5B64C00EBDA48 /* MarketItemPresentation.swift */,
 				031FF6F21D56BB3900351869 /* MerchPresentation.swift */,
+				035A802B1DB5B63100EBDA48 /* MerchPresentation+Cell.swift */,
 				031FF6F31D56BB3900351869 /* PurchasePresentation.swift */,
 				031FF6F01D56BB3900351869 /* InventoryPresentation.swift */,
+				035A80321DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift */,
 				031FF6F41D56BB3900351869 /* TripPresentation.swift */,
 				031FF6F11D56BB3900351869 /* MarketPresentation.swift */,
 				0316D5B51DB2DD230016ADB9 /* Dummy data */,
@@ -701,10 +712,12 @@
 			files = (
 				03B0CF291D99EA5400084EAA /* LBSShadowLayoutAttributes.m in Sources */,
 				03B0CF251D99EA5400084EAA /* LBSCollectionDataSource.m in Sources */,
+				035A80331DB5C0CF00EBDA48 /* InventoryPresentation+Table.swift in Sources */,
 				03E844381D67EC6E00760AE0 /* LBSAppDelegate.m in Sources */,
 				03B0CF281D99EA5400084EAA /* LBSOverviewLayout.m in Sources */,
 				03B0CF271D99EA5400084EAA /* LBSFullscreenLayout.m in Sources */,
 				03B0CF361D99EAD700084EAA /* UIView+WSSSimpleConstraints.m in Sources */,
+				035A80301DB5BC0C00EBDA48 /* MerchPresentation+Cell.swift in Sources */,
 				03B0CF261D99EA5400084EAA /* LBSCollectionViewController.m in Sources */,
 				03B0CF2C1D99EA6700084EAA /* LBSMarketTableController.m in Sources */,
 				03B0CF331D99EA7D00084EAA /* LBSMarketItemCell.m in Sources */,
@@ -752,6 +765,7 @@
 				03B1CDA11D5E734700229C51 /* MerchData.swift in Sources */,
 				03B1CDAF1D62993400229C51 /* TripPresentation.swift in Sources */,
 				03B1CD991D5E734700229C51 /* Decoder.swift in Sources */,
+				035A802E1DB5B64C00EBDA48 /* MarketItemPresentation.swift in Sources */,
 				03BE9DCA1D63AAE300D52ED9 /* MarketPresentation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -910,6 +924,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LoafBottleStick-Bridging.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -922,12 +938,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WoolSweaterSoft.LoafBottleStick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LoafBottleStick-Bridging.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
 		031FF6AE1D56B42500351869 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -946,6 +965,7 @@
 		031FF6AF1D56B42500351869 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;

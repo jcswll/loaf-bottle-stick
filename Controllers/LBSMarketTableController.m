@@ -9,9 +9,8 @@
 #import "LBSMarketTableController.h"
 #import "LBSMarketItemCell.h"
 #import "UIView+WSSSimpleConstraints.h"
+#import "LoafBottleStick-Swift.h"
 
-static NSString * const kMarketItemCellIdentifier = @"MarketItemCell";
-static NSString * const kMarketItemCellNibName = @"LBSMarketItemCell";
 static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
 
 @interface LBSMarketTableController ()
@@ -46,11 +45,7 @@ static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
 
 - (void)registerViews
 {
-    UINib * cellNib = [UINib nibWithNibName:kMarketItemCellNibName
-                                     bundle:nil];
-    
-    [[self tableView] registerNib:cellNib
-           forCellReuseIdentifier:kMarketItemCellIdentifier];
+    [InventoryPresentation registerCellsForTableView:[self tableView]];
        
     UIView * headerView = [self constructTableHeaderView];
     
@@ -93,17 +88,10 @@ static NSString * const kMarketHeaderNibName = @"LBSMarketTableHeader";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LBSMarketItemCell * cell = [tableView dequeueReusableCellWithIdentifier:kMarketItemCellIdentifier
-                                                               forIndexPath:indexPath];
-    
     NSUInteger row = [indexPath row];
-    MerchPresentation * item = [[self inventory] subPresentations][row];
-    NSString * itemName = [item name];
+    MerchPresentation * presentation = [[self inventory] subPresentations][row];
     
-    [[cell name] setText:itemName];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
-    return cell;
+    return [presentation configureCellInTableView:tableView atIndexPath:indexPath];
 }
 
 @end

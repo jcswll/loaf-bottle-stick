@@ -7,9 +7,11 @@
 //
 
 @import UIKit;
+@import LoafBottleStickKit;
 
 @interface LBSMarketItemCell : UITableViewCell
 
-@property (weak, nonatomic, nullable) IBOutlet UILabel * name;
+@property (weak, nonatomic, nullable) id<MarketItemPresentation> presentation;
+@property (copy, nonatomic, nullable) NSString * itemName;
 
 @end
